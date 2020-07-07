@@ -5,7 +5,7 @@
 <!--메뉴바 추가 부분-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#"> <img
+	<a class="navbar-brand" href="${cp }/"> <img
 		src="/project/resources/logo/logo.png" width="50" height="50">MegaCinema
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -48,7 +48,7 @@
            	매출관리
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-             <a class="dropdown-item" href="#">기간 조회</a>
+             <a class="dropdown-item" href="${cp }/sales/dateSalesInfo.do">매출정보 조회</a>
              <a class="dropdown-item" href="#">성별 조회</a>
              <a class="dropdown-item" href="#">연령별 조회</a>
              <a class="dropdown-item" href="#">지점 조회</a>
