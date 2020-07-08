@@ -6,4 +6,10 @@
 	<select id="getinfo" parameterType="int" resultType="revenue">
 		select * from revenue where revenueNum=#{revenueNum}
 	</select>
+	<select id="yearList" resultType="revenue">
+		 select sum(outcome) outcome, sum(ticketincome) ticketincome, sum(storeincome) storeincome, to_char(revenuedate,'yyyy-mm') month
+		 from revenue r,branch b
+		 <![CDATA[ where r.branchnum=b.branchnum and b.brname='도봉' ]]>
+		 group by to_char(revenuedate,'yyyy-mm')
+	</select>
 </mapper>
