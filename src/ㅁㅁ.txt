@@ -1,20 +1,7 @@
-������� ���
-
-�⵵��
- select sum(outcome) ����, sum(ticketincome) Ƽ�ϼ���, sum(storeincome) ��������, to_char(revenuedate,'yyyy') �� from revenue
- group by to_char(revenuedate,'yyyy');
-
-����
-select sum(outcome) ����, sum(ticketincome) Ƽ�ϼ���, sum(storeincome) ��������, to_char(revenuedate,'yyyy-mm') �� from revenue
- group by to_char(revenuedate,'yyyy-mm');
-
-�Ϻ�
-select sum(outcome) ����, sum(ticketincome) Ƽ�ϼ���, sum(storeincome) ��������, to_char(revenuedate,'yyyy-mm-dd') �� from revenue
- group by to_char(revenuedate,'yyyy-mm-dd');
- 
- 
- 
-  select sum(outcome) 지출, sum(ticketincome) 티켓수입, sum(storeincome) 매점수익, to_char(revenuedate,'yyyy-mm') 월
- from revenue r,branch b
- where r.branchnum=b.branchnum and b.brname='도봉'
- group by to_char(revenuedate,'yyyy-mm');
+select revenue.revenuenum, aa.* from (
+    select sum(outcome) outcome, sum(ticketincome) ticketincome, sum(storeincome) storeincome, to_char(revenuedate,'yyyy-mm') revenuedate
+    from revenue r,branch b
+    where r.branchnum=b.branchnum and b.brname='도봉'
+    group by to_char(revenuedate,'yyyy-mm')
+    ORDER BY revenuedate
+)aa, revenue;

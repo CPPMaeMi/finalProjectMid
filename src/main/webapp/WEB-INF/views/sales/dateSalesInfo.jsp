@@ -13,10 +13,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', '티켓수입', '지출', '매점수익'],
-          [`${list[0].month}, ${list.[0].ticketincome}, ${list.[0].outcome}, ${list.[0].storeincome}`],
-          [`${list[1].month}, ${list.[1].ticketincome}, ${list.[1].outcome}, ${list.[1].storeincome}`],
-          [`${list[2].month}, ${list.[2].ticketincome}, ${list.[2].outcome}, ${list.[2].storeincome}`]
+          ['Year', '티켓수입', '지출', '매점수익']
           
         ]);
 
@@ -32,6 +29,7 @@
     </script>
 </head>
 <body>
+	<h1>${list. }</h1>
 	<div id="chart_div" style="width: 100%; height: 500px;"></div>
 </body>
 </html>
