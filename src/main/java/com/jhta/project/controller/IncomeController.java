@@ -29,9 +29,6 @@ public class IncomeController {
 	@RequestMapping("/sales/dayList.do")
 	@ResponseBody
 	public List<RevenueVo> dayList(String date,String date1) {
-		System.out.println("date------"+date);
-		System.out.println("date1------"+date1);
-		
 		HashMap<String, String> map=new HashMap<String, String>();
 		map.put("date", date);
 		map.put("date1", date1);
@@ -41,8 +38,6 @@ public class IncomeController {
 	@RequestMapping("/sales/monthList.do")
 	@ResponseBody
 	public List<RevenueVo> monthList(String date,String date1) {
-		System.out.println("date------"+date);
-		System.out.println("date1------"+date1);
 		HashMap<String, String> map=new HashMap<String, String>();
 		map.put("date", date);
 		map.put("date1", date1);
@@ -52,8 +47,6 @@ public class IncomeController {
 	@RequestMapping("/sales/yearList.do")
 	@ResponseBody
 	public List<RevenueVo> yearList(String date,String date1) {
-		System.out.println("date------"+date);
-		System.out.println("date1------"+date1);
 		HashMap<String, String> map=new HashMap<String, String>();
 		map.put("date", date);
 		map.put("date1", date1);
@@ -61,7 +54,7 @@ public class IncomeController {
 	}
 	
 	@RequestMapping("/sales/genderInfo.do")
-	public String genderInfo() {
+	public String genderInfo(Model model) {
 		return ".sales.gender";
 	}
 	//성별 매출정보

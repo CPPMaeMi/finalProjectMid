@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+	<div id="columnchart_material" style="width: 500px; height: 500px;"></div>
+</body>
 <script type="text/javascript">
       google.charts.load ( 'current', { 'packages': [ 'bar']});
       google.charts.setOnLoadCallback (drawChart);
@@ -31,8 +35,4 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
 </script>
-</head>
-<body>
-	<div id="columnchart_material" style="width: 800px; height: 500px;"></div>
-</body>
 </html>
