@@ -6,4 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="theather">
 		select * from theather where theatherNum=#{theatherNum}
 	</select>
+	<select id="list" parameterType="int" resultType="theather">
+		select * from theather where branchNum=#{branchNum}
+	</select>
 </mapper>
