@@ -9,13 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.project.service.ChargeService;
 import com.jhta.project.service.RevenuService;
+import com.jhta.project.vo.ChargeVo;
 import com.jhta.project.vo.RevenueVo;
 
 @Controller
 public class IncomeController {
 	@Autowired
 	private RevenuService revenuService;
+	@Autowired
+	private ChargeService chargeService;
 	
 	@RequestMapping("/sales/dateSalesInfo.do")
 	public String dateSalesInfo() {
@@ -56,4 +60,24 @@ public class IncomeController {
 		return revenuService.yearList(map);
 	}
 	
+	@RequestMapping("/sales/genderInfo.do")
+	public String genderInfo() {
+		return ".sales.gender";
+	}
+	//성별 매출정보
+	@RequestMapping("/sales/gender")
+	@ResponseBody
+	public List<ChargeVo> genderList(){
+		return chargeService.genderList();
+	}
 }
+
+
+
+
+
+
+
+
+
+
