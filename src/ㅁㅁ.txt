@@ -5,3 +5,4 @@ select revenue.revenuenum, aa.* from (
     group by to_char(revenuedate,'yyyy-mm')
     ORDER BY revenuedate
 )aa, revenue;
+
