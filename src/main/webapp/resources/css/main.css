@@ -20,3 +20,20 @@
     bottom: 0;
     text-align: center;
 }
+.container {
+  padding: 2rem 0rem;
+}
+.row1 {
+	width: 100%;
+	height: 734px;
+	overflow-y:scroll;
+}
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
