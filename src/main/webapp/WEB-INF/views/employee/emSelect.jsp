@@ -1,16 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<c:set var="i" value="0"/>
+<div>
+	<form action="${cp}/employee/emSelect.do" method="post">
+		<fieldset class="mainFieldSet">
+		  <legend>조건 검색</legend>
+		  	<fieldset class="subFieldSet">
+		  		<legend>지점</legend>
+					<c:forEach items="${brList}" var="string">
+						<input type="checkbox" name="br" class="br" value="${string}">
+						<span class="checkbox-span">${string}</span>
+						<c:set var="i" value="${i+1}"/>
+						<c:if test="${i eq 10}">
+							<br><c:set var="i" value="0"/>
+						</c:if>
+					</c:forEach>
+			</fieldset>
+			<fieldset class="subFieldSet">
+				<legend>직원 타입</legend>
+					<c:forEach items="${sfList}" var="string">
+						<c:set var="i" value="0"/>
+						<input type="checkbox" name="sf" class="sf" value="${string}">
+						<span class="checkbox-span">${string}</span>
+						<c:set var="i" value="${i+1}"/>
+						<c:if test="${i eq 10}">
+							<br><c:set var="i" value="0"/>
+						</c:if>
+					</c:forEach>
+			</fieldset>
+				<fieldset class="subFieldSet">
+			  		<legend>부서</legend>
+					<c:forEach items="${diList}" var="string">
+						<c:set var="i" value="0"/>
+						<input type="checkbox" name="di" class="di" value="${string}">
+						<span class="checkbox-span">${string}</span>
+						<c:set var="i" value="${i+1}"/>
+						<c:if test="${i eq 10}">
+							<br><c:set var="i" value="0"/>
+						</c:if>
+					</c:forEach>
+				</fieldset>
+			<input type="submit" value="검색">
+		</fieldset>
+	</form>
+</div>
 <div class="container">
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<div class="display-flex align-center">
 				<h6 class="m-0 font-weight-bold text-primary">직원 현황</h6>
-				<div class="ml-auto display-flex align-center">
-					<input type="text" name="" class="form-control"
-						placeholder="Search">
-					<button class="btn btn-md btn-primary ml-2">Search</button>
-				</div>
 			</div>
 		</div>
 		<div class="card-body">
@@ -48,6 +88,37 @@
 		</div>
 	</div>
 </div>
+<!-- 페이징 처리 -->
+<div>
+	<c:choose>
+		<c:when test="${pu.startPageNum>5}">
+			<a href="${cp}/employee/emSelect.do?pageNum${endPageNum-1}&br=${br}&sf=${sf}&di=${di}">[이전]</a>
+		</c:when>
+		<c:otherwise>
+			[이전]
+		</c:otherwise>
+	</c:choose>
+	<c:forEach begin="${pu.startPageNum}" end="${pu.endPageNum}" var="i">
+		<c:choose>
+			<c:when test="${i==pageNum}">
+				<a href="${cp}/employee/emSelect.do?pageNum=${i}&br=${br}&sf=${sf}&di=${di}"><span style="color:blue">
+				[${i}]</span></a>
+			</c:when>
+			<c:otherwise>
+				<a href="${cp}/employee/emSelect.do?pageNum=${i}&br=${br}&sf=${sf}&di=${di}"><span style="color:gray">
+				[${i}]</span></a>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<c:choose>
+		<c:when test="${pu.endPageNum>5}">
+			<a href="${cp}/employee/emSelect.do?pageNum${endPageNum+1}&br=${br}&sf=${sf}&di=${di}">[다음]</a>
+		</c:when>
+		<c:otherwise>
+			[다음]
+		</c:otherwise>
+	</c:choose>
+</div>
 
 <!-- modal -->
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -58,7 +129,7 @@
 			<h3 class="modal-title" id="lineModalLabel">직원정보 수정</h3>
 		</div>
 		<div class="modal-body">
-			
+		
             <!-- content goes here -->
 			<form>
               <div class="form-group">

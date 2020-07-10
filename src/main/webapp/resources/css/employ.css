@@ -230,3 +230,20 @@ h6, .h6 {
     height: 34px;
     border-radius: 20px;
 }
+/* 조건검색 div css */
+.mainFieldSet{
+	padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+}
+.subFieldSet{
+	padding: 10px;
+    border-bottom: 1px solid black;
+    margin: 10px;
+}
+.br,.sf,.di{
+	margin-right:5px;
+}
+.checkbox-span{
+	margin-right:15px;
+}

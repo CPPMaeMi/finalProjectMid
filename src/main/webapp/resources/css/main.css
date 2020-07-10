@@ -1,7 +1,7 @@
 @charset "UTF-8";
 #wrap{
 	width:80%;
-	height:937px;
+	height:1000px;
 	margin:auto;
 }
 #content{
@@ -9,6 +9,7 @@
 	height:82%;
 	background-color:white;
 	border: solid 1px;
+	overflow-y: auto;
 }
 #footer{
 	width:80%;
