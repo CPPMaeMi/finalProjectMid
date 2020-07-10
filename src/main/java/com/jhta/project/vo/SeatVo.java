@@ -6,13 +6,15 @@ public class SeatVo {
 	private int seatX;
 	private int seatY;
 	private int seatSale;
-	public SeatVo(int seatNum, int theatherNum, int seatX, int seatY, int seatSale) {
+	private String seatName;
+	public SeatVo(int seatNum, int theatherNum, int seatX, int seatY, int seatSale, String seatName) {
 		super();
 		this.seatNum = seatNum;
 		this.theatherNum = theatherNum;
 		this.seatX = seatX;
 		this.seatY = seatY;
 		this.seatSale = seatSale;
+		this.seatName = seatName;
 	}
 	public SeatVo() {
 		super();
@@ -46,6 +48,12 @@ public class SeatVo {
 	}
 	public void setSeatSale(int seatSale) {
 		this.seatSale = seatSale;
+	}
+	public String getSeatName() {
+		return seatName;
+	}
+	public void setSeatName(String seatName) {
+		this.seatName = seatName;
 	}
 	
 }

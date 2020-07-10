@@ -33,15 +33,16 @@
 }
 </style>
 <div id="room">
-	<h1 style="text-align: center;">상영관 만들기</h1>
+	<h1 style="text-align: center;">상영관 보기</h1>
 	<div id="roomMain">
 		<div style="text-align: center;">
 			<img src="${cp }/resources/images/join_logo_3.png"
 				style="width: 80%;">
 		</div>
-		<form id="sub" action="${cp }/room/seat/createOk.do" method="post">
-			<div id="seatMain">
-			</div>
+		<form id="sub"
+			action="${cp }/room/seat/createOk.do?theatherNum=${vo.theatherNum}"
+			method="post">
+			<div id="seatMain"></div>
 		</form>
 	</div>
 	<div id="roomCreate">
@@ -106,6 +107,8 @@
 								seatBtn.val(str[i] + j);
 								sMain.append(seatBtn);
 								seatBtn
+										.before("<input type='text' name='seatName' value="+str[i]+j+"></input>");
+								seatBtn
 										.before("<input type='hidden' name='seatX' value="+x+"></input>");
 								seatBtn
 										.before("<input type='hidden' name='seatY' value="+y+"></input>");
@@ -130,7 +133,6 @@
 	});
 
 	$("#btn2").click(function() {
-		alert("터짐...");
 		$("#sub").submit();
 	});
 </script>
