@@ -5,7 +5,7 @@
 		font-family: 'Open Sans', sans-serif;
 	}
 	.table-wrapper {
-		width: 700px;
+		width: 800px;
 		margin: 30px auto;
         background: #fff;
         padding: 20px;	
@@ -28,9 +28,13 @@
 		min-width: 100px;
 		border-radius: 50px;
 		line-height: 13px;
+		margin-top: 4px;
     }
 	.table-title .add-new i {
 		margin-right: 4px;
+	}
+	.col-sm-8{
+		margin-right: -330px;
 	}
     table.table {
         table-layout: fixed;
@@ -81,4 +85,8 @@
 	}
 	table.table td .add {
 		display: none;
+	}
+	#checkdate{
+	    margin-left: 76px;
+   		margin-top: 4px;
 	}
