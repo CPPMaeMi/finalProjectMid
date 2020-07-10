@@ -58,10 +58,13 @@ public class IncomeController {
 		return ".sales.gender";
 	}
 	//성별 매출정보
-	@RequestMapping("/sales/gender")
+	@RequestMapping("/sales/gender.do")
 	@ResponseBody
-	public List<ChargeVo> genderList(){
-		return chargeService.genderList();
+	public List<ChargeVo> genderList(String date,String date1){
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("date", date);
+		map.put("date1", date1);
+		return chargeService.genderList(map);
 	}
 }
 

@@ -1,5 +1,6 @@
 package com.jhta.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +14,7 @@ public class ChargeDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.charge";
-	public List<ChargeVo> genderList(){
-		return sqlSession.selectList(NAMESPACE+".genderList");
+	public List<ChargeVo> genderList(HashMap<String, String> map){
+		return sqlSession.selectList(NAMESPACE+".genderList", map);
 	}
 }

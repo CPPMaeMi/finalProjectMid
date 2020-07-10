@@ -1,5 +1,6 @@
 package com.jhta.project.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ public class ChargeService {
 	@Autowired
 	private ChargeDao chargeDao;
 
-	public List<ChargeVo> genderList(){
-		return chargeDao.genderList();
+	public List<ChargeVo> genderList(HashMap<String, String> map){
+		return chargeDao.genderList(map);
 	}
 }
 

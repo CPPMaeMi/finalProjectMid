@@ -6,9 +6,10 @@
 	<select id="getinfo" parameterType="int" resultType="charge">
 		select * from charge where chargeNum=#{chargeNum} 
 	</select>
-	<select id="genderList" resultType="charge">
-		SELECT sum(c.totalbill) totalbill, SUBSTR(m.birth,8,1) birth from CHARGE C,MEMBERSHIP M
-		WHERE c.memnum=c.memnum
-		group by SUBSTR(m.birth,8,1)
+	<select id="genderList" resultType="charge" parameterType="hashmap">
+       select sum(c.totalbill),to_char(c.chregdate,'yyyy-mm') chregdate,m.birth birth
+       from charge c,membership m
+       where TO_CHAR(c.chregdate,'yyyy-mm') BETWEEN #{date} AND #{date1}
+       group by to_char(c.chregdate,'yyyy-mm'),m.birth
 	</select>
 </mapper>
