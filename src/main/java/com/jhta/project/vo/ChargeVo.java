@@ -1,14 +1,12 @@
 package com.jhta.project.vo;
 
-import java.util.Date;
-
 public class ChargeVo {
 	private int chargeNum;
 	private int memNum;
 	private int cDetailNum;
 	private String payment;
 	private String memStatus;
-	private Date chRegdate;
+	private String chRegdate;
 	private int bookNum;
 	private String phone;
 	private int totalbill;//결제금액
@@ -16,7 +14,7 @@ public class ChargeVo {
 
 	public ChargeVo() {}
 
-	public ChargeVo(int chargeNum, int memNum, int cDetailNum, String payment, String memStatus, Date chRegdate,
+	public ChargeVo(int chargeNum, int memNum, int cDetailNum, String payment, String memStatus, String chRegdate,
 			int bookNum, String phone, int totalbill, String birth) {
 		super();
 		this.chargeNum = chargeNum;
@@ -71,11 +69,11 @@ public class ChargeVo {
 		this.memStatus = memStatus;
 	}
 
-	public Date getChRegdate() {
+	public String getChRegdate() {
 		return chRegdate;
 	}
 
-	public void setChRegdate(Date chRegdate) {
+	public void setChRegdate(String chRegdate) {
 		this.chRegdate = chRegdate;
 	}
 

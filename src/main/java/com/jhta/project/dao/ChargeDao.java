@@ -14,7 +14,12 @@ public class ChargeDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.charge";
-	public List<ChargeVo> genderList(HashMap<String, String> map){
-		return sqlSession.selectList(NAMESPACE+".genderList", map);
-	}
+	
+	
+	 public List<ChargeVo> yearList(HashMap<String, String> map){
+		 return sqlSession.selectList(NAMESPACE+".yearList", map);
+	 } public List<ChargeVo>
+	 monthList(HashMap<String, String> map){
+		 return sqlSession.selectList(NAMESPACE+".monthList", map); 
+	 }
 }

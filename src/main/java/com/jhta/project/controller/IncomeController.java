@@ -25,7 +25,7 @@ public class IncomeController {
 	public String dateSalesInfo() {
 		return ".sales.dateSalesInfo";
 	}
-	//일별
+	//기간별 매출조회 일별
 	@RequestMapping("/sales/dayList.do")
 	@ResponseBody
 	public List<RevenueVo> dayList(String date,String date1) {
@@ -34,7 +34,7 @@ public class IncomeController {
 		map.put("date1", date1);
 		return revenuService.dayList(map);
 	}
-	//월별
+	//기간별 매출조회 월별
 	@RequestMapping("/sales/monthList.do")
 	@ResponseBody
 	public List<RevenueVo> monthList(String date,String date1) {
@@ -43,7 +43,7 @@ public class IncomeController {
 		map.put("date1", date1);
 		return revenuService.monthList(map);
 	}
-	//년도별
+	//기간별 매출조회 년도별
 	@RequestMapping("/sales/yearList.do")
 	@ResponseBody
 	public List<RevenueVo> yearList(String date,String date1) {
@@ -57,15 +57,34 @@ public class IncomeController {
 	public String genderInfo(Model model) {
 		return ".sales.gender";
 	}
-	//성별 매출정보
-	@RequestMapping("/sales/gender.do")
-	@ResponseBody
-	public List<ChargeVo> genderList(String date,String date1){
-		HashMap<String, String> map=new HashMap<String, String>();
-		map.put("date", date);
-		map.put("date1", date1);
-		return chargeService.genderList(map);
-	}
+	
+	 //성별 매출조회 년도별
+	 @RequestMapping("/sales/gender/yearList.do")
+	 @ResponseBody public List<ChargeVo> genderYearList(String date,String date1){
+		 HashMap<String, String> map=new HashMap<String, String>(); 
+		 map.put("date", date); 
+		 map.put("date1", date1);
+		 return chargeService.yearList(map); 
+	 } 
+	 //성별 매출조회 월별
+	 @RequestMapping("/sales/gender/monthList.do")
+	 @ResponseBody public List<ChargeVo> genderMonthList(String date,String date1){ 
+		 HashMap<String, String>map=new HashMap<String, String>();
+		 map.put("date", date); map.put("date1", date1); 
+		 
+		 List<ChargeVo> resultList = chargeService.monthList(map); 
+		 
+		 HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		 for(ChargeVo vo: resultList) {
+			 if(resultMap.containsKey(vo.getChRegdate())) {
+				 resultMap.put(key, value)
+			 }
+		 }
+		 
+		 
+		 
+		 return resultList;
+	 }
 }
 
 

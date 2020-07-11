@@ -14,9 +14,13 @@ public class ChargeService {
 	@Autowired
 	private ChargeDao chargeDao;
 
-	public List<ChargeVo> genderList(HashMap<String, String> map){
-		return chargeDao.genderList(map);
-	}
+	
+	 public List<ChargeVo> yearList(HashMap<String, String> map){ 
+		 return chargeDao.yearList(map); 
+	 }
+	 public List<ChargeVo> monthList(HashMap<String,String> map){ 
+		 return chargeDao.monthList(map); 
+	 }
 }
 
 

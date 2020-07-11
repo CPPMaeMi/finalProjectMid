@@ -51,8 +51,6 @@
              <a class="dropdown-item" href="${cp }/sales/dateSalesInfo.do">매출정보 조회</a>
              <a class="dropdown-item" href="${cp }/sales/genderInfo.do">성별 조회</a>
              <a class="dropdown-item" href="${cp }/sales/age.do">연령별 조회</a>
-             <a class="dropdown-item" href="#">지점 조회</a>
-			 <a class="dropdown-item" href="#">순이익 조회</a>
            </div>
            </li>
 		</ul>

@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -31,13 +30,15 @@
     		    google.charts.setOnLoadCallback(drawChart);
     		    function drawChart() {
     		    	var array = new Array();
-    		    	array[0] = ['day', '지출', '티켓수입', '매점수익'];
+    		    	array[0] = ['day', '티켓수입', '지출', '매점수익','순이익'];
     		    	$(results).each(function(i,revenue){
+    		    		var profit=revenue.ticketIncome+revenue.storeIncome-revenue.outcome;/* 순이익 */
     		    		var subArray = [
     		    			revenue.revenuedate,
 	            			revenue.ticketIncome,
 	            			revenue.outcome,
-	            			revenue.storeIncome
+	            			revenue.storeIncome,
+	            			profit
             			];
     		    		array[++i] = subArray;
 	            	});
@@ -64,13 +65,15 @@
     		    google.charts.setOnLoadCallback(drawChart);
     		    function drawChart() {
     		    	var array = new Array();
-    		    	array[0] = ['month', '지출', '티켓수입', '매점수익'];
+    		    	array[0] = ['month', '티켓수입', '지출', '매점수익', '순이익'];
     		    	$(results).each(function(i,revenue){
+    		    		var profit=revenue.ticketIncome+revenue.storeIncome-revenue.outcome;/* 순이익 */
     		    		var subArray = [
     		    			revenue.revenuedate,
 	            			revenue.ticketIncome,
 	            			revenue.outcome,
-	            			revenue.storeIncome
+	            			revenue.storeIncome,
+	            			profit
             			];
     		    		array[++i] = subArray;
 	            	});
@@ -97,13 +100,15 @@
     		    google.charts.setOnLoadCallback(drawChart);
     		    function drawChart() {
     		    	var array = new Array();
-    		    	array[0] = ['Year', '지출', '티켓수입', '매점수익'];
+    		    	array[0] = ['Year', '티켓수입', '지출', '매점수익', '순이익'];
     		    	$(results).each(function(i,revenue){
+    		    		var profit=revenue.ticketIncome+revenue.storeIncome-revenue.outcome;/* 순이익 */
     		    		var subArray = [
     		    			revenue.revenuedate,
 	            			revenue.ticketIncome,
 	            			revenue.outcome,
-	            			revenue.storeIncome
+	            			revenue.storeIncome,
+	            			profit
             			];
     		    		array[++i] = subArray;
 	            	});

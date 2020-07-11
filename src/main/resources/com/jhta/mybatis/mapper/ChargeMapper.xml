@@ -6,10 +6,57 @@
 	<select id="getinfo" parameterType="int" resultType="charge">
 		select * from charge where chargeNum=#{chargeNum} 
 	</select>
-	<select id="genderList" resultType="charge" parameterType="hashmap">
-       select sum(c.totalbill),to_char(c.chregdate,'yyyy-mm') chregdate,m.birth birth
-       from charge c,membership m
-       where TO_CHAR(c.chregdate,'yyyy-mm') BETWEEN #{date} AND #{date1}
-       group by to_char(c.chregdate,'yyyy-mm'),m.birth
+	<select id="monthList" resultType="charge" parameterType="hashmap">
+		<![CDATA[
+			SELECT 
+			    SUM(AA.TOTALBILL) TOTALBILL
+			    , AA.BIRTH
+			    ,AA.CHAREGDATE chRegdate
+			    FROM
+			    (
+			        SELECT 
+			            C.TOTALBILL TOTALBILL
+			            , CASE WHEN SUBSTR(m.birth,8,1) = '1' OR SUBSTR(m.birth,8,1) = '3' THEN 1 ELSE 2 END  birth
+			            ,to_char(c.chregdate,'yyyy-mm') charegdate
+			        from CHARGE C, MEMBERSHIP M
+			        WHERE c.memnum=m.memnum
+			    ) AA
+			WHERE 
+			    AA.charegdate BETWEEN #{date} AND #{date1}
+			GROUP BY AA.BIRTH,AA.CHAREGDATE
+			ORDER BY AA.CHAREGDATE
+		]]>
+	</select>
+	<select id="yearList" resultType="charge" parameterType="hashmap">
+		<![CDATA[
+		SELECT 
+			    SUM(AA.TOTALBILL) TOTALBILL
+			    , AA.BIRTH
+			    ,AA.CHAREGDATE chRegdate
+			    FROM
+			    (
+			        SELECT 
+			            C.TOTALBILL TOTALBILL
+			            , CASE WHEN SUBSTR(m.birth,8,1) = '1' OR SUBSTR(m.birth,8,1) = '3' THEN 1 ELSE 2 END  birth
+			            ,to_char(c.chregdate,'yyyy') charegdate
+			        from CHARGE C, MEMBERSHIP M
+			        WHERE c.memnum=m.memnum
+			    ) AA
+			WHERE 
+			    AA.charegdate BETWEEN #{date} AND #{date1}
+			GROUP BY AA.BIRTH,AA.CHAREGDATE
+			ORDER BY AA.CHAREGDATE
+		]]>
 	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

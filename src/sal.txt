@@ -1,0 +1,4 @@
+--월별 직원 급여 합계
+select sum(salary) salary,to_char(saldate,'yyyy-mm') saldate
+from salary
+group by to_char(saldate,'yyyy-mm')
