@@ -32,12 +32,12 @@
 										<td><a href="${cp }/room/seat/create.do?theatherNum=${vo.theatherNum}">만들기</a></td>
 									</c:otherwise>
 								</c:choose>
-							</tr>
+							</tr>	
 							<c:set var="i" value="${i+1 }"/>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
-			<a href="${cp }/room/seat/theatherInsert.do?branchNum=${list.get(0).branchNum }">
+			<a href="${cp }/room/seat/theatherInsert.do?branchNum=${branchNum }">
 			<button type="button" class="btn btn-danger">상영관 추가</button></a>
 </div>

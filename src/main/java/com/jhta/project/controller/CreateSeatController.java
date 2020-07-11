@@ -60,7 +60,13 @@ public class CreateSeatController {
 	@RequestMapping("/room/seat/theather.do")
 	public String createSeat(@RequestParam(value="branchNum",defaultValue = "1") int branchNum,Model model) throws JsonProcessingException {
 		String url="http://localhost:9090/projectdb/room/seat/theather.do?branchNum="+branchNum;
-		String code=service.get(url).trim();
+		String code = "";
+		
+		try {
+			code=service.get(url).trim();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Gson gson=new Gson();
  		TheatherVo[] array=gson.fromJson(code, TheatherVo[].class);
  		List<TheatherVo> list =Arrays.asList(array);
@@ -75,13 +81,20 @@ public class CreateSeatController {
 		Boolean[] array1=gson.fromJson(code1, Boolean[].class);
  		model.addAttribute("list",list);
  		model.addAttribute("blist",Arrays.asList(array1));
+ 		model.addAttribute("branchNum",branchNum);
 		return ".room.seat.theather";
 	}
 	
 	@RequestMapping("/room/seat/delete.do")
 	public String deleteSeat(int theatherNum) {
 		String url="http://localhost:9090/projectdb/room/seat/delete.do?theatherNum="+theatherNum;
-		String code=service.get(url).trim();
+		String code = "";
+		try {
+			code=service.get(url).trim();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		if(code.equals("success")) {
 			return "redirect:/room/seat/theather.do";
 		}else {
@@ -115,7 +128,13 @@ public class CreateSeatController {
 		String url="http://localhost:9090/projectdb/room/seat/updateOk.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
-		String code=service.post(url,jsonString).trim();
+		String code = "";
+		try {
+			code=service.post(url,jsonString).trim();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		if(code.equals("success")) {
 			return "redirect:/room/seat/theather.do";
 		}else {

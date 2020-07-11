@@ -107,7 +107,7 @@
 								seatBtn.val(str[i] + j);
 								sMain.append(seatBtn);
 								seatBtn
-										.before("<input type='text' name='seatName' value="+str[i]+j+"></input>");
+										.before("<input type='hidden' name='seatName' value="+str[i]+j+"></input>");
 								seatBtn
 										.before("<input type='hidden' name='seatX' value="+x+"></input>");
 								seatBtn
