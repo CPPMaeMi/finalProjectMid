@@ -31,7 +31,7 @@
 			    	  var array = new Array();
 	    		    	array[0] = ['day', '여자', '남자'];
 	    		    	$(results).each(function(i,charge){
-	    		    		console.log(charge)
+	    		    		var chregdate=charge.chRegdate;
 	    		    		var man=0;
 	    		    		var woman=0;
 	    		    		//남자 매출
@@ -46,15 +46,8 @@
 	    		    				woman,
 	    		    				man
 			    				];
-		    		    	
 	    		    		array[++i] = subArray;
 		            	});
-	    		    	
-	    		    	console.log(array);
-	    		    	var resultArray = new Array();
-	    		    	for(var i=1:i<array.length;i++){
-	    		    		
-	    		    	}
 			          var options = {
 			            chart: {
 			              title: 'Company Performance',
@@ -112,7 +105,6 @@
 			        }
 			});
 		});
-		
 	});
 </script>
 </html>

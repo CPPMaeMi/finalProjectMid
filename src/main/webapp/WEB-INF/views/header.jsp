@@ -50,7 +50,7 @@
            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
              <a class="dropdown-item" href="${cp }/sales/dateSalesInfo.do">매출정보 조회</a>
              <a class="dropdown-item" href="${cp }/sales/genderInfo.do">성별 조회</a>
-             <a class="dropdown-item" href="${cp }/sales/age.do">연령별 조회</a>
+             <a class="dropdown-item" href="${cp }/sales/ageInfo.do">연령별 조회</a>
            </div>
            </li>
 		</ul>

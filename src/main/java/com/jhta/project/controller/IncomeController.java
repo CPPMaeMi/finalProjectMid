@@ -21,6 +21,7 @@ public class IncomeController {
 	@Autowired
 	private ChargeService chargeService;
 	
+	//기간별 조회
 	@RequestMapping("/sales/dateSalesInfo.do")
 	public String dateSalesInfo() {
 		return ".sales.dateSalesInfo";
@@ -52,7 +53,7 @@ public class IncomeController {
 		map.put("date1", date1);
 		return revenuService.yearList(map);
 	}
-	
+	//성별 조회
 	@RequestMapping("/sales/genderInfo.do")
 	public String genderInfo(Model model) {
 		return ".sales.gender";
@@ -75,15 +76,31 @@ public class IncomeController {
 		 List<ChargeVo> resultList = chargeService.monthList(map); 
 		 
 		 HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		 for(ChargeVo vo: resultList) {
-			 if(resultMap.containsKey(vo.getChRegdate())) {
-				 resultMap.put(key, value)
-			 }
-		 }
 		 
 		 
 		 
 		 return resultList;
+	 }
+	 
+	 
+	 
+	 
+	 
+	 //연령별 조회
+	 @RequestMapping("/sales/ageInfo.do")
+		public String ageInfo(Model model) {
+			return ".sales.age";
+		}
+		
+	 //연령별 매출조회 년도별
+	 @RequestMapping("/sales/age/yearList.do")
+	 @ResponseBody public List<ChargeVo> ageYearList(){
+		 return null; 
+	 } 
+	 //연령별 매출조회 월별
+	 @RequestMapping("/sales/age/monthList.do")
+	 @ResponseBody public List<ChargeVo> ageMonthList(){ 
+		 return null;
 	 }
 }
 
