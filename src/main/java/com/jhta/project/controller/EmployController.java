@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,8 +32,7 @@ public class EmployController {
 	}
 	
 	@RequestMapping("/employee/emSelect.do")
-	public String goEmployeeSelect(String[] br,String[] sf,String[] di,Model model
-			,@RequestParam(value = "pageNum",defaultValue = "1")int pageNum) throws JsonProcessingException {
+	public String goEmployeeSelect(String[] br,String[] sf,String[] di,Model model,@RequestParam(value = "pageNum",defaultValue = "1")int pageNum) throws JsonProcessingException {
 		String countUrl = "http://localhost:9090/projectdb/employee/getCount.do";
 		String selectUrl = "http://localhost:9090/projectdb/employee/emSelect.do";
 		String getBrNameUrl = "http://localhost:9090/projectdb/employee/getBrName.do";
@@ -66,6 +67,9 @@ public class EmployController {
 		model.addAttribute("brList",brList);
 		model.addAttribute("sfList",sfList);
 		model.addAttribute("diList",diList);
+		model.addAttribute("br",br);
+		model.addAttribute("sf",sf);
+		model.addAttribute("di",di);
 		model.addAttribute("list", list);
 		model.addAttribute("pu", pu);
 		return ".employee.emSelect";

@@ -63,6 +63,7 @@
 							<th>주소</th>
 							<th>성별</th>
 							<th>재직상태</th>
+							<th>지점</th>
 							<th>부서</th>
 							<th>직원타입</th>
 							<th>정보조회 및 수정</th>
@@ -76,6 +77,7 @@
 								<td>${map.addr}</td>
 								<td>${map.gender}</td>
 								<td>${map.status}</td>
+								<td>${map.brName}</td>
 								<td>${map.division}</td>
 								<td>${map.position}</td>
 								<td data-toggle="modal" data-target="#squarespaceModal"
@@ -88,11 +90,23 @@
 		</div>
 	</div>
 </div>
+
 <!-- 페이징 처리 -->
 <div>
 	<c:choose>
 		<c:when test="${pu.startPageNum>5}">
-			<a href="${cp}/employee/emSelect.do?pageNum${endPageNum-1}&br=${br}&sf=${sf}&di=${di}">[이전]</a>
+			<c:choose>
+				<c:when test="${br != null and sf != null and di != null}">
+					<a href="${cp}/employee/emSelect.do?pageNum=${pu.startPageNum-1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+					<span style="color:blue">
+					[이전]</span></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${cp}/employee/emSelect.do?pageNum=${i}">
+					<span style="color:blue">
+					[이전]</span></a>
+				</c:otherwise>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
 			[이전]
@@ -100,19 +114,50 @@
 	</c:choose>
 	<c:forEach begin="${pu.startPageNum}" end="${pu.endPageNum}" var="i">
 		<c:choose>
-			<c:when test="${i==pageNum}">
-				<a href="${cp}/employee/emSelect.do?pageNum=${i}&br=${br}&sf=${sf}&di=${di}"><span style="color:blue">
-				[${i}]</span></a>
+			<c:when test="${br != null and sf != null and di != null}">
+				<c:choose>
+					<c:when test="${i == pu.pageNum}">
+						<a href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+						<span style="color:blue">
+						[${i}]</span></a>
+					</c:when>
+					<c:otherwise>
+						<a href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+						<span style="color:gray">
+						[${i}]</span></a>
+					</c:otherwise>
+				</c:choose>
 			</c:when>
 			<c:otherwise>
-				<a href="${cp}/employee/emSelect.do?pageNum=${i}&br=${br}&sf=${sf}&di=${di}"><span style="color:gray">
-				[${i}]</span></a>
+				<c:choose>
+					<c:when test="${i==pageNum}">
+						<a href="${cp}/employee/emSelect.do?pageNum=${i}">
+						<span style="color:blue">
+						[${i}]</span></a>
+					</c:when>
+					<c:otherwise>
+						<a href="${cp}/employee/emSelect.do?pageNum=${i}">
+						<span style="color:gray">
+						[${i}]</span></a>
+					</c:otherwise>
+				</c:choose>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:choose>
-		<c:when test="${pu.endPageNum>5}">
-			<a href="${cp}/employee/emSelect.do?pageNum${endPageNum+1}&br=${br}&sf=${sf}&di=${di}">[다음]</a>
+		<c:when test="${pu.totalPageCount>pu.endPageNum}">
+			<c:choose>
+				<c:when test="${br != null and sf != null and di != null}">
+					<a href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+					<span style="color:blue">
+					[다음]</span></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}">
+					<span style="color:blue">
+					[다음]</span></a>
+				</c:otherwise>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
 			[다음]
@@ -148,19 +193,27 @@
              	 </select>
               </div>
               <div class="form-group">
+              	 <label for="brName">지점</label>
+              	 <select class="modalSelect" id="brName" style="left:82px">  
+	              	<c:forEach var="i" items="${brList}">
+	              		<option value="${i}">${i}</option>
+	              	</c:forEach>
+             	 </select>
+              </div>
+              <div class="form-group">
               	 <label for="emDivision">부서</label>
               	 <select class="modalSelect" id="emDivision" style="left:82px">
-	              	<option>영업부</option>
-	              	<option>미화부</option>
-	              	<option>인사부</option>
+	              	<c:forEach var="i" items="${diList}">
+	              		<option value="${i}">${i}</option>
+	              	</c:forEach>
              	 </select>
               </div>
               <div class="form-group">
               	 <label for="emType">직원타입</label>
               	 <select class="modalSelect" id="emType">
-	              	<option>점장</option>
-	              	<option>정직원</option>
-	              	<option>파트타이머</option>
+	              	<c:forEach var="i" items="${sfList}">
+	              		<option value="${i}">${i}</option>
+	              	</c:forEach>
              	 </select>
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
@@ -180,3 +233,6 @@
 	</div>
   </div>
 </div>
+<script>
+
+</script>
