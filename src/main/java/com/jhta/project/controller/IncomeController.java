@@ -53,12 +53,13 @@ public class IncomeController {
 		map.put("date1", date1);
 		return revenuService.yearList(map);
 	}
+	
+	
 	//성별 조회
 	@RequestMapping("/sales/genderInfo.do")
 	public String genderInfo(Model model) {
 		return ".sales.gender";
 	}
-	
 	 //성별 매출조회 년도별
 	 @RequestMapping("/sales/gender/yearList.do")
 	 @ResponseBody public List<ChargeVo> genderYearList(String date,String date1){
@@ -71,15 +72,9 @@ public class IncomeController {
 	 @RequestMapping("/sales/gender/monthList.do")
 	 @ResponseBody public List<ChargeVo> genderMonthList(String date,String date1){ 
 		 HashMap<String, String>map=new HashMap<String, String>();
-		 map.put("date", date); map.put("date1", date1); 
-		 
-		 List<ChargeVo> resultList = chargeService.monthList(map); 
-		 
-		 HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		 
-		 
-		 
-		 return resultList;
+		 map.put("date", date);
+		 map.put("date1", date1); 
+		 return chargeService.monthList(map);
 	 }
 	 
 	 
@@ -91,7 +86,6 @@ public class IncomeController {
 		public String ageInfo(Model model) {
 			return ".sales.age";
 		}
-		
 	 //연령별 매출조회 년도별
 	 @RequestMapping("/sales/age/yearList.do")
 	 @ResponseBody public List<ChargeVo> ageYearList(){

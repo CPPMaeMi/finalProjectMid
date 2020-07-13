@@ -10,12 +10,13 @@ public class ChargeVo {
 	private int bookNum;
 	private String phone;
 	private int totalbill;//결제금액
-	private String birth;//회원 생일(연령대/성별)알기위해
+	private String man;//회원 생일(연령대/성별)알기위해
+	private String woman;//회원 생일(연령대/성별)알기위해
 
 	public ChargeVo() {}
 
 	public ChargeVo(int chargeNum, int memNum, int cDetailNum, String payment, String memStatus, String chRegdate,
-			int bookNum, String phone, int totalbill, String birth) {
+			int bookNum, String phone, int totalbill, String man, String woman) {
 		super();
 		this.chargeNum = chargeNum;
 		this.memNum = memNum;
@@ -26,7 +27,8 @@ public class ChargeVo {
 		this.bookNum = bookNum;
 		this.phone = phone;
 		this.totalbill = totalbill;
-		this.birth = birth;
+		this.man = man;
+		this.woman = woman;
 	}
 
 	public int getChargeNum() {
@@ -101,12 +103,20 @@ public class ChargeVo {
 		this.totalbill = totalbill;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getMan() {
+		return man;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setMan(String man) {
+		this.man = man;
 	}
-	
+
+	public String getWoman() {
+		return woman;
+	}
+
+	public void setWoman(String woman) {
+		this.woman = woman;
+	}
+
 }

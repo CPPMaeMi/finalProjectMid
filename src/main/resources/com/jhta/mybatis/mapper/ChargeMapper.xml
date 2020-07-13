@@ -8,6 +8,8 @@
 	</select>
 	<select id="monthList" resultType="charge" parameterType="hashmap">
 		<![CDATA[
+			select * 
+			from(
 			SELECT 
 			    SUM(AA.TOTALBILL) TOTALBILL
 			    , AA.BIRTH
@@ -24,12 +26,15 @@
 			WHERE 
 			    AA.charegdate BETWEEN #{date} AND #{date1}
 			GROUP BY AA.BIRTH,AA.CHAREGDATE
-			ORDER BY AA.CHAREGDATE
+			)PIVOT(sum(totalbill) for birth in(1 AS MAN,2 AS WOMAN))
+			order by chRegdate
 		]]>
 	</select>
 	<select id="yearList" resultType="charge" parameterType="hashmap">
 		<![CDATA[
-		SELECT 
+			select * 
+			from(
+			SELECT 
 			    SUM(AA.TOTALBILL) TOTALBILL
 			    , AA.BIRTH
 			    ,AA.CHAREGDATE chRegdate
@@ -45,7 +50,8 @@
 			WHERE 
 			    AA.charegdate BETWEEN #{date} AND #{date1}
 			GROUP BY AA.BIRTH,AA.CHAREGDATE
-			ORDER BY AA.CHAREGDATE
+			)PIVOT(sum(totalbill) for birth in(1 AS MAN,2 AS WOMAN))
+			order by chRegdate
 		]]>
 	</select>
 </mapper>

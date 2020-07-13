@@ -42,3 +42,21 @@ INSERT INTO CHARGE VALUES(CHARGENUM.NEXTVAL,30,0,'카드','회원',SYSDATE,0,'01
 SELECT sum(c.totalbill) totalbill, SUBSTR(m.birth,8,1) birth from CHARGE C,MEMBERSHIP M
 WHERE c.memnum=c.memnum
 group by SUBSTR(m.birth,8,1)
+
+
+
+
+
+
+select to_char(sysdate,'yyyy') + 1 - (substr(m.birth,0,2)+
+    (case
+    when substr(m.birth,8,1) < 3 then 1900
+    when substr(m.birth,8,1) >= 3 then 2000
+    end)) as age
+from MEMBERSHIP m;
+
+
+
+
+
+
