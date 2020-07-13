@@ -26,9 +26,9 @@
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
              <a class="dropdown-item" href="${cp }/fm/list.do">상영 영화 관리</a>
-             <a class="dropdown-item" href="#">상영 기간 결정</a>
+             <a class="dropdown-item" href="${cp }/schedule.showScheduleList">상영 기간 결정</a>
              <a class="dropdown-item" href="#">본사 판권 관리</a>
-             <a class="dropdown-item" href="#">영화관 좌석 관리</a>
+             <a class="dropdown-item" href="${cp }/room/seat/theather.do">영화관 좌석 관리</a>
            </div>
            </li>
            
