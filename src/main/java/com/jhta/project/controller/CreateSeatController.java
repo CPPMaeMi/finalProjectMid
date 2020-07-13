@@ -41,12 +41,28 @@ public class CreateSeatController {
 	
 	@RequestMapping("/room/seat/createOk.do")
 	public String createSeat(int[] seatSale,int[] seatX,int[] seatY,String[] seatName,int theatherNum) throws JsonProcessingException {
-		System.out.println("재웅관 번호.."+theatherNum);
 		ArrayList<SeatVo> list=new ArrayList<SeatVo>();
 		for(int i=0;i<seatSale.length;i++) {
 			list.add(new SeatVo(0, theatherNum, seatX[i], seatY[i], seatSale[i], seatName[i]));
 		}
 		String url="http://localhost:9090/projectdb/room/seat/createOk.do";
+		ObjectMapper mapper=new ObjectMapper();
+		String jsonString=mapper.writeValueAsString(list);
+		String code=service.post(url, jsonString).trim();
+		if(code.equals("success")) {
+			return "redirect:/room/seat/theather.do";
+		}else {
+			return "error";
+		}
+	}
+	@RequestMapping("/room/seat/createUpdate.do")
+	public String createSeatUpdate(int[] seatSale,int[] seatNum,int theatherNum) throws JsonProcessingException {
+		ArrayList<SeatVo> list=new ArrayList<SeatVo>();
+		for(int i=0;i<seatSale.length;i++) {
+			System.out.println(i+"번째"+seatSale[i]+","+seatNum[i]+","+theatherNum);
+			list.add(new SeatVo(seatNum[i], 0, 0, 0, seatSale[i], null));
+		}
+		String url="http://localhost:9090/projectdb/room/seat/createUpdate.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString=mapper.writeValueAsString(list);
 		String code=service.post(url, jsonString).trim();
@@ -108,6 +124,7 @@ public class CreateSeatController {
 		SeatVo[] array=gson.fromJson(code, SeatVo[].class);
 		List<SeatVo> list=Arrays.asList(array);
 		model.addAttribute("list",list);
+		model.addAttribute("theatherNum",theatherNum);
 		return ".room.seat.screen";
 	}
 	
