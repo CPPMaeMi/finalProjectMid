@@ -2,14 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="/project/resources/css/scheduler.css" rel="stylesheet" id="bootstrap-css">
-<h1 style="text-align: center">- 근 무 관 리 -</h1>
 
+<h1 style="text-align: center">- 근 무 관 리 -</h1>
 <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2><b>일 간 근 무 표</b></h2></div>
-                    <div class="col-sm-5"><input type="date" id="checkdate" name="checkdate"></div>
+                    <div class="col-sm-5"><input type="date" id="checkdate" name="checkdate">
+                    <input type="button" id="datecheck" name="datecheck" value="검색">
+                    </div>
                     <div class="col-sm-4">
                         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                     </div>
@@ -42,4 +44,26 @@
             </table>
         </div>
     </div>
-    
+<script>
+    $(function(){
+    	$('#datecheck').click(function(){
+    		var datec=$('#checkdate').val();
+    		console.log(datec);
+    		  $.postJSON("${cp}/schedule/slist.do", {workDate : datec}, function(data){
+    			 $(data).each(function(i,item){
+    				 console.log("나옴")
+    				 var sffname = item.sffname;
+    				 var divisionname = item.divisionname;
+    				 var sffposition = item.sffposition;
+    				 var workstart = item.workstart;
+    				 var workend = item.workend;
+    				 console.log(sffname);
+    				 console.log(divisionname);
+    				 console.log(sffposition);
+    				 console.log(workstart);
+    				 console.log(workend);
+    			 });
+    		  }) ;
+    	});
+    });
+</script>

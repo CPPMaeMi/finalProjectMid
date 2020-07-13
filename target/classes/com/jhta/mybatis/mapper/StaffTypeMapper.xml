@@ -6,4 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="stafftype">
 		select * from stafftype where sffNum=#{sffNum}
 	</select>
+	<select id="slist" parameterType="int" resultType="stafftype">
+		select * from stafftype where sffNum=#{sffNum}
+	</select>
 </mapper>

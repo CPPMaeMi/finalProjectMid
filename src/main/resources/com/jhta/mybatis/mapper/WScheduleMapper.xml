@@ -6,4 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="wschedule">
 		select * from wschedule where sNum=#{sNum}
 	</select>
+	<select id="slist" parameterType="date" resultType="wschedule">
+		select * from wschedule where to_char(workDate,'YYYY/MM/DD')=#{workDate}
+	</select>
 </mapper>

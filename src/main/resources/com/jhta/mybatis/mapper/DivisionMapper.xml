@@ -6,4 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="division">
 		select * from division where divisionNum=#{divisionNum} 
 	</select>
+	<select id="slist" parameterType="int" resultType="division">
+		select * from division where divisionNum=#{divisionNum} 
+	</select>
 </mapper>
