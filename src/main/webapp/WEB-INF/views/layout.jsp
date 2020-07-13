@@ -16,6 +16,7 @@
 <!-- css파일  -->
 <link href="${cp}/resources/css/main.css" rel="stylesheet">
 <link href="${cp}/resources/css/employ.css" rel="stylesheet">
+<link href="${cp}/resources/css/employInsert.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrap">
@@ -35,6 +36,8 @@
 		$("input:checkbox").on('click',function(){
 			if($(this).prop('checked')){
 				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
+				$("#searchClear").css("opacity","1");
+
 			}else{
 				var val = $(this).val();
 				$(".searchLi").each(function(i,mem){
@@ -48,9 +51,17 @@
 		
 		$("input:checkbox").each(function(){
 			if($(this).prop("checked")){
-				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>")
+				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
+				$("#searchClear").css("opacity","1");
 			}
 		});
+		
+		$("#searchClear").on('click',function(){
+			$("#searchUl li").remove();
+			$("input:checkbox").prop("checked",false);
+			$(this).css("opacity","0");
+		});
+		
 	});
 </script>
 </html>

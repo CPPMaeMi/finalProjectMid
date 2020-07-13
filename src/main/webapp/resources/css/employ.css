@@ -1,89 +1,4 @@
 @charset "UTF-8";
-
-/*직원등록*/
-
-select{
-	position: relative;
-    left: 100px;
-    bottom: 17px;
-    width: 120px;
-    border: 1px solid #5543ca;
-    color: #5543ca;
-    height:34px;
-    border-radius: 20px;
-}
-.get-in-touch {
-  max-width: 800px;
-  margin: 50px auto;
-  position: relative;
-
-}
-.get-in-touch .title {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 3.2em;
-  line-height: 48px;
-  padding-bottom: 48px;
-     color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-}
-
-.contact-form .form-field {
-  position: relative;
-  margin: 32px 0;
-}
-.contact-form .input-text {
-  display: block;
-  width: 100%;
-  height: 36px;
-  border-width: 0 0 2px 0;
-  border-color: #5543ca;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 400;
-}
-.contact-form .input-text:focus {
-  outline: none;
-}
-.contact-form .input-text:focus + .label,
-.contact-form .input-text.not-empty + .label {
-  -webkit-transform: translateY(-24px);
-          transform: translateY(-24px);
-}
-.contact-form .label {
-  position: absolute;
-  left: 20px;
-  bottom: 11px;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 400;
-  color: #5543ca;
-  cursor: text;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, 
-  -webkit-transform .2s ease-in-out;
-}
-.contact-form .submit-btn {
-  display: inline-block;
-  background-color: #000;
-   background-image: linear-gradient(125deg,#a72879,#064497);
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px;
-  padding: 8px 16px;
-  border: none;
-  width:200px;
-  cursor: pointer;
-}
-
 /*직원조회 table*/
 
 .text-primary {
@@ -230,20 +145,83 @@ h6, .h6 {
     height: 34px;
     border-radius: 20px;
 }
+
 /* 조건검색 div css */
 .mainFieldSet{
 	padding: 20px;
     margin: 20px;
     border: 1px solid black;
 }
+
 .subFieldSet{
 	padding: 10px;
     border-bottom: 1px solid black;
     margin: 10px;
 }
+
 .br,.sf,.di{
 	margin-right:5px;
 }
+
 .checkbox-span{
 	margin-right:15px;
+}
+
+#searchUl{
+	display: inline-block;
+}
+
+.searchLi{
+	margin-right:20px;
+	display: inline-block;
+	border:1px solid gray;
+}
+
+#searchClear{
+	opacity: 0;
+}
+/*
+.searchCancle{
+	border: 1px solid black;
+    color: red;
+    width: 20px;
+    height: 26px;
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 2px;
+    margin-right:20px;
+}
+*/
+.emSelect-div{
+	text-align: center;
+	margin-bottom:30px;
+}
+.emSelect-paging{
+	display: inline-block;
+    padding: 0 10px;
+    height: 20px;
+    font-size: 20px;
+    color: #a6a6a6;
+    font-family: 'Verdana';
+    line-height: 16px;
+    text-decoration: none;
+    background: none;
+}
+.emSelect-paging:hover {
+	color: #2a2a2a;
+}
+.emSelect-last,.emSelect-first{
+	letter-spacing: -4px;
+	font-size: 13px;
+    font-family: dotum;
+    line-height: 18px;
+    display: inline-block;
+    padding: 0 10px;
+    height: 16px;
+    font-size: 16px;
+    color: #a6a6a6;
+    font-family: 'Verdana';
+    line-height: 16px;
 }

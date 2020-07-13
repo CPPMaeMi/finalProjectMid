@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <c:set var="i" value="0"/>
 <div>
-	<form action="${cp}/employee/emSelect.do" method="post">
+	<form action="${cp}/employee/emSelect.do" method="get">
 		<fieldset class="mainFieldSet">
 		  <legend>조건 검색</legend>
 		  	<fieldset class="subFieldSet">
@@ -46,9 +46,8 @@
 					</c:forEach>
 				</fieldset>
 			<div>
-				<ul id="searchUl">
-					
-				</ul>
+				<ul id="searchUl"></ul>
+				<input type="button" id="searchClear" value="조건 제거">
 			</div>
 			<input type="submit" value="검색">
 		</fieldset>
@@ -100,77 +99,59 @@
 </div>
 
 <!-- 페이징 처리 -->
-<div>
-	<c:choose>
-		<c:when test="${pu.startPageNum>5}">
-			<c:choose>
-				<c:when test="${br != null and sf != null and di != null}">
-					<a href="${cp}/employee/emSelect.do?pageNum=${pu.startPageNum-1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
-					<span style="color:blue">
-					[이전]</span></a>
-				</c:when>
-				<c:otherwise>
-					<a href="${cp}/employee/emSelect.do?pageNum=${i}">
-					<span style="color:blue">
-					[이전]</span></a>
-				</c:otherwise>
-			</c:choose>
-		</c:when>
-		<c:otherwise>
-			[이전]
-		</c:otherwise>
-	</c:choose>
+<div class="emSelect-div">
+	<c:if test="${pu.startPageNum>5}">
+		<c:choose>
+			<c:when test="${br != null or sf != null or di != null}">
+				<a class="emSelect-first" href="${cp}/employee/emSelect.do?pageNum=${pu.startPageNum-1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+				&lt;&lt;</a>
+			</c:when>
+			<c:otherwise>
+				<a class="emSelect-first" href="${cp}/employee/emSelect.do?pageNum=${i}">
+				&lt;&lt;</a>
+			</c:otherwise>
+		</c:choose>
+	</c:if>
 	<c:forEach begin="${pu.startPageNum}" end="${pu.endPageNum}" var="i">
 		<c:choose>
-			<c:when test="${br != null and sf != null and di != null}">
+			<c:when test="${br != null or sf != null or di != null}">
 				<c:choose>
 					<c:when test="${i == pu.pageNum}">
-						<a href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
-						<span style="color:blue">
-						[${i}]</span></a>
+						<a style="color:#2a2a2a;" class='emSelect-paging' href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+						${i}</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
-						<span style="color:gray">
-						[${i}]</span></a>
+						<a class='emSelect-paging' href="${cp}/employee/emSelect.do?pageNum=${i}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+						${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
 			<c:otherwise>
 				<c:choose>
-					<c:when test="${i==pageNum}">
-						<a href="${cp}/employee/emSelect.do?pageNum=${i}">
-						<span style="color:blue">
-						[${i}]</span></a>
+					<c:when test="${i==pu.pageNum}">
+						<a style="color:#2a2a2a;" class='emSelect-paging' href="${cp}/employee/emSelect.do?pageNum=${i}">
+						${i}</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${cp}/employee/emSelect.do?pageNum=${i}">
-						<span style="color:gray">
-						[${i}]</span></a>
+						<a class='emSelect-paging' href="${cp}/employee/emSelect.do?pageNum=${i}">
+						${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-	<c:choose>
-		<c:when test="${pu.totalPageCount>pu.endPageNum}">
-			<c:choose>
-				<c:when test="${br != null and sf != null and di != null}">
-					<a href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
-					<span style="color:blue">
-					[다음]</span></a>
-				</c:when>
-				<c:otherwise>
-					<a href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}">
-					<span style="color:blue">
-					[다음]</span></a>
-				</c:otherwise>
-			</c:choose>
-		</c:when>
-		<c:otherwise>
-			[다음]
-		</c:otherwise>
-	</c:choose>
+	<c:if test="${pu.totalPageCount>pu.endPageNum}">
+		<c:choose>
+			<c:when test="${br != null or sf != null or di != null}">
+				<a class="emSelect-last" href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}<c:forEach items='${br}' var='y'>&br=${y}</c:forEach><c:forEach items='${sf}' var='y'>&sf=${y}</c:forEach><c:forEach items='${di}' var='y'>&di=${y}</c:forEach>">
+				&gt;&gt;</a>
+			</c:when>
+			<c:otherwise>
+				<a class="emSelect-last" href="${cp}/employee/emSelect.do?pageNum=${pu.endPageNum+1}">
+				&gt;&gt;</a>
+			</c:otherwise>
+		</c:choose>
+	</c:if>
 </div>
 
 <!-- modal -->
@@ -184,14 +165,16 @@
 		<div class="modal-body">
 		
             <!-- content goes here -->
-			<form>
+			<form action="${cp}/employee/updateOk.do">
               <div class="form-group">
-                <label for="exampleInputPassword1">주소</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="addr">
+                <label for="employeeAddr">주소</label>
+                <input type="text" class="form-control" id="employeeAddr" 
+                placeholder="addr" >
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">계좌번호</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="account">
+                <label for="employeeAccount">계좌번호</label>
+                <input type="text" class="form-control" id="employeeAccount" 
+                placeholder="account">
               </div>
               <div class="form-group">
               	 <label for="emStatus">재직상태</label>
@@ -241,6 +224,3 @@
 	</div>
   </div>
 </div>
-<script>
-
-</script>

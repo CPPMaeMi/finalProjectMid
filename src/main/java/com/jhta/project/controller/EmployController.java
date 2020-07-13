@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.jhta.page.util.PageUtil;
 import com.jhta.project.service.RestService;
 import com.jhta.project.vo.QnaVo;
+import com.jhta.project.vo.StaffVo;
 
 @Controller
 public class EmployController {
@@ -26,9 +27,30 @@ public class EmployController {
 	private RestService service;
 	
 	@RequestMapping("/employee/emInsert.do")
-	public String goEmployeeInsert() 
+	public String goEmployeeInsert(Model model) 
 			throws JsonProcessingException {
+		String getSffPositionUrl = "http://localhost:9090/projectdb/employee/getSffPosition.do";
+		String getDivisionNameUrl = "http://localhost:9090/projectdb/employee/getDivisionName.do";
+		Gson gson=new Gson();
+		String getSffPosition = service.get(getSffPositionUrl).trim();
+		List<String> sfList = Arrays.asList(gson.fromJson(getSffPosition,String[].class));
+		String getDivisionName = service.get(getDivisionNameUrl).trim();
+		List<String> diList = Arrays.asList(gson.fromJson(getDivisionName,String[].class));
+		model.addAttribute("sfList",sfList);
+		model.addAttribute("diList",diList);
 		return ".employee.emInsert";
+	}
+	
+	@RequestMapping("/employee/emInsertOk.do")
+	public String EmployeeInsertOk(StaffVo vo,Model model) throws JsonProcessingException {
+		System.out.println("ㅇㅇㅇ:"+vo.getSffName());
+		String insertUrl = "http://localhost:9090/projectdb/employee/staffInsert.do";
+		ObjectMapper mapper=new ObjectMapper();
+		String jsonString= mapper.writeValueAsString(vo);
+		String code=service.post(insertUrl,jsonString).trim();
+		model.addAttribute("code",code);
+		model.addAttribute("sffName",vo.getSffName());
+		return ".employee.emInsertOk";
 	}
 	
 	@RequestMapping("/employee/emSelect.do")
