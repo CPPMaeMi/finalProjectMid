@@ -33,16 +33,19 @@ public class FilmListController {
 		System.out.println("333333333333333333");
 		List<HashMap<String,Object>> list=service.list(map);
 		System.out.println("444444444444444444");
-		
-		System.out.println("5555555555555555");
-		
-		System.out.println("6666666666666666666");
-		
 		System.out.println("img:"+list.get(1).get("MOVIEIMGURL").toString());
 		System.out.println("num:"+list.get(0));
 		
 		mv.addObject("list",list);
 		mv.addObject("pu",pu);
+		
+		return mv;
+	}
+	@RequestMapping("/fm/filmbranchlist.do")
+	public ModelAndView branchList(int branchNum) {
+		ModelAndView mv=new ModelAndView(".fm.filmbranchlist");
+		List<HashMap<String,Object>> list=service.branchList(branchNum);
+		mv.addObject("list", list);
 		
 		return mv;
 	}

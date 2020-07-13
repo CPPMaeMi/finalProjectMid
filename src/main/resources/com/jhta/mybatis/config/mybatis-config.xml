@@ -36,6 +36,7 @@
   	<typeAlias type="com.jhta.project.vo.TheatherVo" alias="theather"/>
   	<typeAlias type="com.jhta.project.vo.TotalVo" alias="total"/>
   	<typeAlias type="com.jhta.project.vo.WScheduleVo" alias="wschedule"/>
+  	<typeAlias type="com.jhta.project.vo.PurchaseFilmVo" alias="purchasefilm"/>
   </typeAliases>
   <mappers>
   <mapper resource="com/jhta/mybatis/mapper/ActorMapper.xml"/>
@@ -69,5 +70,6 @@
     <mapper resource="com/jhta/mybatis/mapper/TheatherMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/TotalMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/WScheduleMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/PurchaseFilmMapper.xml"/>
   </mappers>
 </configuration>

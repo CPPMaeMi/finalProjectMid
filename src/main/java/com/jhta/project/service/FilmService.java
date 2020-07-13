@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.project.dao.FilmListDao;
 import com.jhta.project.vo.FilmVo;
+import com.jhta.project.vo.PurchaseFilmVo;
 
 @Service
 public class FilmService {
@@ -24,6 +25,14 @@ public class FilmService {
 	
 	public FilmVo getinfo(int filmNum) {
 		return dao.getinfo(filmNum);
+	}
+	
+	public int insert(PurchaseFilmVo vo) {
+		return dao.insert(vo);
+	}
+	
+	public List<HashMap<String, Object>> branchList(int branchNum){
+		return dao.branchList(branchNum);
 	}
 
 }

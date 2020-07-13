@@ -11,6 +11,7 @@ import com.jhta.project.vo.CastVo;
 import com.jhta.project.vo.FilmVo;
 import com.jhta.project.vo.GenreVo;
 import com.jhta.project.vo.MovieImgVo;
+import com.jhta.project.vo.PurchaseFilmVo;
 
 @Repository
 public class FilmListDao {
@@ -20,6 +21,7 @@ public class FilmListDao {
 	private final String NAMESPACE1="com.jhta.mybatis.mapper.cast";
 	private final String NAMESPACE2="com.jhta.mybatis.mapper.genre";
 	private final String NAMESPACE3="com.jhta.mybatis.mapper.movieImg";
+	private final String NAMESPACE4="com.jhta.mybatis.mapper.purchasefilm";
 	
 	public List<HashMap<String,Object>> list(HashMap<String,Object> map){
 		return sqlSession.selectList(NAMESPACE+".list",map);
@@ -28,7 +30,6 @@ public class FilmListDao {
 	public int count(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".count", map);
 	}
-	
 	
 	public List<MovieImgVo> list3(HashMap<String,Object> map){
 		return sqlSession.selectList(NAMESPACE3+".list", map);
@@ -48,6 +49,14 @@ public class FilmListDao {
 	
 	public MovieImgVo getinfo3(int filmNum) {
 		return sqlSession.selectOne(NAMESPACE3+".getinfo", filmNum);
+	}
+	
+	public int insert(PurchaseFilmVo vo) {
+		return sqlSession.insert(NAMESPACE4+".insert",vo);
+	}
+	
+	public List<HashMap<String, Object>> branchList(int branchNum){
+		return sqlSession.selectList(NAMESPACE4+".branchList", branchNum);
 	}
 	
 }
