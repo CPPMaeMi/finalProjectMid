@@ -27,7 +27,7 @@
 }
 </style>
 <div id="room">
-	<h1 style="text-align: center;">상영관 만들기</h1>
+	<h1 style="text-align: center;">상영관 수정</h1>
 	<div id="roomMain">
 		<div style="text-align: center;">
 			<img src="${cp }/resources/images/join_logo_3.png"
@@ -36,17 +36,52 @@
 		<div id="seatMain">
 		</div>
 	</div>
+		<div id="roomCreate">
+		<div class="form-group">
+			<label for="line">행</label> <input type="number" class="form-control"
+				id="line">
+		</div>
+		<div class="form-group">
+			<label for="heat">열</label> <input type="number" class="form-control"
+				id="heat">
+		</div>
+		<button type="button" id="btn1" class="btn btn-primary btn-block">만들기</button>
+		<div id="createDiv">
+			<label for="optradio">할인율</label>
+			<div class="form-check-inline">
+				<label class="form-check-label"> <input type="radio"
+					class="form-check-input" name="optradio" value="80">80%
+				</label>
+			</div>
+			<div class="form-check-inline">
+				<label class="form-check-label"> <input type="radio"
+					class="form-check-input" name="optradio" value="90">90%
+				</label>
+			</div>
+			<div class="form-check-inline disabled">
+				<label class="form-check-label"> <input type="radio"
+					class="form-check-input" name="optradio" value="110">110%
+				</label>
+			</div>
+			<button type="button" id="btn2" class="btn btn-primary btn-block">저장하기</button>
+		</div>
+	</div>
 </div>
 <script>
 	$(function(){
 		var seatMain=$(".seatMain");
 		var i=0;
 		<c:forEach var="vo" items="${list }">
-			var theatherNum=${vo.theatherNum};
 			var seatX=${vo.seatX};
 			var seatY=${vo.seatY};
 			var seatSale=${vo.seatSale};
-			let btn=$("<button class='.seat'></button>");
+			var seatName=${vo.seatName};	
+			var btn=$("<input type='button' class='seat' value='"+seatName+"'></input>");
+			btn.seatBtn.offset({
+				top : seatY,
+				left : seatX
+			});
+			seatMain.append(btn);
 		</c:forEach>
 	});
 </script>
