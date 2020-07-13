@@ -6,7 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="film">
 		select * from film where filmNum=#{filmNum} 
 	</select>
-	<select id="list" resultType="hashmap">
+	<select id="list" parameterType="hashmap" resultType="hashmap">
 		select * from
 		(
 		    select aa.*, rownum rnum from
@@ -24,6 +24,6 @@
 		<![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
 	</select>
 	<select id="count" resultType="int" parameterType="hashmap">
-		select * NVL(count(*),0) cnt from film
+		select NVL(count(*),0) cnt from film
 	</select>
 </mapper>

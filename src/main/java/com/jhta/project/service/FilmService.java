@@ -14,12 +14,12 @@ public class FilmService {
 	@Autowired
 	private FilmListDao dao;
 	
-	public int Count(HashMap<String,Object> map) {
+	public int count(HashMap<String,Object> map) {
 		return dao.count(map);
 	}
 	
-	public List<HashMap<String, Object>> list(){
-		return dao.list();
+	public List<HashMap<String, Object>> list(HashMap<String,Object> map){
+		return dao.list(map);
 	}
 	
 	public FilmVo getinfo(int filmNum) {

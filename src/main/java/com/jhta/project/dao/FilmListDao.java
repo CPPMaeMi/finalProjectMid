@@ -21,8 +21,8 @@ public class FilmListDao {
 	private final String NAMESPACE2="com.jhta.mybatis.mapper.genre";
 	private final String NAMESPACE3="com.jhta.mybatis.mapper.movieImg";
 	
-	public List<HashMap<String,Object>> list(){
-		return sqlSession.selectList(NAMESPACE+".list");
+	public List<HashMap<String,Object>> list(HashMap<String,Object> map){
+		return sqlSession.selectList(NAMESPACE+".list",map);
 	}
 	
 	public int count(HashMap<String,Object> map) {

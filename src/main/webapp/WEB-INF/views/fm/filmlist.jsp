@@ -45,7 +45,17 @@
 	</div>
 </div>
 <div>
-	
-
+	<ul class="pagination justify-content-center" style="margin:20px 0">
+		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
+			<c:choose>
+				<c:when test="${i==pu.pageNum }">
+					<li class="page-item active"><a class="page-link" href="/projectMid/fm/filmlist.do?pageNum=${i }">${i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="/projectMid/fm/filmlist.do?pageNum=${i }">${i }</a></li>				
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</ul>	
 </div>
 

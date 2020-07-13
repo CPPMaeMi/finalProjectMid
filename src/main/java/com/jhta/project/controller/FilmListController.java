@@ -21,14 +21,23 @@ public class FilmListController {
 	@RequestMapping("/fm/list.do")
 	public ModelAndView list(@RequestParam
 			(value="pageNum",defaultValue="1")int pageNum) {
+		System.out.println("11111111111111111111");
 		HashMap<String,Object> map=new HashMap<String,Object>();
-		ModelAndView mv=new ModelAndView(".fm.filmlist");
-		List<HashMap<String,Object>> list=service.list();
-
-		int totalRowCount=service.Count(map);
+		int totalRowCount=service.count(map);
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 5, 10);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
+		System.out.println(map);
+		System.out.println("222222222222222222");
+		ModelAndView mv=new ModelAndView(".fm.filmlist");
+		System.out.println("333333333333333333");
+		List<HashMap<String,Object>> list=service.list(map);
+		System.out.println("444444444444444444");
+		
+		System.out.println("5555555555555555");
+		
+		System.out.println("6666666666666666666");
+		
 		System.out.println("img:"+list.get(1).get("MOVIEIMGURL").toString());
 		System.out.println("num:"+list.get(0));
 		
