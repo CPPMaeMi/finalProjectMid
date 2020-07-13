@@ -10,8 +10,9 @@
 		  	<fieldset class="subFieldSet">
 		  		<legend>지점</legend>
 					<c:forEach items="${brList}" var="string">
-						<input type="checkbox" name="br" class="br" value="${string}">
-						<span class="checkbox-span">${string}</span>
+						<label><input type="checkbox" name="br" class="br" value="${string}" 
+						<c:forEach var="y" items="${br}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
+						<span class="checkbox-span">${string}</span></label>
 						<c:set var="i" value="${i+1}"/>
 						<c:if test="${i eq 10}">
 							<br><c:set var="i" value="0"/>
@@ -22,8 +23,9 @@
 				<legend>직원 타입</legend>
 					<c:forEach items="${sfList}" var="string">
 						<c:set var="i" value="0"/>
-						<input type="checkbox" name="sf" class="sf" value="${string}">
-						<span class="checkbox-span">${string}</span>
+						<label><input type="checkbox" name="sf" class="sf" value="${string}"
+						<c:forEach var="y" items="${sf}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
+						<span class="checkbox-span">${string}</span></label>
 						<c:set var="i" value="${i+1}"/>
 						<c:if test="${i eq 10}">
 							<br><c:set var="i" value="0"/>
@@ -34,14 +36,20 @@
 			  		<legend>부서</legend>
 					<c:forEach items="${diList}" var="string">
 						<c:set var="i" value="0"/>
-						<input type="checkbox" name="di" class="di" value="${string}">
-						<span class="checkbox-span">${string}</span>
+						<label><input type="checkbox" name="di" class="di" value="${string}" 
+						<c:forEach var="y" items="${di}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
+						<span class="checkbox-span">${string}</span></label>
 						<c:set var="i" value="${i+1}"/>
 						<c:if test="${i eq 10}">
 							<br><c:set var="i" value="0"/>
 						</c:if>
 					</c:forEach>
 				</fieldset>
+			<div>
+				<ul id="searchUl">
+					
+				</ul>
+			</div>
 			<input type="submit" value="검색">
 		</fieldset>
 	</form>

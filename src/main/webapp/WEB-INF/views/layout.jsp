@@ -31,6 +31,26 @@
 </div>
 </body>
 <script>
-	
+	$(function(){
+		$("input:checkbox").on('click',function(){
+			if($(this).prop('checked')){
+				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
+			}else{
+				var val = $(this).val();
+				$(".searchLi").each(function(i,mem){
+					if($(this).text()==val){
+						$(this).remove();
+					}
+				});
+			}
+		});
+		
+		
+		$("input:checkbox").each(function(){
+			if($(this).prop("checked")){
+				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>")
+			}
+		});
+	});
 </script>
 </html>
