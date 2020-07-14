@@ -1,16 +1,13 @@
 package com.jhta.project.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.jhta.project.service.RestService;
-import com.jhta.project.vo.WSListVo;
 
 @Controller
 public class SchedulerController {
@@ -23,14 +20,32 @@ public class SchedulerController {
 		return ".schedule.scheduler";
 	}
 	
-	@RequestMapping("/schedule/slist.do")
+	@RequestMapping(value="/schedule/slist.do",produces={MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
 	public String slist(String workDate) {
+		System.out.println(workDate);
 		String url = "http://localhost:9090/projectdb/schedule/slist.do?workDate="+workDate;
-		String code = service.get(url).trim();
-		//Gson gson = new Gson();
-		//WSListVo[] array=gson.fromJson(code, WSListVo[].class);
-		//List<WSListVo> list=Arrays.asList(array);
+		System.out.println(workDate);
+		String code="fail";
+		try {
+			code = service.get(url).trim();
+		}catch (NullPointerException e) {
+			System.out.println("≥°");
+		}
+		return code;
+	}
+	
+	@RequestMapping(value="/schedule/sadd.do",produces={MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ResponseBody
+	public String sadd(@RequestParam(value="branchNum",defaultValue = "1")int branchNum) {
+		String url = "http://localhost:9090/projectdb/schedule/sadd.do?branchNum="+branchNum;
+		String code = "fail";
+		try {
+			code = service.get(url).trim();
+			System.out.println("Ω∫ƒ…¡Ï:"+code);
+		}catch (NullPointerException e) {
+			System.out.println("≥°");
+		}
 		return code;
 	}
 }
