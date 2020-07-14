@@ -43,12 +43,25 @@ public class EmployController {
 	
 	@RequestMapping("/employee/emInsertOk.do")
 	public String EmployeeInsertOk(StaffVo vo,Model model) throws JsonProcessingException {
-		System.out.println("ㅇㅇㅇ:"+vo.getSffName());
 		String insertUrl = "http://localhost:9090/projectdb/employee/staffInsert.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(insertUrl,jsonString).trim();
 		model.addAttribute("code",code);
+		model.addAttribute("sffName",vo.getSffName());
+		return ".employee.emInsertOk";
+	}
+	
+	@RequestMapping("/employee/emUpdateOk.do")
+	public String EmployeeUpdateOk(Model model,String staffNum,
+			String account,String status,
+			String divisionNum,String sffNum,String addr) throws JsonProcessingException {
+		String updateUrl = "http://localhost:9090/projectdb/employee/staffUpdate.do";
+		ObjectMapper mapper=new ObjectMapper();
+		StaffVo vo = new StaffVo(Integer.parseInt(staffNum),Integer.parseInt(sffNum),Integer.parseInt(divisionNum),null,null,addr,null,null,Integer.parseInt(account),status,0);
+		String jsonString= mapper.writeValueAsString(vo);
+		String code=service.post(updateUrl,jsonString).trim();
+		model.addAttribute("code2",code);
 		model.addAttribute("sffName",vo.getSffName());
 		return ".employee.emInsertOk";
 	}

@@ -37,12 +37,14 @@
 			if($(this).prop('checked')){
 				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
 				$("#searchClear").css("opacity","1");
-
 			}else{
 				var val = $(this).val();
 				$(".searchLi").each(function(i,mem){
 					if($(this).text()==val){
 						$(this).remove();
+					}
+					if($(".searchLi").length==0){
+						$("#searchClear").css("opacity","0");
 					}
 				});
 			}
@@ -62,6 +64,20 @@
 			$(this).css("opacity","0");
 		});
 		
+		//모달 데이터 이동
+		$("#squarespaceModal").on('shown.bs.modal',function(event){
+			var modalData = $(event.relatedTarget);
+			console.log(modalData.data('brnum'));
+			//지점번호 받아서 비교하기
+			if(1!=parseInt(modalData.data('brnum'))){
+				alert("접근 권한이 없습니다!!");
+				$("#squarespaceModal").modal('hide');
+			}else{
+				$("#employeeAddr").val(modalData.data('addr'));
+				$("#employeeAccount").val(parseFloat(modalData.data('account')));
+				$("#brName").val(modalData.data('brname'));
+			}
+		});
 	});
 </script>
 </html>

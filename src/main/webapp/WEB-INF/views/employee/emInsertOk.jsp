@@ -15,14 +15,28 @@
 					</div>
 					<div class="modal-body">
 						<div class="thank-you-pop">
-							<img
-								src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png"
-								alt="success">
-							<h1>직원등록 성공</h1>
-							<p>Your submission is received and we will contact you soon</p>
-							<h3 class="cupon-pop">
-								직원등록: <span>${sffName}</span>
-							</h3>
+							<c:choose>
+								<c:when test="${code != null}">
+									<img
+									src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png"
+									alt="success">
+									<h1>직원등록 성공</h1>
+									<p>Your submission is received and we will contact you soon</p>
+									<h3 class="cupon-pop">
+										직원등록: <span>${sffName}님</span>
+									</h3>
+								</c:when>
+								<c:when test="${code2 != null}">
+									<img
+									src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png"
+									alt="success">
+									<h1>정보수정 성공</h1>
+									<p>Your submission is received and we will contact you soon</p>
+									<h3 class="cupon-pop">
+										직원수정: <span>${sffName}님</span>
+									</h3>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</div>

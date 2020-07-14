@@ -88,7 +88,9 @@
 								<td>${map.division}</td>
 								<td>${map.position}</td>
 								<td data-toggle="modal" data-target="#squarespaceModal"
-								 class="btn btn-primary center-block">go</td>
+								 class="btn btn-primary center-block" 
+								 data-addr="${map.addr}" data-brnum="${map.brNum}"
+								 data-account="${map.account}" data-brname="${map.brName}">go</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -163,61 +165,67 @@
 			<h3 class="modal-title" id="lineModalLabel">직원정보 수정</h3>
 		</div>
 		<div class="modal-body">
-		
             <!-- content goes here -->
-			<form action="${cp}/employee/updateOk.do">
+			<form action="${cp}/employee/emUpdateOk.do">
+			  <!-- 나중에 지점번호로 value 값주기 -->
+			  <input type="hidden" name="staffNum" id="staffNum" value="1">
+			  <div class="form-group">
+                <label for="brName">이름</label>
+                <input type="text" class="form-control" id="brName" readonly="readonly">
+              </div>
               <div class="form-group">
                 <label for="employeeAddr">주소</label>
-                <input type="text" class="form-control" id="employeeAddr" 
-                placeholder="addr" >
+                <input name="addr" type="text" class="form-control" id="employeeAddr" 
+                placeholder="주소" >
               </div>
               <div class="form-group">
                 <label for="employeeAccount">계좌번호</label>
-                <input type="text" class="form-control" id="employeeAccount" 
-                placeholder="account">
+                <input name="account" type="text" class="form-control" id="employeeAccount" 
+                placeholder="계좌번호">
               </div>
               <div class="form-group">
               	 <label for="emStatus">재직상태</label>
-              	 <select class="modalSelect" id="emStatus">
-	              	<option>재직</option>
-	              	<option>퇴직</option>
+              	 <select name="status" class="modalSelect" id="emStatus">
+	              	<option value="재직">재직</option>
+	              	<option value="휴직">휴식</option>
+	              	<option value="퇴직">퇴직</option>
              	 </select>
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
               	 <label for="brName">지점</label>
-              	 <select class="modalSelect" id="brName" style="left:82px">  
-	              	<c:forEach var="i" items="${brList}">
-	              		<option value="${i}">${i}</option>
+              	 <select name="branchNum" class="modalSelect" id="brName" style="left:82px">  
+	              	<c:forEach var="i" items="${brList}" varStatus="status">
+	              		<option value="${status.count}">${i}</option>
 	              	</c:forEach>
              	 </select>
-              </div>
+              </div>-->
               <div class="form-group">
               	 <label for="emDivision">부서</label>
-              	 <select class="modalSelect" id="emDivision" style="left:82px">
-	              	<c:forEach var="i" items="${diList}">
-	              		<option value="${i}">${i}</option>
+              	 <select name="divisionNum" class="modalSelect" id="emDivision" style="left:82px">
+	              	<c:forEach var="i" items="${diList}" varStatus="status">
+	              		<option value="${status.count}">${i}</option>
 	              	</c:forEach>
              	 </select>
               </div>
               <div class="form-group">
               	 <label for="emType">직원타입</label>
-              	 <select class="modalSelect" id="emType">
-	              	<c:forEach var="i" items="${sfList}">
-	              		<option value="${i}">${i}</option>
+              	 <select name="sffNum" class="modalSelect" id="emType" >
+	              	<c:forEach var="i" items="${sfList}" varStatus="status">
+	              		<option value="${status.count}">${i}</option>
 	              	</c:forEach>
              	 </select>
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-default">수정</button>
             </form>
 		
 		</div>
 		<div class="modal-footer">
 			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">X</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">O</button>
 				</div>
 			</div>
 		</div>
