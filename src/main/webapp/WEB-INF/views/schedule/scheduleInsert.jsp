@@ -4,7 +4,7 @@
 <h1>상영스케줄편성</h1>
 <table>
 	<tr>
-		<td>영화1에 대한 정보뿌리기</td>
+		<td>{allmap}</td>
 	</tr>
 	<tr>
 
