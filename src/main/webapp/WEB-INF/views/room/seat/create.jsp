@@ -67,6 +67,11 @@
 					class="form-check-input" name="optradio" value="90">90%
 				</label>
 			</div>
+			<div class="form-check-inline">
+				<label class="form-check-label"> <input type="radio"
+					class="form-check-input" name="optradio" value="100">100%
+				</label>
+			</div>
 			<div class="form-check-inline disabled">
 				<label class="form-check-label"> <input type="radio"
 					class="form-check-input" name="optradio" value="110">110%
@@ -127,6 +132,8 @@
 			$(this).css("backgroundColor", "blue");
 		} else if (radio == '90') {
 			$(this).css("backgroundColor", "red");
+		} else if (radio == '100') {
+			$(this).css("backgroundColor", "transparent");
 		} else if (radio == '110') {
 			$(this).css("backgroundColor", "pink");
 		}

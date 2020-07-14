@@ -36,7 +36,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div id="room">
-	<h1 style="text-align: center;">상영관 수정</h1>
+	<h1 style="text-align: center;">배율 수정</h1>
 	<div id="roomMain">
 		<div style="text-align: center;">
 			<img src="${cp }/resources/images/join_logo_3.png"
@@ -59,6 +59,11 @@
 			<div class="form-check-inline">
 				<label class="form-check-label"> <input type="radio"
 					class="form-check-input" name="optradio" value="90">90%
+				</label>
+			</div>
+			<div class="form-check-inline disabled">
+				<label class="form-check-label"> <input type="radio"
+					class="form-check-input" name="optradio" value="100">100%
 				</label>
 			</div>
 			<div class="form-check-inline disabled">
@@ -102,6 +107,8 @@
 			$(this).css("backgroundColor", "blue");
 		} else if (radio == '90') {
 			$(this).css("backgroundColor", "red");
+		} else if (radio == '100') {
+			$(this).css("backgroundColor", "white");
 		} else if (radio == '110') {
 			$(this).css("backgroundColor", "pink");
 		}
