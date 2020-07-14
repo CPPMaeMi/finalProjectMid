@@ -5,7 +5,18 @@
 <link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+<style>
+      table {
+        width: 100%;
+        border-top: 1px solid #444444;
+        border-collapse: collapse;
+      }
+      th, td {
+        border-bottom: 1px solid #444444;
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
 <div class="container my-5" style="overflow: hidden">
 	<!--Section: Content-->
 	<section class="dark-grey-text">
@@ -20,12 +31,12 @@
 			<div class="col-md-5 d-flex align-items-center">
 				<div>
 					<form action="${cp }/fm/filminsert.do" method="post">
-						<table border="1" class="movieinfo" style="width:700px;">
+						<table class="movieinfo" style="width:700px;">
 							<tr>
-								<td colspan="2"><h3 class="font-weight-bold mb-4">${vo.filmName }</h3></td>
+								<td colspan="2" style="background-color:#E6E6E6;text-align:center;"><h3 class="font-weight-bold mb-4"><br>${vo.filmName }</h3></td>
 							</tr>
 							<tr>
-								<th>감독</th>
+								<th style="width:20%">감독</th>
 								<td>${vo.filmHead }</td>
 							</tr>
 							<tr>
@@ -34,32 +45,30 @@
 							</tr>
 							<tr>
 								<th>출연진</th>
-								<td>${vo1.castName }</td>
+								<td style="height:50px;">${vo1.castName }</td>
 							</tr>
 							<tr>
 								<th>줄거리</th>
-								<td>${vo.filmStory }</td>
+								<td style="height:130px;">${vo.filmStory }</td>
 							</tr>
-							<fmt:formatDate value="${vo.filmStart }" pattern="yyyy-MM-dd"
-								var="filmStart" />
+							<fmt:formatDate value="${vo.filmStart }" pattern="yyyy-MM-dd" var="filmStart" />
 							<tr>
 								<th>개봉일</th>
 								<td>${filmStart }</td>
 							</tr>
-							<fmt:formatDate value="${vo.filmEnd }" pattern="yyyy-MM-dd"
-								var="filmEnd" />
+							<fmt:formatDate value="${vo.filmEnd }" pattern="yyyy-MM-dd"	var="filmEnd" />
 							<tr>
 								<th>종료일</th>
 								<td>${filmEnd }</td>
 							</tr>
 							<tr>
-								<th>상영기간</th>
-								<td><input type="text" placeholder="상영기간을 선택하세요."
+								<th>상영요청기간</th>
+								<td><input type="text" placeholder="요청기간을 선택하세요."
 									id="datepicker" name="filmDeadline"></td>
 							</tr>
 							<tr>
 								<th>판권가</th>
-								<td>${vo.filmPrice }</td>
+								<td>${vo.filmPrice }원</td>
 							</tr>
 							<tr>
 								<th>상태</th>
@@ -69,8 +78,19 @@
 						<input type="hidden" name="filmNum" value="${vo.filmNum }">
 						<!-- value값 수정 지점 시퀀스 -->
 						<input type="hidden" name="branchNum" value="1">
-						<button type="submit"
-							class="btn btn-orange btn-rounded mx-0 btn-lg">구매</button>
+						<p></p>
+						<c:set var="now" value="<%=new java.util.Date() %>"/>
+						<center>
+						<c:choose>
+							<c:when test="${now<vo.filmEnd}">
+						<button type="submit" class="btn btn-success btn-lg">구매</button>
+						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-success btn-lg">목록</button></a>
+							</c:when>
+							<c:otherwise>
+						<p>기간이 지나 구매할 수 없습니다.</p>
+						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-secondary btn-lg">목록</button></a>
+							</c:otherwise>
+						</c:choose>
 					</form>
 				</div>
 			</div>
