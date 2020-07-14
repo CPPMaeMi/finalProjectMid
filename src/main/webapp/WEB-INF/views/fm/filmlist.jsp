@@ -25,7 +25,7 @@
 							<td class="w-25"><a
 								href="${cp}/fm/filmdetail.do?filmNum=${vo.FILMNUM}&genreNum=${vo.GENRENUM}">
 									<img src="${vo.MOVIEIMGURL}" class="img-fluid img-thumbnail"
-									alt="Sheep" class="image" style="height: 158px; width: 110px;">
+									alt="Poster" class="image" style="height: 158px; width: 110px;">
 							</a></td>
 							<td>${vo.FILMNAME}</td>
 							<td>${vo.GENRENAME }</td>

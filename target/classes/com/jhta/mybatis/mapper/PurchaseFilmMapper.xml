@@ -9,9 +9,9 @@
 	<select id="branchList" parameterType="int" resultType="hashmap">
 		select * from
 		(
-			select p.purchasedate, p.filmdeadline, f.filmend, f.filmname, f.filmprice, f.filmhead, f.filmstatus, m.movieimgurl, rownum rnum 
+			select p.purchasedate purchasedate, p.filmdeadline filmdeadline, f.filmend filmend, f.filmname filmname, f.filmprice filmprice, f.filmhead filmhead, f.filmstatus filmstatus, m.movieimgurl movieimgurl, rownum rnum 
 			from purchasefilm p,film f,movieImg m
 			where p.branchnum=#{branchNum} and p.filmnum=f.filmnum and f.filmnum=m.filmnum
-		);
+		)
 	</select>
 </mapper>

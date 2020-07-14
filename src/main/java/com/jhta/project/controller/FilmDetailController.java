@@ -29,13 +29,13 @@ public class FilmDetailController {
 	public ModelAndView map(int filmNum, int genreNum) {
 		ModelAndView mv=new ModelAndView(".fm.filmdetail");
 		FilmVo vo=service.getinfo(filmNum);
-		System.out.println("필름테이블토하는중:"+vo);
+		//System.out.println("필름테이블토하는중:"+vo);
 		CastVo vo1=service1.getinfo1(filmNum);
-		System.out.println("주연테이블토하는중:"+vo1);
+		//System.out.println("주연테이블토하는중:"+vo1);
 		GenreVo vo2=service2.getinfo2(genreNum);
-		System.out.println("장르테이블 토하는중:"+vo2);
+		//System.out.println("장르테이블 토하는중:"+vo2);
 		MovieImgVo vo3=service3.getinfo3(filmNum);
-		System.out.println("영화이미지테이블웩:"+vo3);
+		//System.out.println("영화이미지테이블웩:"+vo3);
 		mv.addObject("vo",vo);
 		mv.addObject("vo1",vo1);
 		mv.addObject("vo2",vo2);
