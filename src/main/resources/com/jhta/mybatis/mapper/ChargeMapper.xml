@@ -6,7 +6,7 @@
 	<select id="getinfo" parameterType="int" resultType="charge">
 		select * from charge where chargeNum=#{chargeNum} 
 	</select>
-	<select id="monthList" resultType="charge" parameterType="hashmap">
+	<select id="genderMonthList" resultType="charge" parameterType="hashmap">
 		<![CDATA[
 			select * 
 			from(
@@ -30,7 +30,7 @@
 			order by chRegdate
 		]]>
 	</select>
-	<select id="yearList" resultType="charge" parameterType="hashmap">
+	<select id="genderYearList" resultType="charge" parameterType="hashmap">
 		<![CDATA[
 			select * 
 			from(
@@ -52,6 +52,57 @@
 			GROUP BY AA.BIRTH,AA.CHAREGDATE
 			)PIVOT(sum(totalbill) for birth in(1 AS MAN,2 AS WOMAN))
 			order by chRegdate
+		]]>
+	</select>
+	
+	
+	
+	<select id="ageYearList" resultType="charge" parameterType="hashmap">
+		<![CDATA[
+			select *
+			from (
+			    SELECT * FROM (
+			        select c.totalbill totalbill
+			        ,substr(to_char(sysdate,'yyyy') + 1 - (substr(m.birth,0,2)+
+			            (case
+			            when substr(m.birth,8,1) < 3 then 1900
+			            when substr(m.birth,8,1) >= 3 then 2000
+			            end)),0,1) as age
+			        ,to_char(c.chregdate,'yyyy') chRegdate
+			        from MEMBERSHIP m,charge c
+			        where m.memnum=c.memnum
+			    ) AA
+			    WHERE
+			     AA.chRegdate BETWEEN #{date} AND #{date1}
+			) CC
+			PIVOT(
+			    SUM(totalbill) FOR AGE IN (1 AS TEENS ,2 AS TWENTIES,3 AS THIRTIES,4 AS FORTIES,5 AS FIFTIES,6 AS SIXTIES)
+			)
+			ORDER BY chRegdate
+		]]>
+	</select>
+	<select id="ageMonthList" resultType="charge" parameterType="hashmap">
+		<![CDATA[
+			select *
+			from (
+			    SELECT * FROM (
+			        select c.totalbill totalbill
+			        ,substr(to_char(sysdate,'yyyy') + 1 - (substr(m.birth,0,2)+
+			            (case
+			            when substr(m.birth,8,1) < 3 then 1900
+			            when substr(m.birth,8,1) >= 3 then 2000
+			            end)),0,1) as age
+			        ,to_char(c.chregdate,'yyyy-mm') chRegdate
+			        from MEMBERSHIP m,charge c
+			        where m.memnum=c.memnum
+			    ) AA
+			    WHERE
+			     AA.chRegdate BETWEEN #{date} AND #{date1}
+			) CC
+			PIVOT(
+			    SUM(totalbill) FOR AGE IN (1 AS TEENS ,2 AS TWENTIES,3 AS THIRTIES,4 AS FORTIES,5 AS FIFTIES,6 AS SIXTIES)
+			)
+			ORDER BY chRegdate
 		]]>
 	</select>
 </mapper>

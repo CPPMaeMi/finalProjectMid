@@ -15,11 +15,20 @@ public class ChargeDao {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.charge";
 	
-	
-	 public List<ChargeVo> yearList(HashMap<String, String> map){
-		 return sqlSession.selectList(NAMESPACE+".yearList", map);
-	 } public List<ChargeVo>
-	 monthList(HashMap<String, String> map){
-		 return sqlSession.selectList(NAMESPACE+".monthList", map); 
-	 }
+	//성별 년도별 매출조회
+	public List<ChargeVo> genderYearList(HashMap<String, String> map){
+		return sqlSession.selectList(NAMESPACE+".genderYearList", map);
+	}
+	//성별 월별 매출조회
+	public List<ChargeVo> genderMonthList(HashMap<String, String> map){
+		return sqlSession.selectList(NAMESPACE+".genderMonthList", map); 
+	}
+	//연령별 년도별 매출조회
+	public List<ChargeVo> ageYearList(HashMap<String, String> map){
+		return sqlSession.selectList(NAMESPACE+".ageYearList", map);
+	}
+	//연령별 월별 매출조회
+	public List<ChargeVo> ageMonthList(HashMap<String, String> map){
+		return sqlSession.selectList(NAMESPACE+".ageMonthList", map); 
+	}
 }

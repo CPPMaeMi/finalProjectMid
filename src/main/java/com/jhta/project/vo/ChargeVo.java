@@ -10,13 +10,20 @@ public class ChargeVo {
 	private int bookNum;
 	private String phone;
 	private int totalbill;//결제금액
-	private String man;//회원 생일(연령대/성별)알기위해
-	private String woman;//회원 생일(연령대/성별)알기위해
+	private String man;//회원 성별
+	private String woman;//회원 성별
+	private int teens;//10대
+	private int twenties;//20대
+	private int thirties;//30대
+	private int forties;//40대
+	private int fifties;//50대
+	private int sixties;//60대
 
 	public ChargeVo() {}
 
 	public ChargeVo(int chargeNum, int memNum, int cDetailNum, String payment, String memStatus, String chRegdate,
-			int bookNum, String phone, int totalbill, String man, String woman) {
+			int bookNum, String phone, int totalbill, String man, String woman, int teens, int twenties, int thirties,
+			int forties, int fifties, int sixties) {
 		super();
 		this.chargeNum = chargeNum;
 		this.memNum = memNum;
@@ -29,6 +36,12 @@ public class ChargeVo {
 		this.totalbill = totalbill;
 		this.man = man;
 		this.woman = woman;
+		this.teens = teens;
+		this.twenties = twenties;
+		this.thirties = thirties;
+		this.forties = forties;
+		this.fifties = fifties;
+		this.sixties = sixties;
 	}
 
 	public int getChargeNum() {
@@ -117,6 +130,54 @@ public class ChargeVo {
 
 	public void setWoman(String woman) {
 		this.woman = woman;
+	}
+
+	public int getTeens() {
+		return teens;
+	}
+
+	public void setTeens(int teens) {
+		this.teens = teens;
+	}
+
+	public int getTwenties() {
+		return twenties;
+	}
+
+	public void setTwenties(int twenties) {
+		this.twenties = twenties;
+	}
+
+	public int getThirties() {
+		return thirties;
+	}
+
+	public void setThirties(int thirties) {
+		this.thirties = thirties;
+	}
+
+	public int getForties() {
+		return forties;
+	}
+
+	public void setForties(int forties) {
+		this.forties = forties;
+	}
+
+	public int getFifties() {
+		return fifties;
+	}
+
+	public void setFifties(int fifties) {
+		this.fifties = fifties;
+	}
+
+	public int getSixties() {
+		return sixties;
+	}
+
+	public void setSixties(int sixties) {
+		this.sixties = sixties;
 	}
 
 }

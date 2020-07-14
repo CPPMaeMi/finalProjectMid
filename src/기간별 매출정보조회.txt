@@ -18,3 +18,16 @@ from revenue r,branch b
 where r.branchnum=b.branchnum and b.brname='도봉' and to_char(revenuedate,'yyyy') BETWEEN #{date} AND #{date1}
 group by to_char(revenuedate,'yyyy')
 ORDER BY revenuedate
+
+
+
+
+
+
+
+
+select sum(outcome) outcome, sum(ticketincome) ticketincome, sum(storeincome) storeincome, to_char(revenuedate,'yyyy-mm-dd') revenuedate
+	    from revenue r,branch b
+	    where r.branchnum=b.branchnum and b.brname='도봉' and to_char(revenuedate,'yyyy-mm') = '2020-07'
+	    group by to_char(revenuedate,'yyyy-mm-dd')
+	    ORDER BY revenuedate;
