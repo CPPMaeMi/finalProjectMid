@@ -6,4 +6,10 @@
 	<select id="getinfo" parameterType="int" resultType="mschedule">
 		select * from mschedule where mScheduleNum=#{mScheduleNum}
 	</select>
+	
+	<select id="getList" parameterType="hashmap" resultType="mschduleList">
+		select t.branchNum, p.purchasefilmNum, p.purchaseDate, p.filmdeadline, f.filmName, f.filmNum
+		from theather t, purchasefilm p, film f
+		where t.branchNum=#{branchNum} and p.purchasefilmNum=#{purchaseNum} and t.branchNum=p.branchNum and p.filmNum=f.filmNum;
+	</select>
 </mapper>

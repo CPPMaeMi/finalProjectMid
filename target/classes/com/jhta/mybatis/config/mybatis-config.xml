@@ -23,6 +23,7 @@
   	<typeAlias type="com.jhta.project.vo.MovieImgVo" alias="movieimg"/>
   	<typeAlias type="com.jhta.project.vo.MReviewVo" alias="mreview"/>
   	<typeAlias type="com.jhta.project.vo.MScheduleVo" alias="mschedule"/>
+  	<typeAlias type="com.jhta.project.vo.MScheduleListVo" alias="mschduleList"/>
   	<typeAlias type="com.jhta.project.vo.ProposalVo" alias="proposal"/>
   	<typeAlias type="com.jhta.project.vo.QnaVo" alias="qna"/>
   	<typeAlias type="com.jhta.project.vo.ReplyVo" alias="reply"/>

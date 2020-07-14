@@ -13,7 +13,7 @@
 						<th scope="col">영화제목</th>
 						<th scope="col">감독</th>
 						<th scope="col">상태</th>
-						<th scope="col">구매일</th>
+						<th scope="col">관리하기</th>
 						<th scope="col">상영종료일</th>
 						<th scope="col">판권종료일</th>
 					</tr>
@@ -28,8 +28,7 @@
 							<td>${vo.FILMNAME}</td>
 							<td>${vo.FILMHEAD }</td>
 							<td>${vo.FILMSTATUS}</td>
-							<fmt:formatDate value="${vo.PURCHASEDATE}" pattern="yyyy-MM-dd" var="filmPurchaseDate"/>
-							<td>${filmPurchaseDate }</td>
+							<td><a href="${cp }/schedule.showScheduleList.do"><button type="button" class="btn btn-primary">스케쥴 관리</button></a></td>
 							<fmt:formatDate value="${vo.FILMDEADLINE}" pattern="yyyy-MM-dd" var="filmDeadline"/>
 							<td>${filmDeadline}</td>
 							<fmt:formatDate value="${vo.FILMEND}" pattern="yyyy-MM-dd" var="filmEnd"/>
