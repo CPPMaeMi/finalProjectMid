@@ -4,14 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.mapper.purchasefilm">
 	<insert id="insert" parameterType="purchasefilm">
-		insert into purchasefilm values(purchaseFilmNum.nextval,#{filmDeadline},sysdate,#{filmNum},#{branchNum})
+		insert into purchasefilm
+		values(purchaseFilmNum.nextval,#{filmDeadline},sysdate,#{filmNum},#{branchNum})
 	</insert>
 	<select id="branchList" parameterType="int" resultType="hashmap">
-		select * from
+		select *
+		from
 		(
-			select p.purchasedate purchasedate, p.filmdeadline filmdeadline, f.filmend filmend, f.filmname filmname, f.filmprice filmprice, f.filmhead filmhead, f.filmstatus filmstatus, m.movieimgurl movieimgurl, rownum rnum 
-			from purchasefilm p,film f,movieImg m
-			where p.branchnum=#{branchNum} and p.filmnum=f.filmnum and f.filmnum=m.filmnum
+		select p.purchasefilmNum, p.purchasedate purchasedate, p.filmdeadline
+		filmdeadline, f.filmend filmend, f.filmname filmname, f.filmprice
+		filmprice, f.filmhead filmhead, f.filmstatus filmstatus, m.movieimgurl
+		movieimgurl, rownum rnum
+		from purchasefilm p,film f,movieImg m
+		where p.branchnum=#{branchNum} and p.filmnum=f.filmnum and
+		f.filmnum=m.filmnum
 		)
 	</select>
 </mapper>

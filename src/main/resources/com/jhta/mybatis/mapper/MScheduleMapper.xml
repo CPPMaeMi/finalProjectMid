@@ -6,10 +6,17 @@
 	<select id="getinfo" parameterType="int" resultType="mschedule">
 		select * from mschedule where mScheduleNum=#{mScheduleNum}
 	</select>
-	
-	<select id="getList" parameterType="hashmap" resultType="mschduleList"> <!-- 이거 쿼리 수정중임 중복 개짜증나~~! -->
-		select t.branchNum, p.purchasefilmNum, p.purchaseDate, p.filmdeadline, f.filmNum, f.filmName, f.filmStory, g.genreName, m.movieimgurl
-		from theather t, purchasefilm p, film f, movieimg m, genre g
-		where t.branchNum=1 and p.purchasefilmNum=1 and t.branchNum=p.branchNum and p.filmNum=f.filmNum and f.filmNum=m.movieimgNum and f.genreNum=g.genreNum;
+	<!-- 이거 쿼리 수정중임 중복 개짜증나~~! -->
+	<select id="getList" parameterType="hashmap" resultType="mschduleList"> 
+		select distinct t.branchNum, p.purchasefilmNum, p.purchaseDate,
+		p.filmdeadline,f.filmNum, f.filmName, f.filmStory, g.genreName, m.movieimgurl
+		from theather t,purchasefilm p, film f, movieimg m, genre g, branch b
+		where
+		t.branchNum=#{branchNum} and p.purchasefilmNum=#{purchasefilmNum} and p.filmNum=f.filmNum and
+		f.filmNum=m.filmNum and f.genreNum=g.genreNum and
+		b.branchNum=p.branchNum and t.branchNum=b.branchNum
 	</select>
+	<insert id="insert" parameterType="mschedule">
+		insert into mschedule values(mScheduleNum.nextval,#{mStartTime},purchaseFilmNum=#{purchaseFilmNum},theatherNum=#{theatherNum})
+	</insert>
 </mapper>

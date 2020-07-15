@@ -4,11 +4,13 @@ public class TheatherVo {
 	private int theatherNum;
 	private int branchNum;
 	private String theatherName;
-	public TheatherVo(int theatherNum, int branchNum, String theatherName) {
+	private String theatherSort;
+	public TheatherVo(int theatherNum, int branchNum, String theatherName, String theatherSort) {
 		super();
 		this.theatherNum = theatherNum;
 		this.branchNum = branchNum;
 		this.theatherName = theatherName;
+		this.theatherSort = theatherSort;
 	}
 	public TheatherVo() {
 		super();
@@ -30,6 +32,12 @@ public class TheatherVo {
 	}
 	public void setTheatherName(String theatherName) {
 		this.theatherName = theatherName;
+	}
+	public String getTheatherSort() {
+		return theatherSort;
+	}
+	public void setTheatherSort(String theatherSort) {
+		this.theatherSort = theatherSort;
 	}
 	
 }

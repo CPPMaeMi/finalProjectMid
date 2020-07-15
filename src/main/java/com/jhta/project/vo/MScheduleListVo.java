@@ -10,13 +10,13 @@ public class MScheduleListVo {
 	private int branchNum; //지점번호시퀀스
 	private String filmName; //영화이름
 	private String filmStory; //영화줄거리
-	private String generName; //장르종류
+	private String genreName; //장르종류
 	private String movieimgUrl; //이미지경로
 	
 	public MScheduleListVo() {}
 
 	public MScheduleListVo(int purchasefilmNum, Date purchaseDate, Date filmDeadline, int filmNum, int branchNum,
-			String filmName, String filmStory, String generName, String movieimgUrl) {
+			String filmName, String filmStory, String genreName, String movieimgUrl) {
 		super();
 		this.purchasefilmNum = purchasefilmNum;
 		this.purchaseDate = purchaseDate;
@@ -25,7 +25,7 @@ public class MScheduleListVo {
 		this.branchNum = branchNum;
 		this.filmName = filmName;
 		this.filmStory = filmStory;
-		this.generName = generName;
+		this.genreName = genreName;
 		this.movieimgUrl = movieimgUrl;
 	}
 
@@ -85,12 +85,12 @@ public class MScheduleListVo {
 		this.filmStory = filmStory;
 	}
 
-	public String getGenerName() {
-		return generName;
+	public String getGenreName() {
+		return genreName;
 	}
 
-	public void setGenerName(String generName) {
-		this.generName = generName;
+	public void setGenreName(String genreName) {
+		this.genreName = genreName;
 	}
 
 	public String getMovieimgUrl() {

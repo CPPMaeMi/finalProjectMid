@@ -2,16 +2,16 @@ package com.jhta.project.vo;
 
 public class MScheduleVo {
 	private int mScheduleNum;
-	private int brInfoNum;
 	private String mStartTime;
-	public MScheduleVo(int mScheduleNum, int brInfoNum, String mStartTime) {
+	private int purchaseFilmNum;
+	private int theatherNum;
+	public MScheduleVo() {}
+	public MScheduleVo(int mScheduleNum, String mStartTime, int purchaseFilmNum, int theatherNum) {
 		super();
 		this.mScheduleNum = mScheduleNum;
-		this.brInfoNum = brInfoNum;
 		this.mStartTime = mStartTime;
-	}
-	public MScheduleVo() {
-		super();
+		this.purchaseFilmNum = purchaseFilmNum;
+		this.theatherNum = theatherNum;
 	}
 	public int getmScheduleNum() {
 		return mScheduleNum;
@@ -19,17 +19,23 @@ public class MScheduleVo {
 	public void setmScheduleNum(int mScheduleNum) {
 		this.mScheduleNum = mScheduleNum;
 	}
-	public int getBrInfoNum() {
-		return brInfoNum;
-	}
-	public void setBrInfoNum(int brInfoNum) {
-		this.brInfoNum = brInfoNum;
-	}
 	public String getmStartTime() {
 		return mStartTime;
 	}
 	public void setmStartTime(String mStartTime) {
 		this.mStartTime = mStartTime;
+	}
+	public int getPurchaseFilmNum() {
+		return purchaseFilmNum;
+	}
+	public void setPurchaseFilmNum(int purchaseFilmNum) {
+		this.purchaseFilmNum = purchaseFilmNum;
+	}
+	public int getTheatherNum() {
+		return theatherNum;
+	}
+	public void setTheatherNum(int theatherNum) {
+		this.theatherNum = theatherNum;
 	}
 	
 }

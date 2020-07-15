@@ -28,7 +28,7 @@
 							<td>${vo.FILMNAME}</td>
 							<td>${vo.FILMHEAD }</td>
 							<td>${vo.FILMSTATUS}</td>
-							<td><a href="${cp }/schedule.showScheduleList.do"><button type="button" class="btn btn-primary">스케쥴 관리</button></a></td>
+							<td><a href="${cp }/schedule/showScheduleList.do?branchNum=1&purchasefilmNum=${vo.PURCHASEFILMNUM}"><button type="button" class="btn btn-primary">스케쥴 관리</button></a></td>
 							<fmt:formatDate value="${vo.FILMDEADLINE}" pattern="yyyy-MM-dd" var="filmDeadline"/>
 							<td>${filmDeadline}</td>
 							<fmt:formatDate value="${vo.FILMEND}" pattern="yyyy-MM-dd" var="filmEnd"/>

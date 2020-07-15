@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.project.vo.MScheduleListVo;
+import com.jhta.project.vo.MScheduleVo;
 
 @Repository
 public class MScheduleDao {
@@ -19,4 +20,9 @@ public class MScheduleDao {
 		System.out.println("dao≈∏±‚");
 		return sqlSession.selectList(NAMESPACE+".getList",map);
 	}
+	
+	public int insert(MScheduleVo vo) {
+		return sqlSession.insert(NAMESPACE+".insert",vo);
+	}
+	
 }
