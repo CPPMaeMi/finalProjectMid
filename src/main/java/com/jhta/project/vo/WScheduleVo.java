@@ -1,14 +1,12 @@
 package com.jhta.project.vo;
 
-import java.util.Date;
-
 public class WScheduleVo {
 	private int sNum;
 	private int staffNum;
-	private Date workStart;
-	private Date workEnd;
-	private Date workDate;
-	public WScheduleVo(int sNum, int staffNum, Date workStart, Date workEnd, Date workDate) {
+	private String workStart;
+	private String workEnd;
+	private String workDate;
+	public WScheduleVo(int sNum, int staffNum, String workStart, String workEnd, String workDate) {
 		super();
 		this.sNum = sNum;
 		this.staffNum = staffNum;
@@ -31,22 +29,22 @@ public class WScheduleVo {
 	public void setStaffNum(int staffNum) {
 		this.staffNum = staffNum;
 	}
-	public Date getWorkStart() {
+	public String getWorkStart() {
 		return workStart;
 	}
-	public void setWorkStart(Date workStart) {
+	public void setWorkStart(String workStart) {
 		this.workStart = workStart;
 	}
-	public Date getWorkEnd() {
+	public String getWorkEnd() {
 		return workEnd;
 	}
-	public void setWorkEnd(Date workEnd) {
+	public void setWorkEnd(String workEnd) {
 		this.workEnd = workEnd;
 	}
-	public Date getWorkDate() {
+	public String getWorkDate() {
 		return workDate;
 	}
-	public void setWorkDate(Date workDate) {
+	public void setWorkDate(String workDate) {
 		this.workDate = workDate;
 	}
 	
