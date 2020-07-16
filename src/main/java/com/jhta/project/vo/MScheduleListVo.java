@@ -2,9 +2,12 @@ package com.jhta.project.vo;
 
 import java.sql.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MScheduleListVo {
 	private int purchasefilmNum; //영화상영권구매 시퀀스
 	private Date purchaseDate; //지점내상영시작일
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date filmDeadline; //지점내상영종료일
 	private int filmNum; //영화번호 시퀀스
 	private int branchNum; //지점번호시퀀스

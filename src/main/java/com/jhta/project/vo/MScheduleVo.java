@@ -1,10 +1,13 @@
 package com.jhta.project.vo;
 
+import java.util.Date;
+
 public class MScheduleVo {
 	private int mScheduleNum;
 	private String mStartTime;
 	private int purchaseFilmNum;
 	private int theatherNum;
+	private Date d;
 	public MScheduleVo() {}
 	public MScheduleVo(int mScheduleNum, String mStartTime, int purchaseFilmNum, int theatherNum) {
 		super();
@@ -12,6 +15,12 @@ public class MScheduleVo {
 		this.mStartTime = mStartTime;
 		this.purchaseFilmNum = purchaseFilmNum;
 		this.theatherNum = theatherNum;
+	}
+	public void setD(Date d) {
+		this.d = d;
+	}
+	public Date getD() {
+		return d;
 	}
 	public int getmScheduleNum() {
 		return mScheduleNum;

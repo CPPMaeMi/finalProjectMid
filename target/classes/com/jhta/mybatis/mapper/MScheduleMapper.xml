@@ -17,6 +17,12 @@
 		b.branchNum=p.branchNum and t.branchNum=b.branchNum
 	</select>
 	<insert id="insert" parameterType="mschedule">
-		insert into mschedule values(mScheduleNum.nextval,#{mStartTime},purchaseFilmNum=#{purchaseFilmNum},theatherNum=#{theatherNum})
+		insert into mschedule
+		values(mScheduleNum.nextval,#{d},#{purchaseFilmNum},#{theatherNum})
 	</insert>
+	<select id="list" parameterType="int" resultType="hashmap">
+		select m.mscheduleNum, m.mstarttime, m.purchasefilmNum, m.theathernum, t.branchNum branchNum 
+		from mschedule m, theather t
+		where m.theatherNum=t.theatherNum and branchNum=#{branchNum};
+	</select>	
 </mapper>

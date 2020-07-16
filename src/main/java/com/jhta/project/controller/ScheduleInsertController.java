@@ -1,11 +1,13 @@
 package com.jhta.project.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.project.service.MScheduleService;
-import com.jhta.project.vo.MScheduleVo;
 
 @Controller
 public class ScheduleInsertController {
@@ -13,10 +15,11 @@ public class ScheduleInsertController {
 	private MScheduleService service;
 	
 	@RequestMapping("/schedule/scheduleInsert.do")
-	public String insert(MScheduleVo vo, String date, String time) {
+	public String insert(int[] theatherNum, String date, String time, int purchasefilmNum, @DateTimeFormat(pattern="yyyy-MM-dd")Date filmDeadline) {
+		System.out.println("야 이거먼데"+filmDeadline);
 		try {
-			MScheduleVo vo1=new MScheduleVo(0, date+time, 0, 0);
-			service.insert(vo1);
+			service.insert(theatherNum, date, time, purchasefilmNum, filmDeadline);
+//			System.out.println(theatherNum);
 			System.out.println("된...다...");
 			return ".schedule.scheduler";
 		}catch(Exception e) {

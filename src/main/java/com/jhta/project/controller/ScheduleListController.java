@@ -28,8 +28,8 @@ public class ScheduleListController {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("branchNum", branchNum);
 		map.put("purchasefilmNum", purchasefilmNum);
-		List<MScheduleListVo> allList=msService.showAllMovieSchedule(map);
-		model.addAttribute("allList", allList);
+		MScheduleListVo vo=msService.showAllMovieSchedule(map);
+		model.addAttribute("vo", vo);
 		System.out.println("와이이이");
 		List<TheatherVo> vo1=service.list(branchNum);
 		model.addAttribute("vo1", vo1);

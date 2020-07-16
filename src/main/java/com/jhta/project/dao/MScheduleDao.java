@@ -16,13 +16,19 @@ public class MScheduleDao {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.mschedule";
 	//전체 구매한 영화목록 보여주기 위한 dao단
-	public List<MScheduleListVo> showAllMovieSchedule(HashMap<String, Object> map){
+	public MScheduleListVo showAllMovieSchedule(HashMap<String, Object> map){
 		System.out.println("dao타기");
-		return sqlSession.selectList(NAMESPACE+".getList",map);
+		return sqlSession.selectOne(NAMESPACE+".getList",map);
 	}
 	
+	//mschedule에 values insert
 	public int insert(MScheduleVo vo) {
 		return sqlSession.insert(NAMESPACE+".insert",vo);
+	}
+	
+	//mschedule 상영시간표 노출
+	public List<HashMap<String, Object>> list(int branchNum) {
+		return sqlSession.selectList(NAMESPACE+".list", branchNum);
 	}
 	
 }
