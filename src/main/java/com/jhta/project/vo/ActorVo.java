@@ -6,6 +6,7 @@ public class ActorVo {
 	private String actorAge;
 	private String actorImg;
 	private String actorNation;
+	
 	public ActorVo(int actorNum, String actorName, String actorAge, String actorImg, String actorNation) {
 		super();
 		this.actorNum = actorNum;

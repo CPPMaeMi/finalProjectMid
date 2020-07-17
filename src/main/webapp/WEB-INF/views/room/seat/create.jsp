@@ -13,10 +13,12 @@
 	border: 1px solid red;
 	float: left;
 	position: relative;
+	margin: auto;
 }
 
 #seatMain {
 	position: relative;
+	margin: auto;
 }
 
 #roomCreate {
