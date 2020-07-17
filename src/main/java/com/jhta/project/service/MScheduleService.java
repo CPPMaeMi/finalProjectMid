@@ -50,21 +50,18 @@ public class MScheduleService {
 			System.out.println("종료할 날짜:"+die);
 			
 			//삽입될 시간 메소드
-			for(int j=0;days<=die;j++) {
+			for(;days<=die;) {
 				String[] timer=time.split(":"); //[0] 시간 [1] 분
 				int timers=Integer.parseInt(timer[0]);
-				while(timers<=20) {
-					String startTime=date+" "+timers+":"+timer[1];
+				while(timers<=23) {
+					String startTime=day[0]+"/"+day[1]+"/"+days+" "+timers+":"+timer[1];
 					MScheduleVo vo1=new MScheduleVo(0, startTime, theatherNum[i], purchasefilmNum);
-					Date d=new Date(filmDeadline.getYear(),filmDeadline.getMonth(),Integer.parseInt(day[2]),Integer.parseInt(timer[0]),Integer.parseInt(timer[1]));
-					d.setDate(days);
-					d.setHours(timers);
-					vo1.setD(d);
+					//Date d=new Date(Integer.parseInt(day[0]),Integer.parseInt(day[1]),days,timers,Integer.parseInt(timer[1]));
+					//vo1.setD(d);
 					n+=msDao.insert(vo1);
 					timers += 4;
-					days += 1;
-					
 				}
+				days += 1;
 			}
 		}
 		return n;

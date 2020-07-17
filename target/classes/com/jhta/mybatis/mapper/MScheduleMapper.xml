@@ -17,7 +17,7 @@
 	</select>
 	<insert id="insert" parameterType="mschedule">
 		insert into mschedule
-		values(mScheduleNum.nextval,#{d},#{theatherNum},#{purchaseFilmNum})
+		values(mScheduleNum.nextval,to_date(#{mStartTime},'YYYY/MM/DD HH24:MI'),#{theatherNum},#{purchaseFilmNum})
 	</insert>
 	
 	
