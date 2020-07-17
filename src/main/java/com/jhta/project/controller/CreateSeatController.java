@@ -74,7 +74,7 @@ public class CreateSeatController {
 	}
 	
 	@RequestMapping("/room/seat/theather.do")
-	public String createSeat(@RequestParam(value="branchNum",defaultValue = "1") int branchNum,Model model) throws JsonProcessingException {
+	public String createSeat(@RequestParam(value="branchNum",defaultValue = "21") int branchNum,Model model) throws JsonProcessingException {
 		String url="http://localhost:9090/projectdb/room/seat/theather.do?branchNum="+branchNum;
 		String code = "";
 		try {
