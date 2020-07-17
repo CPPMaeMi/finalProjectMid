@@ -6,7 +6,6 @@
 	<select id="getinfo" parameterType="int" resultType="mschedule">
 		select * from mschedule where mScheduleNum=#{mScheduleNum}
 	</select>
-	<!-- 이거 쿼리 수정중임 중복 개짜증나~~! -->
 	<select id="getList" parameterType="hashmap" resultType="mschduleList"> 
 		select distinct t.branchNum, p.purchasefilmNum, p.purchaseDate,
 		p.filmdeadline,f.filmNum, f.filmName, f.filmStory, g.genreName, m.movieimgurl
@@ -18,11 +17,16 @@
 	</select>
 	<insert id="insert" parameterType="mschedule">
 		insert into mschedule
-		values(mScheduleNum.nextval,#{d},#{purchaseFilmNum},#{theatherNum})
+		values(mScheduleNum.nextval,#{d},#{theatherNum},#{purchaseFilmNum})
 	</insert>
+	
+	
 	<select id="list" parameterType="int" resultType="hashmap">
-		select m.mscheduleNum, m.mstarttime, m.purchasefilmNum, m.theathernum, t.branchNum branchNum 
-		from mschedule m, theather t
-		where m.theatherNum=t.theatherNum and branchNum=#{branchNum};
+		select m.mscheduleNum, m.mstarttime, m.purchasefilmNum, m.theathernum, t.branchNum, f.filmname
+		from mschedule m, theather t, purchasefilm p, film f
+		where m.theatherNum=t.theatherNum and m.purchasefilmnum=p.purchasefilmnum and p.filmnum=f.filmnum and t.branchNum=#{branchNum}
+		order by mstarttime asc
 	</select>	
+	
+	
 </mapper>

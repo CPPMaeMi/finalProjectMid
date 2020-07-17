@@ -24,10 +24,11 @@
 <!-- theather 노출 -->
 <p></p>
 <div class="row1">
+	<!-- branchNum 지점번호 값 수정할것 -->
 	<form action="${cp }/schedule/scheduleInsert.do" method="post">
 		<table border="1" class="theatherList" style="width: 700px; text-align: center;">
 			<tr>
-				<th>No.</th>
+				<th>No.<input type="hidden" name="branchNum" value="${vo.branchNum }"></th>
 				<th>상영관명</th>
 				<th>상영관 규모</th>
 				<th>확인란</th>

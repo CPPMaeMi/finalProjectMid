@@ -24,10 +24,12 @@ public class MScheduleService {
 		return msDao.showAllMovieSchedule(map);
 	}
 	
+	//insert한 결과 list로 보이기
 	public List<HashMap<String, Object>> list(int branchNum){
 		return msDao.list(branchNum);
 	}
 	
+	//영화를 영화관별, Date별 동시에 insert하기
 	@Transactional
 	public int insert(int[] theatherNum, String date, String time, int purchasefilmNum, Date filmDeadline) {
 		int n=0;
