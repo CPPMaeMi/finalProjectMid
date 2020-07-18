@@ -15,17 +15,18 @@
 		f.filmNum=m.filmNum and f.genreNum=g.genreNum and
 		b.branchNum=p.branchNum and t.branchNum=b.branchNum
 	</select>
+	
 	<insert id="insert" parameterType="mschedule">
 		insert into mschedule
 		values(mScheduleNum.nextval,to_date(#{mStartTime},'YYYY/MM/DD HH24:MI'),#{theatherNum},#{purchaseFilmNum})
 	</insert>
 	
 	
-	<select id="list" parameterType="int" resultType="hashmap">
-		select m.mscheduleNum, m.mstarttime, m.purchasefilmNum, m.theathernum, t.branchNum, f.filmname
+	<select id="list" parameterType="hashmap" resultType="hashmap">
+		select m.mscheduleNum, m.mstarttime, m.purchasefilmNum, m.theathernum, t.branchNum, f.filmname, t.theathername
 		from mschedule m, theather t, purchasefilm p, film f
 		where m.theatherNum=t.theatherNum and m.purchasefilmnum=p.purchasefilmnum and p.filmnum=f.filmnum and t.branchNum=#{branchNum}
-		order by mstarttime asc
+		and to_char(m.mstarttime,'YYYY-MM-DD')=#{regDate} order by f.filmname asc, t.theathernum asc, mstarttime asc
 	</select>	
 	
 	

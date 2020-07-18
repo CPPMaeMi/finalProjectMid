@@ -25,8 +25,8 @@ public class FilmDetailController {
 	@Autowired
 	private MovieImgService service3;
 	
-	@GetMapping("/fm/filmdetail.do")
-	public ModelAndView map(int filmNum, int genreNum) {
+	@GetMapping(value="/fm/filmdetail.do")
+	public ModelAndView map(int filmNum, int genreNum,int buy) {
 		ModelAndView mv=new ModelAndView(".fm.filmdetail");
 		FilmVo vo=service.getinfo(filmNum);
 		//System.out.println("필름테이블토하는중:"+vo);
@@ -40,8 +40,8 @@ public class FilmDetailController {
 		mv.addObject("vo1",vo1);
 		mv.addObject("vo2",vo2);
 		mv.addObject("vo3",vo3);
+		mv.addObject("buy",buy);
 		return mv;
-		
 	}
 }
 

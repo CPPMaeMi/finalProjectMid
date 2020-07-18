@@ -18,40 +18,40 @@ import com.jhta.project.vo.MScheduleVo;
 public class MScheduleService {
 	@Autowired
 	private MScheduleDao msDao;
-	//ÀüÃ¼ ±¸¸ÅÇÑ ¿µÈ­¸ñ·Ï º¸¿©ÁÖ±â À§ÇÑ ¼­ºñ½º´Ü
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ñ½º´ï¿½
 	public MScheduleListVo showAllMovieSchedule(HashMap<String, Object> map){
-		System.out.println("serviceÅ¸±â");
+		System.out.println("serviceÅ¸ï¿½ï¿½");
 		return msDao.showAllMovieSchedule(map);
 	}
 	
-	//insertÇÑ °á°ú list·Î º¸ÀÌ±â
-	public List<HashMap<String, Object>> list(int branchNum){
-		return msDao.list(branchNum);
+	//insertï¿½ï¿½ ï¿½ï¿½ï¿½ listï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
+	public List<HashMap<String, Object>> list(int branchNum,String regDate){
+		return msDao.list(branchNum,regDate);
 	}
 	
-	//¿µÈ­¸¦ ¿µÈ­°üº°, Dateº° µ¿½Ã¿¡ insertÇÏ±â
+	//ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½, Dateï¿½ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ insertï¿½Ï±ï¿½
 	@Transactional
 	public int insert(int[] theatherNum, String date, String time, int purchasefilmNum, Date filmDeadline) {
 		int n=0;
 		for(int i=0;i<theatherNum.length;i++) {
-			//dateÅ¸ÀÔ stringÀ¸·Î º¯È¯...
+			//dateÅ¸ï¿½ï¿½ stringï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯...
 			DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 			String film=df.format(filmDeadline);
 			
-			//»ó¿µ¿äÃ»ÇÑ ³¯Â¥
-			String[] day=date.split("-"); // [0]³âµµ--[1]¿ù--[2]ÀÏ
+			//ï¿½ó¿µ¿ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½Â¥
+			String[] day=date.split("-"); // [0]ï¿½âµµ--[1]ï¿½ï¿½--[2]ï¿½ï¿½
 			System.out.println(day[0]);
 			int days=Integer.parseInt(day[2]);
-			System.out.println("»ó¿µÇÒ ³¯Â¥:"+days);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥:"+days);
 			
-			//»ó¿µ Á¾·áÇÏ´Â ³¯Â¥
-			String[] dead=film.split("-"); //[0]³âµµ--[1]¿ù--[2]ÀÏ
+			//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥
+			String[] dead=film.split("-"); //[0]ï¿½âµµ--[1]ï¿½ï¿½--[2]ï¿½ï¿½
 			int die=Integer.parseInt(dead[2]);
-			System.out.println("Á¾·áÇÒ ³¯Â¥:"+die);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥:"+die);
 			
-			//»ðÀÔµÉ ½Ã°£ ¸Þ¼Òµå
+			//ï¿½ï¿½ï¿½Ôµï¿½ ï¿½Ã°ï¿½ ï¿½Þ¼Òµï¿½
 			for(;days<=die;) {
-				String[] timer=time.split(":"); //[0] ½Ã°£ [1] ºÐ
+				String[] timer=time.split(":"); //[0] ï¿½Ã°ï¿½ [1] ï¿½ï¿½
 				int timers=Integer.parseInt(timer[0]);
 				while(timers<=23) {
 					String startTime=day[0]+"/"+day[1]+"/"+days+" "+timers+":"+timer[1];

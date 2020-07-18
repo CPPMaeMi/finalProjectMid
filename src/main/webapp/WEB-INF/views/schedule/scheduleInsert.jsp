@@ -38,10 +38,11 @@
 				<td>${vo1.theatherNum }</td>
 				<td>${vo1.theatherName }</td>
 				<td>${vo1.theatherSort }</td>
-				<td><input type="checkbox" class="thNum" name="theatherNum" value="${vo1.theatherNum }">
+				<td><input type="checkbox" class="thNum"
+				 <c:if test="${vo1.live!=0 }">disabled</c:if>
+				 value="${vo1.theatherNum }" name="theatherNum" ></td>				
 				<input type="hidden" name="purchasefilmNum" value="${vo.purchasefilmNum }">
 				<input type="hidden" name="filmDeadline" value="${vo.filmDeadline }">
-				</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -55,7 +56,7 @@
 </div>
 <script type="text/javascript">
 	$("button[name='time2']").on("click",function(){
-		alert($("input[name='time']").val());
+		alert($("input[name='date']").val());
 	});
 	
 	/*

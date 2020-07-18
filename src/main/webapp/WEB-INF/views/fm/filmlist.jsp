@@ -23,7 +23,7 @@
 						<tr>
 							<th scope="row">${vo.FILMNUM}</th>
 							<td class="w-25"><a
-								href="${cp}/fm/filmdetail.do?filmNum=${vo.FILMNUM}&genreNum=${vo.GENRENUM}">
+								href="${cp}/fm/filmdetail.do?filmNum=${vo.FILMNUM}&genreNum=${vo.GENRENUM}&buy=${vo.BUY}">
 									<img src="${vo.MOVIEIMGURL}" class="img-fluid img-thumbnail"
 									alt="Poster" class="image" style="height: 158px; width: 110px;">
 							</a></td>

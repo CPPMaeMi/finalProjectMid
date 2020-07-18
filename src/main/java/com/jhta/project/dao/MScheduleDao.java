@@ -15,20 +15,23 @@ public class MScheduleDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.jhta.mybatis.mapper.mschedule";
-	//ÀüÃ¼ ±¸¸ÅÇÑ ¿µÈ­¸ñ·Ï º¸¿©ÁÖ±â À§ÇÑ dao´Ü
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ daoï¿½ï¿½
 	public MScheduleListVo showAllMovieSchedule(HashMap<String, Object> map){
-		System.out.println("daoÅ¸±â");
+		System.out.println("daoÅ¸ï¿½ï¿½");
 		return sqlSession.selectOne(NAMESPACE+".getList",map);
 	}
 	
-	//mschedule¿¡ values insert
+	//mscheduleï¿½ï¿½ values insert
 	public int insert(MScheduleVo vo) {
 		return sqlSession.insert(NAMESPACE+".insert",vo);
 	}
 	
-	//mschedule »ó¿µ½Ã°£Ç¥ ³ëÃâ
-	public List<HashMap<String, Object>> list(int branchNum) {
-		return sqlSession.selectList(NAMESPACE+".list", branchNum);
+	//mschedule ï¿½ó¿µ½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
+	public List<HashMap<String, Object>> list(int branchNum,String regDate) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("branchNum", branchNum);
+		map.put("regDate", regDate);
+		return sqlSession.selectList(NAMESPACE+".list", map);
 	}
 	
 }

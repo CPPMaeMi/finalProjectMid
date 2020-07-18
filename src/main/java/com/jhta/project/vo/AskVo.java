@@ -6,6 +6,7 @@ public class AskVo {
 	private String qnaTitle;
 	private String askContent;
 	private String askRegdate;
+	
 	public AskVo(int askNum, int memNum, String qnaTitle, String askContent, String askRegdate) {
 		super();
 		this.askNum = askNum;

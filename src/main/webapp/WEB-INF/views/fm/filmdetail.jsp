@@ -82,7 +82,11 @@
 						<c:set var="now" value="<%=new java.util.Date() %>"/>
 						<center>
 						<c:choose>
-							<c:when test="${now<vo.filmEnd}">
+							<c:when test="${buy>0 }">
+							<p>이미 구매했습니다..</p>
+						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-secondary btn-lg">목록</button></a>
+							</c:when>
+							<c:when test="${now<vo.filmEnd }">
 						<button type="submit" class="btn btn-success btn-lg">구매</button>
 						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-success btn-lg">목록</button></a>
 							</c:when>

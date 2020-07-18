@@ -7,6 +7,8 @@
 		select * from theather where theatherNum=#{theatherNum}
 	</select>
 	<select id="list" parameterType="int" resultType="theather">
-		select * from theather where branchNum=#{branchNum}
+		select t.*,nvl((select count(*) 
+		from mschedule m where m.theathernum=t.theathernum and m.mstarttime>sysdate),0) live
+		from theather t where branchNum=#{branchNum}
 	</select>
 </mapper>

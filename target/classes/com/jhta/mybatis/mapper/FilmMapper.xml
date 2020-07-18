@@ -7,9 +7,11 @@
 		select * from film where filmNum=#{filmNum} 
 	</select>
 	<select id="list" parameterType="hashmap" resultType="hashmap">
-		select * from
+		select bb.* from
 		(
-		    select aa.*, rownum rnum from
+		    select aa.*, rownum rnum, nvl((select count(*) from purchasefilm pf
+		    where pf.branchnum=1 and pf.filmnum=aa.filmnum)
+		    ,0) buy  from
 		    (
 		        select f.filmNum, f.filmName, f.filmStory, 
 				f.filmStart, f.filmEnd, f.filmHead, f.filmStatus, 
@@ -20,7 +22,7 @@
 				on f.filmNum=m.filmNum
 				order by f.filmNum asc
 		    )aa
-		)
+		)bb
 		<![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
 	</select>
 	<select id="count" resultType="int" parameterType="hashmap">

@@ -24,13 +24,11 @@ public class ScheduleListController {
 	@RequestMapping("/schedule/showScheduleList.do")
 	//전체 구매한 영화목록 보여주기 위한 컨트롤러
 	public String scheduleList(@RequestParam(value="branchNum",defaultValue = "1")int branchNum, String purchasefilmNum, Model model) {
-		System.out.println("제발좀나와:"+branchNum+","+purchasefilmNum);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("branchNum", branchNum);
 		map.put("purchasefilmNum", purchasefilmNum);
 		MScheduleListVo vo=msService.showAllMovieSchedule(map);
 		model.addAttribute("vo", vo);
-		System.out.println("와이이이");
 		List<TheatherVo> vo1=service.list(branchNum);
 		model.addAttribute("vo1", vo1);
 		return ".schedule.scheduleInsert";
