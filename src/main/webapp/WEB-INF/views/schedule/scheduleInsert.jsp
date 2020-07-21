@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+
+</style>
 <center>
-<h1>상영스케줄편성</h1>
 <!-- 조인해서 들고온 데이터 노출 -->
-<div>
+<div class="who">
+<h1>상영 스케줄 편성</h1>
+<div class="filminfo">
 	<table border="1" style="width: 700px; text-align:center;">
 			<tr>
 				<th>포스터</th>
@@ -53,6 +57,7 @@
 			<button type="submit" class="btn btn-success" name="time2" id="time2">추가하기</button>
 		</div>
 	</form>
+</div>
 </div>
 <script type="text/javascript">
 	$("button[name='time2']").on("click",function(){

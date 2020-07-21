@@ -25,13 +25,11 @@ public class ScheduleInsertController {
 	@PostMapping("/schedule/scheduleInsert.do")
 	public String insert(int[] theatherNum, String date, String time, int purchasefilmNum, @DateTimeFormat(pattern="yyyy-MM-dd")Date filmDeadline, int branchNum, Model model) {
 		try {
-			System.out.println("얍");
+			System.out.println("yap");
 			service.insert(theatherNum, date, time, purchasefilmNum, filmDeadline);
-			System.out.println("아오");
+			System.out.println("ao");
 			List<HashMap<String,Object>> list=service.list(branchNum,date);
-			System.out.println("ㅇ어헣ㅇ");
-			//List<HashMap<String,Object>> seatCount=new ArrayList<HashMap<String,Object>>();
-			System.out.println("ㅎㅇ후홓아");
+			System.out.println("dogsilta");
 			List<HashMap<String,Object>> sCount=service.scount(branchNum);
 			model.addAttribute("scount", sCount);
 			model.addAttribute("list", list);
@@ -52,9 +50,9 @@ public class ScheduleInsertController {
 		List<HashMap<String,Object>> list=service.list(branchNum,regDate);
 		System.out.println("여기지금 schedulinsert컨트롤러임:"+list.toString());
 		List<HashMap<String,Object>> sCount=service.scount(branchNum);
-		System.out.println("ㅎㅇ후홓아");
+		System.out.println("disgusting...");
 		model.addAttribute("scount", sCount);
-		System.out.println("강아지"+list.toString());
+		System.out.println("dog.....:"+list.toString());
 		model.addAttribute("list", list);
 		model.addAttribute("weeklist",week(regDate));
 		return ".schedule.scheduler";

@@ -19,12 +19,13 @@ public class MScheduleDao {
 	
 	//전체 구매한 영화목록 보여주기 위한 dao단
 	public MScheduleListVo showAllMovieSchedule(HashMap<String, Object> map){
-		System.out.println("dao타占쏙옙");
+		System.out.println("dao가 타고 있어요");
 		return sqlSession.selectOne(NAMESPACE+".getList",map);
 	}
 	
 	//mschedule에 values insert
 	public int insert(MScheduleVo vo) {
+		System.out.println("들리는 줄 알았겠지만 유감이야");
 		return sqlSession.insert(NAMESPACE+".insert",vo);
 	}
 	

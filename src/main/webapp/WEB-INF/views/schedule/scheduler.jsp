@@ -5,13 +5,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .alltable {
-	background-color: MediumSeaGreen;
-	border: 1px solid black;
+	background-color: white;
 	width: auto;
 	margin-left: 200px;
 	margin-right: 200px;
+    height: -webkit-fill-available;
+	overflow-y:scroll;
 }
-
+.alltable::-webkit-scrollbar {
+	display: none;
+}
 .datetable {
 	display: inline-block;
 	font-family: fantasy;
@@ -31,19 +34,37 @@
 
 .dateyoo{
 	align-content: center;
-    background-color: blue;
+    background-color: white;
     width: fit-content;
-    margin-left: 15%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.line{
+	width:100%;
+	height:1px;
+	background: black;
+}
+.fname{
+	padding-right: 10px;
+	border-right: 2px;
+	border-right-color: white;
+	display:inline-block;
+	width:auto;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 0rem;
 }
 </style>
 <div class="alltable">
 			<div class="dateyoo">
-			<c:forEach var="week" items="${weeklist }">
+			<c:forEach var="week" items="${weeklist }" varStatus="i">
 				<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${week}">
-				<button type="button" name="choice" class="btn btn-light" style="border: 2px solid red;">
+				<button type="button" name="choice" class="btn btn-light" style="font-family: fantasy;<c:if test="${i.index==0 }">background-color:gray;</c:if>">
 				${week }</button></a>
 			</c:forEach>
 			</div>
+			<div class="line"></div>
 			<div class="midieum">
 				<c:set var="checkName" value="null" />
 				<c:set var="checkTheather" value="0" />
@@ -52,11 +73,11 @@
 						<div><br><h2>${vo.FILMNAME }</h2></div>
 					</c:if>
 					<c:if test="${vo.THEATHERNUM != checkTheather }">
-							<p>${vo.THEATHERNAME }
+							<p>▶ ${vo.THEATHERNAME }
 					<c:forEach var="seat" items="${scount }">
 						<c:if test="${vo.THEATHERNUM==seat.THEATHERNUM }">
-						${seat.CNT }석</p></c:if></c:forEach>
-									</c:if>		
+						| ${seat.CNT }석 <span class="badge badge-success">예매중</span></p></c:if></c:forEach>
+						</c:if>		
 		
 				<div class="timetable">
 					<fmt:formatDate value="${vo.MSTARTTIME }" pattern="HH:mm" var="mstarttime" />
