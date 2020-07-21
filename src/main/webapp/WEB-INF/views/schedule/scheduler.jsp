@@ -1,32 +1,70 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<div>
-<h1>야호~ 입력이 됐다네요~~~</h1>
-<h1>달력 만들어주실분</h1>
-<h2>구합니다</h2>
-	<c:forEach var="week" items="${weeklist }">
-		<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${week}"><div style="display: inline-block;border: 2px solid yellow;">${week }</div></a>
-	</c:forEach>
-	<div>
-		<c:set var="checkName" value="null"/>
-		<c:set var="checkTheather" value="0"/>
-		<c:forEach var="vo" items="${list }">
-			<c:if test="${vo.FILMNAME != checkName }">
-				<div>${vo.FILMNAME }</div>
-			</c:if>
-			<c:if test="${vo.THEATHERNUM != checkTheather }">
-				<div>
-					<h4>${vo.THEATHERNAME }</h4>
-				</div>
-			</c:if>
-			<div style="display: inline-block;border: 3px solid red;">
-				<p>${vo.MSTARTTIME }</p>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+.alltable {
+	background-color: MediumSeaGreen;
+	border: 1px solid black;
+	width: auto;
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.datetable {
+	display: inline-block;
+	font-family: fantasy;
+}
+
+.timetable {
+	display: inline-block;
+	border: 1px solid Gray;
+	height: 43px;
+	width: 72px;
+	text-shadow: bold;
+}
+
+.medium{
+	background-color: yellow;
+}
+
+.dateyoo{
+	align-content: center;
+    background-color: blue;
+    width: fit-content;
+    margin-left: 15%;
+}
+</style>
+<div class="alltable">
+			<div class="dateyoo">
+			<c:forEach var="week" items="${weeklist }">
+				<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${week}">
+				<button type="button" name="choice" class="btn btn-light" style="border: 2px solid red;">
+				${week }</button></a>
+			</c:forEach>
 			</div>
-			<c:set var="checkName" value="${vo.FILMNAME }"/>
-			<c:set var="checkTheather" value="${vo.THEATHERNUM }"/>
-		</c:forEach>
+			<div class="midieum">
+				<c:set var="checkName" value="null" />
+				<c:set var="checkTheather" value="0" />
+				<c:forEach var="vo" items="${list }">
+					<c:if test="${vo.FILMNAME != checkName }">
+						<div><br><h2>${vo.FILMNAME }</h2></div>
+					</c:if>
+					<c:if test="${vo.THEATHERNUM != checkTheather }">
+							<p>${vo.THEATHERNAME }
+					<c:forEach var="seat" items="${scount }">
+						<c:if test="${vo.THEATHERNUM==seat.THEATHERNUM }">
+						${seat.CNT }석</p></c:if></c:forEach>
+									</c:if>		
+		
+				<div class="timetable">
+					<fmt:formatDate value="${vo.MSTARTTIME }" pattern="HH:mm" var="mstarttime" />
+					<p style="font-size: 12px; font-family: sans-serif; font-color: #333333; text-align: center; text-decoration-color: darkslategray;">${mstarttime }</p>
+				</div>
+				<c:set var="checkName" value="${vo.FILMNAME }" />
+				<c:set var="checkTheather" value="${vo.THEATHERNUM }" />
+			</c:forEach>
+		<br>
 	</div>
-</div>
+</div>	

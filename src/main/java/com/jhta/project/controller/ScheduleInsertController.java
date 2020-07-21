@@ -25,8 +25,15 @@ public class ScheduleInsertController {
 	@PostMapping("/schedule/scheduleInsert.do")
 	public String insert(int[] theatherNum, String date, String time, int purchasefilmNum, @DateTimeFormat(pattern="yyyy-MM-dd")Date filmDeadline, int branchNum, Model model) {
 		try {
+			System.out.println("얍");
 			service.insert(theatherNum, date, time, purchasefilmNum, filmDeadline);
+			System.out.println("아오");
 			List<HashMap<String,Object>> list=service.list(branchNum,date);
+			System.out.println("ㅇ어헣ㅇ");
+			//List<HashMap<String,Object>> seatCount=new ArrayList<HashMap<String,Object>>();
+			System.out.println("ㅎㅇ후홓아");
+			List<HashMap<String,Object>> sCount=service.scount(branchNum);
+			model.addAttribute("scount", sCount);
 			model.addAttribute("list", list);
 			model.addAttribute("weeklist",week(date));
 			return ".schedule.scheduler";
@@ -43,6 +50,10 @@ public class ScheduleInsertController {
 		String regD=sf.format(date);
 		if(regDate==null) regDate=regD;
 		List<HashMap<String,Object>> list=service.list(branchNum,regDate);
+		System.out.println("여기지금 schedulinsert컨트롤러임:"+list.toString());
+		List<HashMap<String,Object>> sCount=service.scount(branchNum);
+		System.out.println("ㅎㅇ후홓아");
+		model.addAttribute("scount", sCount);
 		System.out.println("강아지"+list.toString());
 		model.addAttribute("list", list);
 		model.addAttribute("weeklist",week(regDate));
