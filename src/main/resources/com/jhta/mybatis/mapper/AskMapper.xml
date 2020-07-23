@@ -6,4 +6,5 @@
 	<select id="getinfo" parameterType="int" resultType="ask">
 		select * from ask where askNum=#{askNum} 
 	</select>
+	
 </mapper>
