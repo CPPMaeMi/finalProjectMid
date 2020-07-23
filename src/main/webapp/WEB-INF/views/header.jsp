@@ -47,12 +47,10 @@
            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            	매출관리
            </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-             <a class="dropdown-item" href="#">기간 조회</a>
-             <a class="dropdown-item" href="#">성별 조회</a>
-             <a class="dropdown-item" href="#">연령별 조회</a>
-             <a class="dropdown-item" href="#">지점 조회</a>
-			 <a class="dropdown-item" href="#">순이익 조회</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+             <a class="dropdown-item" href="${cp }/sales/dateSalesInfo.do">매출정보 조회</a>
+             <a class="dropdown-item" href="${cp }/sales/genderInfo.do">성별 조회</a>
+             <a class="dropdown-item" href="${cp }/sales/ageInfo.do">연령별 조회</a>
            </div>
            </li>
 		</ul>
