@@ -30,7 +30,6 @@ public class FilmListController {
 		List<HashMap<String,Object>> list=service.list(map);
 		mv.addObject("list",list);
 		mv.addObject("pu",pu);
-		
 		return mv;
 	}
 

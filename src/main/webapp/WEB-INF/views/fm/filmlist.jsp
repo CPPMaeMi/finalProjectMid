@@ -49,11 +49,12 @@
 						<c:choose>
 							<c:when test="${i==pu.pageNum }">
 								<li class="page-item active"><a class="page-link"
-									href="/projectMid/fm/filmlist.do?pageNum=${i }">${i }</a></li>
+								
+									href="${cp }/fm/list.do?pageNum=${i }">${i }</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a class="page-link"
-									href="/projectMid/fm/filmlist.do?pageNum=${i }">${i }</a></li>
+									href="${cp }/fm/list.do?pageNum=${i }">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
