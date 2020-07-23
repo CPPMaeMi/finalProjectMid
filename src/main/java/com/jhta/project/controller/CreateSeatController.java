@@ -20,6 +20,7 @@ import com.jhta.project.vo.TheatherVo;
 @Controller
 public class CreateSeatController {
 	
+	
 	@Autowired
 	private RestService service;
 	
