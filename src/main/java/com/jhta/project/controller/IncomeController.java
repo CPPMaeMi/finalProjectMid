@@ -55,6 +55,7 @@ public class IncomeController {
 	public String genderInfo(Model model) {
 		return ".sales.gender";
 	}
+	
 	 //성별 매출조회 년도별
 	 @RequestMapping(value="/sales/gender/yearList.do",method=RequestMethod.GET)
 	 @ResponseBody

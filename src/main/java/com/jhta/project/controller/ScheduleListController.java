@@ -33,7 +33,6 @@ public class ScheduleListController {
 		model.addAttribute("vo", vo);
 		String listUrl="http://localhost:9090/projectdb/fm/theatherlist.do?branchNum="+branchNum;
 		String showCode=service.get(listUrl).trim();
-		System.out.println("성진아 살려줭:"+showCode);
 		TheatherVo[] arrays= gson.fromJson(showCode, TheatherVo[].class);
 		List<TheatherVo> vo1=Arrays.asList(arrays);
 		model.addAttribute("vo1", vo1);

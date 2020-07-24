@@ -37,8 +37,6 @@ public class FilmListController {
 		String jsonString=gson.toJson(map);
 		String url="http://localhost:9090/projectdb/fm/list.do";
 		String code=service.post(url, jsonString).trim();
-		System.out.println(code);
-		
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<List<HashMap<String, Object>>> typeRef = new TypeReference<List<HashMap<String, Object>>>() {};
 		List<HashMap<String, Object>> o = mapper.readValue(code, typeRef);

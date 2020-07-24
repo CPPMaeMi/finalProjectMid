@@ -19,8 +19,6 @@ import com.jhta.project.vo.TheatherVo;
 
 @Controller
 public class CreateSeatController {
-	
-	
 	@Autowired
 	private RestService service;
 	
@@ -32,10 +30,12 @@ public class CreateSeatController {
 	
 	@RequestMapping("/room/seat/create.do")
 	public String create(int theatherNum,Model model) {
+		System.out.println(theatherNum);
 		String url="http://localhost:9090/projectdb/room/seat/getinfo.do?theatherNum="+theatherNum;
 		String code=service.get(url).trim();
 		Gson gson=new Gson();
 		TheatherVo vo=gson.fromJson(code, TheatherVo.class);
+		System.out.println(code);
  		model.addAttribute("vo",vo);
 		return ".room.seat.create";
 	}
@@ -75,7 +75,7 @@ public class CreateSeatController {
 	}
 	
 	@RequestMapping("/room/seat/theather.do")
-	public String createSeat(@RequestParam(value="branchNum",defaultValue = "21") int branchNum,Model model) throws JsonProcessingException {
+	public String createSeat(@RequestParam(value="branchNum",defaultValue = "1") int branchNum,Model model) throws JsonProcessingException {
 		String url="http://localhost:9090/projectdb/room/seat/theather.do?branchNum="+branchNum;
 		String code = "";
 		try {

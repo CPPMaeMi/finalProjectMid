@@ -70,10 +70,12 @@ public class ScheduleInsertController {
 		String scountUrl="http://localhost:9090/projectdb/schedule/scount.do?branchNum="+branchNum;
 		String code1=service.get(scountUrl).trim();
 		List<HashMap<String, Object>> sCount = mapper.readValue(code1, typeRef);
-		String prevDate=sf.format(sf.parse(regDate).getTime()-1000*60*60*24); 
-		model.addAttribute("prevDate",prevDate);
 		model.addAttribute("scount", sCount);
 		model.addAttribute("list", list);
+		
+		
+		String prevDate=sf.format(sf.parse(regDate).getTime()-1000*60*60*24); 
+		model.addAttribute("prevDate",prevDate);
 		model.addAttribute("weeklist",week(regDate));
 		return ".schedule.schedulers";
 	}

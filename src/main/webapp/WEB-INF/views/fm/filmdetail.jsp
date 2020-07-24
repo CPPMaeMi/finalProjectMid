@@ -53,11 +53,14 @@
 							</tr>
 							<tr>
 								<th>개봉일</th>
-								<fmt:formatDate var="filmStart" value="${vo.filmStart}" pattern="yyyy-MM-dd"/> 
+								<jsp:useBean id="myDate" class="java.util.Date"/>
+								<c:set target="${myDate}" property="time" value="${vo.filmStart }"/>
+								<fmt:formatDate var="filmstart" value="${myDate}" pattern="yyyy-MM-dd"/> 
 								<td>${filmStart }</td>
 							</tr>
 							<tr>
-								<fmt:formatDate var="filmEnd" value="${vo.filmEnd}" pattern="yyyy-MM-dd"/>
+								<c:set target="${myDate}" property="time" value="${vo.filmEnd }"/>
+								<fmt:formatDate var="filmEnd" value="${myDate}" pattern="yyyy-MM-dd"/>
 								<th>종료일</th>
 								<td>${filmEnd }</td>
 							</tr>
@@ -86,7 +89,7 @@
 							<p>이미 구매했습니다..</p>
 						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-secondary btn-lg">목록</button></a>
 							</c:when>
-							<c:when test="${now<vo.filmEnd }">
+							<c:when test="${now<myDate }">
 						<button type="submit" class="btn btn-success btn-lg">구매</button>
 						<a href="${cp }/fm/list.do"><button type="button" class="btn btn-success btn-lg">목록</button></a>
 							</c:when>
