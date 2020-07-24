@@ -2,18 +2,22 @@ package com.jhta.project.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FilmVo {
 	private int filmNum;
 	private String filmName;
 	private String filmStory;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date filmStart;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date filmEnd;
 	private int filmPrice;
-	private String runnigTime;
+	private String filmHead;
 	private String filmStatus;
 	private int genreNum;
 	public FilmVo(int filmNum, String filmName, String filmStory, Date filmStart, Date filmEnd, int filmPrice,
-			String runnigTime, String filmStatus, int genreNum) {
+			String filmHead, String filmStatus, int genreNum) {
 		super();
 		this.filmNum = filmNum;
 		this.filmName = filmName;
@@ -21,7 +25,7 @@ public class FilmVo {
 		this.filmStart = filmStart;
 		this.filmEnd = filmEnd;
 		this.filmPrice = filmPrice;
-		this.runnigTime = runnigTime;
+		this.filmHead = filmHead;
 		this.filmStatus = filmStatus;
 		this.genreNum = genreNum;
 	}
@@ -64,11 +68,11 @@ public class FilmVo {
 	public void setFilmPrice(int filmPrice) {
 		this.filmPrice = filmPrice;
 	}
-	public String getRunnigTime() {
-		return runnigTime;
+	public String getFilmHead() {
+		return filmHead;
 	}
-	public void setRunnigTime(String runnigTime) {
-		this.runnigTime = runnigTime;
+	public void setFilmHead(String filmHead) {
+		this.filmHead = filmHead;
 	}
 	public String getFilmStatus() {
 		return filmStatus;
@@ -82,5 +86,6 @@ public class FilmVo {
 	public void setGenreNum(int genreNum) {
 		this.genreNum = genreNum;
 	}
+	
 	
 }

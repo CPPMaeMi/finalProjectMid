@@ -1,17 +1,29 @@
 package com.jhta.project.vo;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MScheduleVo {
 	private int mScheduleNum;
-	private int brInfoNum;
 	private String mStartTime;
-	public MScheduleVo(int mScheduleNum, int brInfoNum, String mStartTime) {
+	private int purchaseFilmNum;
+	private int theatherNum;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd", timezone="Asia/Seoul")
+	private Date d;
+	public MScheduleVo() {}
+	public MScheduleVo(int mScheduleNum, String mStartTime, int purchaseFilmNum, int theatherNum) {
 		super();
 		this.mScheduleNum = mScheduleNum;
-		this.brInfoNum = brInfoNum;
 		this.mStartTime = mStartTime;
+		this.purchaseFilmNum = purchaseFilmNum;
+		this.theatherNum = theatherNum;
 	}
-	public MScheduleVo() {
-		super();
+	public void setD(Date d) {
+		this.d = d;
+	}
+	public Date getD() {
+		return d;
 	}
 	public int getmScheduleNum() {
 		return mScheduleNum;
@@ -19,17 +31,23 @@ public class MScheduleVo {
 	public void setmScheduleNum(int mScheduleNum) {
 		this.mScheduleNum = mScheduleNum;
 	}
-	public int getBrInfoNum() {
-		return brInfoNum;
-	}
-	public void setBrInfoNum(int brInfoNum) {
-		this.brInfoNum = brInfoNum;
-	}
 	public String getmStartTime() {
 		return mStartTime;
 	}
 	public void setmStartTime(String mStartTime) {
 		this.mStartTime = mStartTime;
+	}
+	public int getPurchaseFilmNum() {
+		return purchaseFilmNum;
+	}
+	public void setPurchaseFilmNum(int purchaseFilmNum) {
+		this.purchaseFilmNum = purchaseFilmNum;
+	}
+	public int getTheatherNum() {
+		return theatherNum;
+	}
+	public void setTheatherNum(int theatherNum) {
+		this.theatherNum = theatherNum;
 	}
 	
 }

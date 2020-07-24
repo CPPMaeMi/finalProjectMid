@@ -5,6 +5,7 @@ public class TheatherVo {
 	private int branchNum;
 	private String theatherName;
 	private String theatherSort;
+	private int live;
 	public TheatherVo(int theatherNum, int branchNum, String theatherName, String theatherSort) {
 		super();
 		this.theatherNum = theatherNum;
@@ -12,6 +13,15 @@ public class TheatherVo {
 		this.theatherName = theatherName;
 		this.theatherSort = theatherSort;
 	}
+	
+	public int getLive() {
+		return live;
+	}
+
+	public void setLive(int live) {
+		this.live = live;
+	}
+
 	public TheatherVo() {
 		super();
 	}
