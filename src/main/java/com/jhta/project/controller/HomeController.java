@@ -1,5 +1,7 @@
 package com.jhta.project.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +33,21 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/log/banchloging.do")
-	public String banchloging(HttpSession session, String email, String pass,Model model) {
-		String memId = email;
-		String memPwd = pass;
-		String url="http://localhost:9090/projectdb/log/banchloging.do?memId="+memId+"&memPwd="+memPwd;
-		String code = service.get(url).trim();
-		System.out.println("code[]:"+code);
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+	public String banchloging(HttpSession session, String memId, String memPwd,Model model) {
+		System.out.println("@222222222222222222222222222"+memId+","+memPwd);
+		String url="http://localhost:9090/projectdb/banch/loging.do";
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("memId", memId);
+		map.put("memPwd", memPwd);
+		Gson gson = new Gson();
+		String jsonString= gson.toJson(map);
+		String code = service.post(url,jsonString).trim();
 		if(code.equals("")||code.equals(null)) {
 			model.addAttribute("msg","아이디 확인바랍니다.");
 			return "log/login";
 		}else {
 			bl=true;
+			gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
 			BranchVo vo= gson.fromJson(code, BranchVo.class);
 			session.getServletContext().setAttribute("branchNum",vo.getBranchNum());
 			session.getServletContext().setAttribute("brName",vo.getBrName());

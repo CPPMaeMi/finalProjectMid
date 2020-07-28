@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,8 @@ public class ScheduleInsertController {
 	private RestService service;
 	
 	@PostMapping("/schedule/scheduleInsert.do")
-	public String insert(int[] theatherNum, String date, String time, int purchasefilmNum, String filmDeadline, int branchNum, Model model) {
+	public String insert(int[] theatherNum, String date, String time, int purchasefilmNum, String filmDeadline,HttpSession session, Model model) {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		Gson gson=new Gson();
 		try {
 			MScheduleInsertVo vo=new MScheduleInsertVo(theatherNum, date, time, purchasefilmNum, filmDeadline);
@@ -57,7 +60,8 @@ public class ScheduleInsertController {
 	}
 	
 	@GetMapping("/schedule/scheduleInsert.do") 
-	public String scheduleList(int branchNum, Model model,String regDate) throws ParseException, JsonMappingException, JsonProcessingException {
+	public String scheduleList(HttpSession session, Model model,String regDate) throws ParseException, JsonMappingException, JsonProcessingException {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA);
 		Date date = new Date();
 		String regD=sf.format(date);

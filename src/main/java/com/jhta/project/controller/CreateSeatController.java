@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,8 @@ public class CreateSeatController {
 	private RestService service;
 	
 	@RequestMapping("/room/seat/theatherInsert.do")
-	public String theatherinsert(int branchNum,Model model) {
+	public String theatherinsert(HttpSession session,Model model) {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		model.addAttribute("branchNum",branchNum);
 		return ".room.seat.theatherinsert";
 	}
@@ -75,7 +78,8 @@ public class CreateSeatController {
 	}
 	
 	@RequestMapping("/room/seat/theather.do")
-	public String createSeat(@RequestParam(value="branchNum",defaultValue = "1") int branchNum,Model model) throws JsonProcessingException {
+	public String createSeat(HttpSession session,Model model) throws JsonProcessingException {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		String url="http://localhost:9090/projectdb/room/seat/theather.do?branchNum="+branchNum;
 		String code = "";
 		try {

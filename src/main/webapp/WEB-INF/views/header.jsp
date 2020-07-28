@@ -13,10 +13,9 @@
 		aria-controls="navbarSupportedContent" aria-expanded="false"
 		aria-label="Toggle navigation">
 	</button>
-
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav">
-			<li class="nav-item active"><a class="nav-link" href="#">Home
+			<li class="nav-item active"><a class="nav-link" href="${cp }/">Home
 					<span class="sr-only">(current)</span>
 			</a></li>
 			
@@ -28,7 +27,6 @@
             <a class="dropdown-item" href="${cp }/fm/list.do">상영 영화 관리</a>
              <a class="dropdown-item" href="${cp }/fm/filminserts.do?branchNum=1">상영 기간 결정</a>
              <a class="dropdown-item" href="${cp }/schedule/scheduleInsert.do?branchNum=1">상영 시간표</a>
-             <a class="dropdown-item" href="#">본사 판권 관리</a>
              <a class="dropdown-item" href="${cp }/room/seat/theather.do">영화관 좌석 관리</a>
            </div>
            </li>
@@ -56,6 +54,7 @@
            </div>
            </li>
 		</ul>
+		<h2 style="vertical-align: middle;margin-left: 200px;">${brName }점</h2>
 	</div>
 </nav>
 

@@ -4,12 +4,13 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -46,7 +47,8 @@ public class FilmInsertController {
 	}
 	
 	@GetMapping("/fm/filminserts.do")
-	public String allMovieList(Model model,@RequestParam(value="branchNum",defaultValue = "1") int branchNum) throws JsonMappingException, JsonProcessingException {
+	public String allMovieList(Model model,HttpSession session) throws JsonMappingException, JsonProcessingException {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		String listUrl="http://localhost:9090/projectdb/fm/filminsert.do?branchNum="+branchNum;
 		String code=service.get(listUrl).trim();
 		ObjectMapper mapper = new ObjectMapper();

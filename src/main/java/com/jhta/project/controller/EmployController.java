@@ -7,8 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.jhta.page.util.PageUtil;
 import com.jhta.project.service.RestService;
-import com.jhta.project.vo.QnaVo;
 import com.jhta.project.vo.StaffVo;
 
 @Controller
@@ -29,6 +26,7 @@ public class EmployController {
 	@RequestMapping("/employee/emInsert.do")
 	public String goEmployeeInsert(Model model) 
 			throws JsonProcessingException {
+		
 		String getSffPositionUrl = "http://localhost:9090/projectdb/employee/getSffPosition.do";
 		String getDivisionNameUrl = "http://localhost:9090/projectdb/employee/getDivisionName.do";
 		Gson gson=new Gson();

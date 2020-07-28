@@ -31,14 +31,14 @@
 
 				<div class="wrap-input100 validate-input"
 					data-validate="Valid email is: a@b.c">
-					<input class="input100" type="text" name="email" id="memId"> <span
+					<input class="input100" type="text" name="memId" id="memId"> <span
 						class="focus-input100" data-placeholder="아이디"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input"
 					data-validate="Enter password">
 					<span class="btn-show-pass"> <i class="zmdi zmdi-eye"></i>
-					</span> <input class="input100" type="password" name="pass" id="memPwd"> <span
+					</span> <input class="input100" type="password" name="memPwd" id="memPwd"> <span
 						class="focus-input100" data-placeholder="비밀번호"></span>
 				</div>
 

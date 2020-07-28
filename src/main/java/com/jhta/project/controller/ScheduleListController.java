@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,8 @@ public class ScheduleListController {
 	private RestService service;
 	
 	@RequestMapping("/schedule/showScheduleList.do")
-	public String scheduleList(@RequestParam(value="branchNum",defaultValue = "1")int branchNum, String purchasefilmNum, Model model) {
+	public String scheduleList(HttpSession session, String purchasefilmNum, Model model) {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("branchNum", branchNum);
 		map.put("purchasefilmNum", purchasefilmNum);
