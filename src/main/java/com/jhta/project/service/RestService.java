@@ -77,7 +77,11 @@ public class RestService {
 			}
 
 		} catch (Exception e){
+<<<<<<< HEAD
 			e.printStackTrace();
+=======
+			System.err.println(e.toString());
+>>>>>>> refs/heads/heo
 			return null;
 		}
 	}
