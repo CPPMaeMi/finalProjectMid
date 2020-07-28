@@ -67,7 +67,6 @@
 		//모달 데이터 이동
 		$("#squarespaceModal").on('shown.bs.modal',function(event){
 			var modalData = $(event.relatedTarget);
-			console.log(modalData.data('brnum'));
 			//지점번호 받아서 비교하기
 			if(1!=parseInt(modalData.data('brnum'))){
 				alert("접근 권한이 없습니다!!");
