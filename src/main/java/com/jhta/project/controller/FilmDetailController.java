@@ -34,6 +34,7 @@ public class FilmDetailController {
 		String imgvo=service.get(mUrl).trim();
 		MovieImgVo vo3=gson.fromJson(imgvo, MovieImgVo.class);
 		
+		
 		mv.addObject("vo",vo);
 		mv.addObject("vo1",vo1);
 		mv.addObject("vo2",vo2);
