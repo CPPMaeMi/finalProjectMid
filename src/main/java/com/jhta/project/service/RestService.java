@@ -78,6 +78,7 @@ public class RestService {
 
 		} catch (Exception e){
 			e.printStackTrace();
+			System.err.println(e.toString());
 			return null;
 		}
 	}

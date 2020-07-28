@@ -1,0 +1,498 @@
+diff --git a/.classpath b/.classpath
+index c3ce2e4..1dcf046 100644
+--- a/.classpath
++++ b/.classpath
+@@ -6,17 +6,22 @@
+ 			<attribute name="maven.pomderived" value="true"/>
+ 		</attributes>
+ 	</classpathentry>
+-	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
++	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
++		<attributes>
++			<attribute name="maven.pomderived" value="true"/>
++		</attributes>
++	</classpathentry>
+ 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+ 		<attributes>
+ 			<attribute name="optional" value="true"/>
+ 			<attribute name="maven.pomderived" value="true"/>
++			<attribute name="test" value="true"/>
+ 		</attributes>
+ 	</classpathentry>
+-	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/resources"/>
+-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
++	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+ 		<attributes>
+ 			<attribute name="maven.pomderived" value="true"/>
++			<attribute name="test" value="true"/>
+ 		</attributes>
+ 	</classpathentry>
+ 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+@@ -25,5 +30,10 @@
+ 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+ 		</attributes>
+ 	</classpathentry>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
++		<attributes>
++			<attribute name="owner.project.facets" value="java"/>
++		</attributes>
++	</classpathentry>
+ 	<classpathentry kind="output" path="target/classes"/>
+ </classpath>
+diff --git a/.settings/org.eclipse.jdt.core.prefs b/.settings/org.eclipse.jdt.core.prefs
+index 107056a..db24ee7 100644
+--- a/.settings/org.eclipse.jdt.core.prefs
++++ b/.settings/org.eclipse.jdt.core.prefs
+@@ -1,12 +1,15 @@
+ eclipse.preferences.version=1
+ org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
+-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
++org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
+ org.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve
+-org.eclipse.jdt.core.compiler.compliance=1.6
++org.eclipse.jdt.core.compiler.compliance=1.8
+ org.eclipse.jdt.core.compiler.debug.lineNumber=generate
+ org.eclipse.jdt.core.compiler.debug.localVariable=generate
+ org.eclipse.jdt.core.compiler.debug.sourceFile=generate
+ org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
++org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures=disabled
+ org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+ org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
+-org.eclipse.jdt.core.compiler.source=1.6
++org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=ignore
++org.eclipse.jdt.core.compiler.release=disabled
++org.eclipse.jdt.core.compiler.source=1.8
+diff --git a/.settings/org.eclipse.wst.common.component b/.settings/org.eclipse.wst.common.component
+index f07563d..3a28eba 100644
+--- a/.settings/org.eclipse.wst.common.component
++++ b/.settings/org.eclipse.wst.common.component
+@@ -1,10 +1,10 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project-modules id="moduleCoreId" project-version="1.5.0">
+-	<wb-module deploy-name="finalProjectMid">
++<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
++	<wb-module deploy-name="project-1.0.0-BUILD-SNAPSHOT">
+         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+ 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+ 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+ 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
++        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+ 		<property name="java-output-path" value="target/classes"/>
+         <property name="context-root" value="project"/>
+ 	</wb-module>
+diff --git a/.settings/org.eclipse.wst.common.project.facet.core.xml b/.settings/org.eclipse.wst.common.project.facet.core.xml
+index 43b1e0c..2091c7f 100644
+--- a/.settings/org.eclipse.wst.common.project.facet.core.xml
++++ b/.settings/org.eclipse.wst.common.project.facet.core.xml
+@@ -3,5 +3,5 @@
+   <fixed facet="jst.web"/>
+   <fixed facet="jst.java"/>
+   <installed facet="jst.web" version="2.5"/>
+-  <installed facet="jst.java" version="1.6"/>
++  <installed facet="jst.java" version="1.8"/>
+ </faceted-project>
+diff --git a/.settings/org.eclipse.wst.validation.prefs b/.settings/org.eclipse.wst.validation.prefs
+index 75abca5..ca90b67 100644
+--- a/.settings/org.eclipse.wst.validation.prefs
++++ b/.settings/org.eclipse.wst.validation.prefs
+@@ -1,6 +1,6 @@
+-#Fri Jun 06 17:00:12 BST 2008
+ DELEGATES_PREFERENCE=delegateValidatorListorg.eclipse.wst.wsdl.validation.internal.eclipse.WSDLDelegatingValidator\=org.eclipse.wst.wsdl.validation.internal.eclipse.Validator;org.eclipse.wst.xsd.core.internal.validation.eclipse.XSDDelegatingValidator\=org.eclipse.wst.xsd.core.internal.validation.eclipse.Validator;
+ USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.eclipse.wst.wsdl.validation.internal.eclipse.WSDLDelegatingValidator;org.eclipse.wst.xsd.core.internal.validation.eclipse.XSDDelegatingValidator;org.eclipse.jst.jsf.validation.internal.JSPSemanticsValidator;org.eclipse.wst.dtd.core.internal.validation.eclipse.Validator;org.eclipse.wst.xml.core.internal.validation.eclipse.Validator;org.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.jst.jsf.validation.internal.appconfig.AppConfigValidator;org.eclipse.jst.jsp.core.internal.validation.JSPBatchValidator;org.eclipse.wst.html.internal.validation.HTMLValidator;org.eclipse.jst.jsp.core.internal.validation.JSPContentValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+ USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.wst.wsdl.validation.internal.eclipse.WSDLDelegatingValidator;org.eclipse.wst.xsd.core.internal.validation.eclipse.XSDDelegatingValidator;org.eclipse.jst.jsf.validation.internal.JSPSemanticsValidator;org.eclipse.wst.dtd.core.internal.validation.eclipse.Validator;org.eclipse.wst.xml.core.internal.validation.eclipse.Validator;org.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.jst.jsf.validation.internal.appconfig.AppConfigValidator;org.eclipse.jst.jsp.core.internal.validation.JSPBatchValidator;org.eclipse.wst.html.internal.validation.HTMLValidator;org.eclipse.jst.jsp.core.internal.validation.JSPContentValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+ USER_PREFERENCE=overrideGlobalPreferencesfalse
++disabled=06target
+ eclipse.preferences.version=1
+diff --git a/.tern-project b/.tern-project
+index 5d61ef8..e45f55c 100644
+--- a/.tern-project
++++ b/.tern-project
+@@ -15,9 +15,12 @@
+     },
+     "jquery-extension": {
+       
++<<<<<<< HEAD
+     },
+     "jquery-mobile1.5": {
+       
++=======
++>>>>>>> heo
+     }
+   },
+   "libs": [
+diff --git a/pom.xml b/pom.xml
+index 220ae1c..6cb0922 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -15,6 +15,7 @@
+ 		<org.slf4j-version>1.6.6</org.slf4j-version>
+ 	</properties>
+ 	<dependencies>
++<<<<<<< HEAD
+ 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+ 		<dependency>
+ 		    <groupId>com.fasterxml.jackson.datatype</groupId>
+@@ -74,12 +75,37 @@
+ 			<artifactId>aspectjrt</artifactId>
+ 			<version>1.9.5</version>
+ 		</dependency>
++=======
++	
++>>>>>>> heo
+ 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+ 		<dependency>
+ 			<groupId>com.google.code.gson</groupId>
+ 			<artifactId>gson</artifactId>
+ 			<version>2.8.6</version>
+ 		</dependency>
++		<dependency>
++			<groupId>org.apache.httpcomponents</groupId>
++			<artifactId>httpclient</artifactId>
++			<version>4.4</version>
++		</dependency>
++		<!-- json -->
++		<dependency>
++			<groupId>org.json</groupId>
++			<artifactId>json</artifactId>
++			<version>20200518</version>
++		</dependency>
++		<dependency>
++			<groupId>com.googlecode.json-simple</groupId>
++			<artifactId>json-simple</artifactId>
++			<version>1.1.1</version>
++		</dependency>
++		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
++		<dependency>
++			<groupId>com.fasterxml.jackson.core</groupId>
++			<artifactId>jackson-databind</artifactId>
++			<version>2.11.0</version>
++		</dependency>
+ 
+ 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+ 		<dependency>
+diff --git a/src/main/java/com/jhta/page/util/PageUtil.java b/src/main/java/com/jhta/page/util/PageUtil.java
+index 355be0b..41e858d 100644
+--- a/src/main/java/com/jhta/page/util/PageUtil.java
++++ b/src/main/java/com/jhta/page/util/PageUtil.java
+@@ -1,5 +1,6 @@
+ package com.jhta.page.util;
+ 
++<<<<<<< HEAD
+ //ÔøΩÔøΩÔøΩÔøΩ¬° √≥ÔøΩÔøΩÔøΩœ¥ÔøΩ ≈¨ÔøΩÔøΩÔøΩÔøΩ
+ public class PageUtil {
+ 	private int pageNum; //ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩ»£
+@@ -15,6 +16,20 @@ public class PageUtil {
+ 	public PageUtil() {}
+ 	public PageUtil(int pageNum, int totalRowCount,
+ 			int rowBlockCount, int pageBlockCount) {
++=======
++public class PageUtil {
++	private int pageNum; // ∆‰¿Ã¡ˆπ¯»£
++	private int startRow; // Ω√¿€«‡
++	private int endRow; // ≥°«‡
++	private int startPageNum; // Ω√¿€∆‰¿Ã¡ˆ
++	private int endPageNum; // ≥°∆‰¿Ã¡ˆ
++	private int rowBlockCount; // «—∆‰¿Ã¡ˆø° ∫∏ø©¡˙ ±€¿« ∞πºˆ
++	private int pageBlockCount; // «—∆‰¿Ã¡ˆø° ∫∏ø©¡˙ ∆‰¿Ã¡ˆ¿« ∞πºˆ
++	private int totalPageCount; // ¿¸√º∆‰¿Ã¡ˆ ∞πºˆ
++	private int totalRowCount; // ¿¸√º ±€¿« ∞πºˆ
++	public PageUtil(){}
++	public PageUtil(int pageNum,int totalRowCount,int rowBlockCount,int pageBlockCount) {
++>>>>>>> heo
+ 		this.pageNum=pageNum;
+ 		this.totalRowCount=totalRowCount;
+ 		this.rowBlockCount=rowBlockCount;
+@@ -83,5 +98,8 @@ public class PageUtil {
+ 		this.totalRowCount = totalRowCount;
+ 	}
+ 	
++<<<<<<< HEAD
+ 
++=======
++>>>>>>> heo
+ }
+diff --git a/src/main/java/com/jhta/project/controller/HomeController.java b/src/main/java/com/jhta/project/controller/HomeController.java
+index 90ffbce..db94083 100644
+--- a/src/main/java/com/jhta/project/controller/HomeController.java
++++ b/src/main/java/com/jhta/project/controller/HomeController.java
+@@ -11,10 +11,15 @@ public class HomeController {
+ 	
+ 	@RequestMapping(value = "/", method = RequestMethod.GET)
+ 	public String home(HttpSession session) {
++<<<<<<< HEAD
+ 		
+ 		String cp=session.getServletContext().getContextPath();
+ 		session.getServletContext().setAttribute("cp",cp);
+ 		
++=======
++		String cp=session.getServletContext().getContextPath();
++		session.getServletContext().setAttribute("cp",cp);
++>>>>>>> heo
+ 		return ".main";
+ 	}
+ 	
+diff --git a/src/main/java/com/jhta/project/service/RestService.java b/src/main/java/com/jhta/project/service/RestService.java
+index 7367d42..654df76 100644
+--- a/src/main/java/com/jhta/project/service/RestService.java
++++ b/src/main/java/com/jhta/project/service/RestService.java
+@@ -77,7 +77,11 @@ public class RestService {
+ 			}
+ 
+ 		} catch (Exception e){
++<<<<<<< HEAD
+ 			e.printStackTrace();
++=======
++			System.err.println(e.toString());
++>>>>>>> heo
+ 			return null;
+ 		}
+ 	}
+diff --git a/src/main/webapp/WEB-INF/views/footer.jsp b/src/main/webapp/WEB-INF/views/footer.jsp
+index b9cceb2..b4ceb81 100644
+--- a/src/main/webapp/WEB-INF/views/footer.jsp
++++ b/src/main/webapp/WEB-INF/views/footer.jsp
+@@ -3,5 +3,4 @@
+ <div>
+ 	<h3 style= "color: purple;">MagaCinema</h3> 
+ 	<p>MegaCinema middle admin‚Äôs Homepage is powered by <span class="text-primary">MaeMi</span> / Designed by <span class="text-primary">MaeMi</span></p>
+-
+ </div>
+\ No newline at end of file
+diff --git a/src/main/webapp/WEB-INF/views/header.jsp b/src/main/webapp/WEB-INF/views/header.jsp
+index 5900200..ada41dd 100644
+--- a/src/main/webapp/WEB-INF/views/header.jsp
++++ b/src/main/webapp/WEB-INF/views/header.jsp
+@@ -6,7 +6,7 @@
+ 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 	<a class="navbar-brand" href="#"> <img
+-		src="/project/resources/logo/logo.png" width="50" height="50">MegaCinema
++		src="${cp}/resources/logo/logo.png" width="50" height="50">MegaCinema
+ 	</a>
+ 	<button class="navbar-toggler" type="button" data-toggle="collapse"
+ 		data-target="#navbarSupportedContent"
+@@ -38,9 +38,16 @@
+           	 ÏßÅÏõê
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
++<<<<<<< HEAD
+              <a class="dropdown-item" href="#">ÏßÅÏõêÌòÑÌô©</a>
+              <a class="dropdown-item" href="${cp }/schedule/scheduler.do">Í∑ºÎ¨¥Í¥ÄÎ¶¨</a>
+              <a class="dropdown-item" href="#">Í∏âÏó¨Í¥ÄÎ¶¨</a>
++=======
++             <a class="dropdown-item" href="${cp}/employee/emInsert.do">ÏßÅÏõêÎì±Î°ù </a> 
++             <a class="dropdown-item" href="${cp}/employee/emSelect.do">ÏßÅÏõêÌòÑÌô©</a>
++             <a class="dropdown-item" href="#">Í∑ºÎ¨¥Í¥ÄÎ¶¨</a>
++             <a class="dropdown-item" href="${cp}/salary/saManagement.do">Í∏âÏó¨Í¥ÄÎ¶¨</a>
++>>>>>>> heo
+            </div>
+            </li>
+            
+diff --git a/src/main/webapp/WEB-INF/views/layout.jsp b/src/main/webapp/WEB-INF/views/layout.jsp
+index edcfed5..66deb41 100644
+--- a/src/main/webapp/WEB-INF/views/layout.jsp
++++ b/src/main/webapp/WEB-INF/views/layout.jsp
+@@ -12,8 +12,13 @@
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
++<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
++<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="shortcut icon" href="/project/resources/logo/favicon.png">
+-<link href="/project/resources/css/main.css" rel="stylesheet">
++<!-- css?åÏùº  -->
++<link href="${cp}/resources/css/main.css" rel="stylesheet">
++<link href="${cp}/resources/css/employ.css" rel="stylesheet">
++<link href="${cp}/resources/css/employInsert.css" rel="stylesheet">
+ </head>
+ <body>
+ <div id="wrap">
+@@ -28,4 +33,52 @@
+ 	</div>
+ </div>
+ </body>
++<script>
++	$(function(){
++		$("input:checkbox").on('click',function(){
++			if($(this).prop('checked')){
++				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
++				$("#searchClear").css("opacity","1");
++			}else{
++				var val = $(this).val();
++				$(".searchLi").each(function(i,mem){
++					if($(this).text()==val){
++						$(this).remove();
++					}
++					if($(".searchLi").length==0){
++						$("#searchClear").css("opacity","0");
++					}
++				});
++			}
++		});
++		
++		
++		$("input:checkbox").each(function(){
++			if($(this).prop("checked")){
++				$("#searchUl").append("<li class='searchLi'>"+$(this).val()+"</li>");
++				$("#searchClear").css("opacity","1");
++			}
++		});
++		
++		$("#searchClear").on('click',function(){
++			$("#searchUl li").remove();
++			$("input:checkbox").prop("checked",false);
++			$(this).css("opacity","0");
++		});
++		
++		//Î™®Îã¨ ?∞Ïù¥???¥Îèô
++		$("#squarespaceModal").on('shown.bs.modal',function(event){
++			var modalData = $(event.relatedTarget);
++			//ÏßÄ?êÎ≤à??Î∞õÏïÑ??ÎπÑÍµê?òÍ∏∞
++			if(1!=parseInt(modalData.data('brnum'))){
++				alert("?ëÍ∑º Í∂åÌïú???ÜÏäµ?àÎã§!!");
++				$("#squarespaceModal").modal('hide');
++			}else{
++				$("#employeeAddr").val(modalData.data('addr'));
++				$("#employeeAccount").val(parseFloat(modalData.data('account')));
++				$("#brName").val(modalData.data('brname'));
++			}
++		});
++	});
++</script>
+ </html>
+\ No newline at end of file
+diff --git a/src/main/webapp/resources/css/main.css b/src/main/webapp/resources/css/main.css
+index 739dbb1..a953c42 100644
+--- a/src/main/webapp/resources/css/main.css
++++ b/src/main/webapp/resources/css/main.css
+@@ -1,15 +1,19 @@
+ @charset "UTF-8";
++
+ #wrap{
+ 	width:80%;
+-	height:937px;
++	height:900px;
+ 	margin:auto;
+ }
++
+ #content{
+ 	width:100%;
+ 	height:82%;
+ 	background-color:white;
+ 	border: solid 1px;
++	overflow-y: auto;
+ }
++
+ #footer{
+ 	width:80%;
+ 	height:10%;
+diff --git a/target/classes/com/jhta/project/vo/BookVo.class b/target/classes/com/jhta/project/vo/BookVo.class
+index e2d6857..262985d 100644
+Binary files a/target/classes/com/jhta/project/vo/BookVo.class and b/target/classes/com/jhta/project/vo/BookVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/BrInfoVo.class b/target/classes/com/jhta/project/vo/BrInfoVo.class
+index cec7de9..7bbe960 100644
+Binary files a/target/classes/com/jhta/project/vo/BrInfoVo.class and b/target/classes/com/jhta/project/vo/BrInfoVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/BranchVo.class b/target/classes/com/jhta/project/vo/BranchVo.class
+index d80a283..bf11e93 100644
+Binary files a/target/classes/com/jhta/project/vo/BranchVo.class and b/target/classes/com/jhta/project/vo/BranchVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/CuponDetailVo.class b/target/classes/com/jhta/project/vo/CuponDetailVo.class
+index c1aeb6d..743061f 100644
+Binary files a/target/classes/com/jhta/project/vo/CuponDetailVo.class and b/target/classes/com/jhta/project/vo/CuponDetailVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/CuponVo.class b/target/classes/com/jhta/project/vo/CuponVo.class
+index 8c7cbd4..dbf5a2d 100644
+Binary files a/target/classes/com/jhta/project/vo/CuponVo.class and b/target/classes/com/jhta/project/vo/CuponVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/DivisionVo.class b/target/classes/com/jhta/project/vo/DivisionVo.class
+index 4115de9..7a36b23 100644
+Binary files a/target/classes/com/jhta/project/vo/DivisionVo.class and b/target/classes/com/jhta/project/vo/DivisionVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/MReviewVo.class b/target/classes/com/jhta/project/vo/MReviewVo.class
+index 7352c39..3d348ba 100644
+Binary files a/target/classes/com/jhta/project/vo/MReviewVo.class and b/target/classes/com/jhta/project/vo/MReviewVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/MembersVo.class b/target/classes/com/jhta/project/vo/MembersVo.class
+index c9b0c25..c59638b 100644
+Binary files a/target/classes/com/jhta/project/vo/MembersVo.class and b/target/classes/com/jhta/project/vo/MembersVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/MembershipVo.class b/target/classes/com/jhta/project/vo/MembershipVo.class
+index 456a490..869602e 100644
+Binary files a/target/classes/com/jhta/project/vo/MembershipVo.class and b/target/classes/com/jhta/project/vo/MembershipVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/MileVo.class b/target/classes/com/jhta/project/vo/MileVo.class
+index 56091e6..6806eb1 100644
+Binary files a/target/classes/com/jhta/project/vo/MileVo.class and b/target/classes/com/jhta/project/vo/MileVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/MissingVo.class b/target/classes/com/jhta/project/vo/MissingVo.class
+index a495b58..34d5845 100644
+Binary files a/target/classes/com/jhta/project/vo/MissingVo.class and b/target/classes/com/jhta/project/vo/MissingVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/ProposalVo.class b/target/classes/com/jhta/project/vo/ProposalVo.class
+index dc48cb2..c8a8315 100644
+Binary files a/target/classes/com/jhta/project/vo/ProposalVo.class and b/target/classes/com/jhta/project/vo/ProposalVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/QnaVo.class b/target/classes/com/jhta/project/vo/QnaVo.class
+index 33fede0..9501080 100644
+Binary files a/target/classes/com/jhta/project/vo/QnaVo.class and b/target/classes/com/jhta/project/vo/QnaVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/ReplyVo.class b/target/classes/com/jhta/project/vo/ReplyVo.class
+index ba36c90..afced81 100644
+Binary files a/target/classes/com/jhta/project/vo/ReplyVo.class and b/target/classes/com/jhta/project/vo/ReplyVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/SalaryVo.class b/target/classes/com/jhta/project/vo/SalaryVo.class
+index f855e59..607f5ec 100644
+Binary files a/target/classes/com/jhta/project/vo/SalaryVo.class and b/target/classes/com/jhta/project/vo/SalaryVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/StaffTypeVo.class b/target/classes/com/jhta/project/vo/StaffTypeVo.class
+index 2c3d257..34cab6f 100644
+Binary files a/target/classes/com/jhta/project/vo/StaffTypeVo.class and b/target/classes/com/jhta/project/vo/StaffTypeVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/StaffVo.class b/target/classes/com/jhta/project/vo/StaffVo.class
+index a7fd2b7..9abb61f 100644
+Binary files a/target/classes/com/jhta/project/vo/StaffVo.class and b/target/classes/com/jhta/project/vo/StaffVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/StoreInfoVo.class b/target/classes/com/jhta/project/vo/StoreInfoVo.class
+index 57dba45..c20aa21 100644
+Binary files a/target/classes/com/jhta/project/vo/StoreInfoVo.class and b/target/classes/com/jhta/project/vo/StoreInfoVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/StoreVo.class b/target/classes/com/jhta/project/vo/StoreVo.class
+index 9f0b170..f9259fc 100644
+Binary files a/target/classes/com/jhta/project/vo/StoreVo.class and b/target/classes/com/jhta/project/vo/StoreVo.class differ
+diff --git a/target/classes/com/jhta/project/vo/TotalVo.class b/target/classes/com/jhta/project/vo/TotalVo.class
+index 6c7b6ff..33542dc 100644
+Binary files a/target/classes/com/jhta/project/vo/TotalVo.class and b/target/classes/com/jhta/project/vo/TotalVo.class differ
+diff --git a/target/m2e-wtp/web-resources/META-INF/maven/com.jhta/project/pom.xml b/target/m2e-wtp/web-resources/META-INF/maven/com.jhta/project/pom.xml
+index 220ae1c..6cb0922 100644
+--- a/target/m2e-wtp/web-resources/META-INF/maven/com.jhta/project/pom.xml
++++ b/target/m2e-wtp/web-resources/META-INF/maven/com.jhta/project/pom.xml
+@@ -15,6 +15,7 @@
+ 		<org.slf4j-version>1.6.6</org.slf4j-version>
+ 	</properties>
+ 	<dependencies>
++<<<<<<< HEAD
+ 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+ 		<dependency>
+ 		    <groupId>com.fasterxml.jackson.datatype</groupId>
+@@ -74,12 +75,37 @@
+ 			<artifactId>aspectjrt</artifactId>
+ 			<version>1.9.5</version>
+ 		</dependency>
++=======
++	
++>>>>>>> heo
+ 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+ 		<dependency>
+ 			<groupId>com.google.code.gson</groupId>
+ 			<artifactId>gson</artifactId>
+ 			<version>2.8.6</version>
+ 		</dependency>
++		<dependency>
++			<groupId>org.apache.httpcomponents</groupId>
++			<artifactId>httpclient</artifactId>
++			<version>4.4</version>
++		</dependency>
++		<!-- json -->
++		<dependency>
++			<groupId>org.json</groupId>
++			<artifactId>json</artifactId>
++			<version>20200518</version>
++		</dependency>
++		<dependency>
++			<groupId>com.googlecode.json-simple</groupId>
++			<artifactId>json-simple</artifactId>
++			<version>1.1.1</version>
++		</dependency>
++		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
++		<dependency>
++			<groupId>com.fasterxml.jackson.core</groupId>
++			<artifactId>jackson-databind</artifactId>
++			<version>2.11.0</version>
++		</dependency>
+ 
+ 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+ 		<dependency>

@@ -15,9 +15,12 @@
     },
     "jquery-extension": {
       
+<<<<<<< HEAD
     },
     "jquery-mobile1.5": {
       
+=======
+>>>>>>> heo
     }
   },
   "libs": [

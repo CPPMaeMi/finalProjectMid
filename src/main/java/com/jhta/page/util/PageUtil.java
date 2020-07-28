@@ -1,20 +1,17 @@
 package com.jhta.page.util;
 
-//����¡ ó���ϴ� Ŭ����
 public class PageUtil {
-	private int pageNum; //������ ��ȣ
-	private int startRow; //���� ��
-	private int endRow; //�� ��
-	private int totalPageCount; //��ü ������ ����
-	private int startPageNum; //���� ������
-	private int endPageNum; //�� ������
-	private int rowBlockCount; //�� �������� ������ ���� ����
-	private int pageBlockCount; //�� �������� ������ �������� ����
-	private int totalRowCount; //��ü ���� ����
-	
-	public PageUtil() {}
-	public PageUtil(int pageNum, int totalRowCount,
-			int rowBlockCount, int pageBlockCount) {
+	private int pageNum; // ��������ȣ
+	private int startRow; // ������
+	private int endRow; // ����
+	private int startPageNum; // ����������
+	private int endPageNum; // ��������
+	private int rowBlockCount; // ���������� ������ ���� ����
+	private int pageBlockCount; // ���������� ������ �������� ����
+	private int totalPageCount; // ��ü������ ����
+	private int totalRowCount; // ��ü ���� ����
+	public PageUtil(){}
+	public PageUtil(int pageNum,int totalRowCount,int rowBlockCount,int pageBlockCount) {
 		this.pageNum=pageNum;
 		this.totalRowCount=totalRowCount;
 		this.rowBlockCount=rowBlockCount;
@@ -83,5 +80,4 @@ public class PageUtil {
 		this.totalRowCount = totalRowCount;
 	}
 	
-
 }
