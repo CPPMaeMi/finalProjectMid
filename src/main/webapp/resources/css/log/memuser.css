@@ -1,0 +1,151 @@
+body, input, textarea, select, button, table {
+    color: #555;
+    font-size: 14px;
+    font-family: Arial, nbgr, '나눔바른고딕', '돋음';
+    *font-family: nbgr;
+    line-height: 24px;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+table th {
+    color: #222;
+    font-weight: normal;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+.table_row table, .table_col table, .board_list table {
+    width: 100%;
+    border: 0 none;
+    border-collapse: collapse;
+}
+.table_row th, .table_row td, .table_col th, .table_col td, .board_list th, .board_list td {
+    vertical-align: top;
+}
+.cont_header {
+    padding-top: 10px;
+    text-align: center;
+}
+.h1_tit, .h2_tit, .h3_tit, .h4_tit, .h5_tit {
+    margin: 0;
+    color: #222;
+    font-weight: normal;
+}
+.table_header {
+    position: relative;
+    padding-bottom: 20px;
+    margin-top: -25px;
+    margin-left: 20px;
+}
+colgroup {
+    display: table-column-group;
+}
+.table_col {
+    border-top: 1px solid #222;
+}
+.table_row .input td, .table_col .input td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.table_col th, .table_col td {
+    padding: 23px 20px 21px 20px;
+    border-bottom: 1px solid #ddd;
+}
+.table_col th {
+    padding-left: 40px;
+    background-color: #f8f8f8;
+    color: #222;
+    text-align: left;
+}
+.member_info{
+    margin-bottom: 50px;
+}
+.btn {
+    display: inline-block;
+    min-width: 128px;
+    height: 38px;
+    margin: 0 3px;
+    *margin: 0 5px;
+    padding: 0 15px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    line-height: 38px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: border .5s, background .5s, color .5s;
+}
+button.btn {
+    min-width: 160px;
+    height: 40px;
+    *line-height: 36px;
+}
+.btn_center {
+    padding-top: 25px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.btn.btn_em {
+    background-color: #333;
+    color: #fff;
+}
+.box_btm.box_whtie {
+    padding-top: 40px;
+}
+.regi_complete {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+}
+.regi_complete .h_desc {
+    padding-top: 14px;
+}
+.regi_complete {
+    padding: 50px 0;
+    border-top: 1px solid #222;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+.box_gray.box_btm {
+    margin-top: 60px;
+}
+.box_gray {
+    min-height: 1%;
+    padding: 30px;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+.box_info dt {
+    color: #222;
+    font-size: 18px;
+}
+dt, dd, li {
+    margin: 0;
+    padding: 0;
+}
+ul, ol, dl {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box_info dd {
+    padding: 12px 0 0 0;
+}
+.bul_list .dot_arr {
+    display: block;
+    margin-bottom: 6px;
+    padding-left: 10px;
+    background: url(/cjmweb/images/common/ico_dot.png) no-repeat 0 8px;
+    color: #555;
+    line-height: 1.5;
+}
+.em {
+    color: #ee6900;
+    font-weight: normal;
+}

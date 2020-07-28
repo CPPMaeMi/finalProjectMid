@@ -1,9 +1,5 @@
 package com.jhta.project.vo;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class FilmVo {
 	private int filmNum;
 	private String filmName;
