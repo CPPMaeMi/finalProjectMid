@@ -3,10 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section class="get-in-touch">
    <h1 class="title">직원 등록</h1>
-   <form class="contact-form row" action="${cp}/employee/emInsertOk.do">
+   <form class="contact-form row" action="${cp}/employee/emInsertOk.do" method="post">
    
    	  <!--번호(임의로) 지점명,재직상태 히든으로보냄 -->
-   	  <input type="hidden" name="branchNum" value="1">
+   	  <input type="hidden" name="branchNum" value="${branchNum }">
    	  <input type="hidden" name="sffStatus" value="재직중">
    	  <input type="hidden" name="staffNum" value="1">
    	  
@@ -43,8 +43,8 @@
 	      </select>
       </div>
       <div class="form-field col-lg-6"><gr>
-	      <label class="label" for="grade">부서정보</label>
-	      <select id="grade" name="divisionNum">
+	      <label class="label" for="grade1">부서정보</label>
+	      <select id="grade1" name="divisionNum">
 	      	<c:forEach items="${diList}" var="i" varStatus="status">
 	      		<option value="${status.count}">${i}</option>
 	      	</c:forEach>

@@ -169,7 +169,6 @@ public class CreateSeatController {
 	@RequestMapping("/room/seat/insertOk.do")
 	public String insertOkSeat(TheatherVo vo,Model model) throws JsonProcessingException {
 		String url="http://localhost:9090/projectdb/room/seat/insertOk.do";
-		vo.setBranchNum(1);
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(url,jsonString).trim();

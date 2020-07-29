@@ -58,11 +58,11 @@ p {
 </style>
 <div class="alltable">
 			<div class="dateyoo">
-			<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${prevDate}">
+			<a href="${cp }/schedule/scheduleInsert.do?regDate=${prevDate}">
 				<button type="button" name="choice" class="btn btn-light" style="font-family: fantasy;">
 				${prevDate }</button></a>
 			<c:forEach var="week" items="${weeklist }" varStatus="i">
-				<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${week}">
+				<a href="${cp }/schedule/scheduleInsert.do?regDate=${week}">
 				<button type="button" name="choice" class="btn btn-light" style="font-family: fantasy;<c:if test="${i.index==0 }">background-color:gray;</c:if>">
 				${week }</button></a>
 			</c:forEach>

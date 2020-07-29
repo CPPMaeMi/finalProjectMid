@@ -5,7 +5,7 @@
 		<form class="contact2-form validate-form" method="post"
 			action="${cp }/room/seat/insertOk.do">
 			<h1 style="text-align: center;"><span class="contact2-form-title">상영관생성 </span></h1> <input type="hidden"
-				value="${branchNum }" name="${branchNum }">
+				value="${branchNum }" name="branchNum">
 
 			<div class="form-group">
 				<label for="theatherName">상영관명</label> <input type="text"

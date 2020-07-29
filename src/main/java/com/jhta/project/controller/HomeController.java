@@ -34,7 +34,6 @@ public class HomeController {
 	
 	@RequestMapping("/log/banchloging.do")
 	public String banchloging(HttpSession session, String memId, String memPwd,Model model) {
-		System.out.println("@222222222222222222222222222"+memId+","+memPwd);
 		String url="http://localhost:9090/projectdb/banch/loging.do";
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("memId", memId);

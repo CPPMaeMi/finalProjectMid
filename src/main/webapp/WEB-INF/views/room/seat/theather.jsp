@@ -4,7 +4,7 @@
 <script type="text/javascript" src="${cp }/resources/js/jquery-3.5.1.js"></script>
 <div class="container">
 		<div class="container-contact2">
-				<span class="contact2-form-title"> 상영관목록 </span>
+				<span class="contact2-form-title"> 상영관목록</span>
 				<p></p>
 				<table class="table table-dark table-striped">
 					<thead>

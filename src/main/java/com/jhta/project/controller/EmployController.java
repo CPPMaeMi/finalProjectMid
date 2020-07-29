@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,7 +41,7 @@ public class EmployController {
 	}
 	
 	@RequestMapping("/employee/emInsertOk.do")
-	public String EmployeeInsertOk(StaffVo vo,Model model) throws JsonProcessingException {
+	public String EmployeeInsertOk(@ModelAttribute StaffVo vo,Model model) throws JsonProcessingException {
 		String insertUrl = "http://localhost:9090/projectdb/employee/staffInsert.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);

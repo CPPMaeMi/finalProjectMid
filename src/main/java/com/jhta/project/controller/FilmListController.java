@@ -3,6 +3,8 @@ package com.jhta.project.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,8 @@ public class FilmListController {
 	private RestService service;
 	
 	@RequestMapping("/fm/list.do")
-	public ModelAndView list(@RequestParam(value="pageNum",defaultValue="1")int pageNum) throws JsonMappingException, JsonProcessingException {
+	public ModelAndView list(@RequestParam(value="pageNum",defaultValue="1")int pageNum,HttpSession session) throws JsonMappingException, JsonProcessingException {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		ModelAndView mv=new ModelAndView(".fm.filmlist");
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		String countUrl="http://localhost:9090/projectdb/fm/listCount.do";
@@ -33,6 +36,7 @@ public class FilmListController {
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 5, 10);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
+		map.put("branchNum", branchNum);
 		Gson gson=new Gson();
 		String jsonString=gson.toJson(map);
 		String url="http://localhost:9090/projectdb/fm/list.do";

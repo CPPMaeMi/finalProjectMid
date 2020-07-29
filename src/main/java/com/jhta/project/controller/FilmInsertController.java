@@ -26,14 +26,15 @@ public class FilmInsertController {
 	private RestService service;
 	
 	@PostMapping("/fm/filminsert.do")
-	public String insert(String filmDeadline,int filmNum,int branchNum, Model model) throws ParseException {
+	public String insert(String filmDeadline,int filmNum,HttpSession session, Model model) throws ParseException {
+		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
 		PurchaseFilmVo vo=new PurchaseFilmVo(0, filmDeadline, null, filmNum, branchNum);
 		Gson gson=new Gson();
 		String insertUrl="http://localhost:9090/projectdb/fm/insert.do";
 		try {
 			String jsonString=gson.toJson(vo);
 			service.post(insertUrl, jsonString);
-			String listUrl="http://localhost:9090/projectdb/fm/filminsert.do?branchNum="+vo.getBranchNum();
+			String listUrl="http://localhost:9090/projectdb/fm/filminsert.do?branchNum="+branchNum;
 			String code=service.get(listUrl).trim();
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<List<HashMap<String, Object>>> typeRef = new TypeReference<List<HashMap<String, Object>>>() {};
