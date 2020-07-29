@@ -27,8 +27,8 @@ public class SalaryController {
 		ObjectMapper mapper = new ObjectMapper();
 		Gson gson=new Gson();
 		//시작기간 끝 기간 받아서 넘기기
-		map.put("","");
-		map.put("","");
+		map.put("startDate","");
+		map.put("endDate","");
 		String sString = mapper.writeValueAsString(map);
 		String slist = service.post(url,sString).trim();
 		HashMap<String,Object>[] salaryMap = gson.fromJson(slist, HashMap[].class);
