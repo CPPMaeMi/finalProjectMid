@@ -10,7 +10,7 @@
 		select bb.* from
 		(
 		    select aa.*, rownum rnum, nvl((select count(*) from purchasefilm pf
-		    where pf.branchnum=1 and pf.filmnum=aa.filmnum)
+		    where pf.branchnum=23 and pf.filmnum=aa.filmnum)
 		    ,0) buy  from
 		    (
 		        select f.filmNum, f.filmName, f.filmStory, 

@@ -59,7 +59,7 @@ p {
 <div class="alltable">
 			<div class="dateyoo">
 			<c:forEach var="week" items="${weeklist }" varStatus="i">
-				<a href="${cp }/schedule/scheduleInsert.do?branchNum=1&regDate=${week}">
+				<a href="${cp }/schedule/scheduleInsert.do?branchNum=23&regDate=${week}">
 				<button type="button" name="choice" class="btn btn-light" style="font-family: fantasy;<c:if test="${i.index==0 }">background-color:gray;</c:if>">
 				${week }</button></a>
 			</c:forEach>

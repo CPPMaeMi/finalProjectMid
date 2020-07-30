@@ -33,7 +33,7 @@
 							<c:choose>
 								<c:when test="${now<vo.FILMDEADLINE }">
 								<td><a
-									href="${cp }/schedule/showScheduleList.do?branchNum=1&purchasefilmNum=${vo.PURCHASEFILMNUM}"><button
+									href="${cp }/schedule/showScheduleList.do?branchNum=23&purchasefilmNum=${vo.PURCHASEFILMNUM}"><button
 											type="button" class="btn btn-primary">스케쥴 관리</button></a></td>
 							</c:when>
 							<c:otherwise>

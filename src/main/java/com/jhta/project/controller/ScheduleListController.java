@@ -23,7 +23,7 @@ public class ScheduleListController {
 	
 	@RequestMapping("/schedule/showScheduleList.do")
 	//전체 구매한 영화목록 보여주기 위한 컨트롤러
-	public String scheduleList(@RequestParam(value="branchNum",defaultValue = "1")int branchNum, String purchasefilmNum, Model model) {
+	public String scheduleList(@RequestParam(value="branchNum",defaultValue = "23")int branchNum, String purchasefilmNum, Model model) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("branchNum", branchNum);
 		map.put("purchasefilmNum", purchasefilmNum);

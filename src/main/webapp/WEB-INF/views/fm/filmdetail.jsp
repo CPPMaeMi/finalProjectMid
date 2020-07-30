@@ -77,7 +77,7 @@
 						</table>
 						<input type="hidden" name="filmNum" value="${vo.filmNum }">
 						<!-- value값 수정 지점 시퀀스 -->
-						<input type="hidden" name="branchNum" value="1">
+						<input type="hidden" name="branchNum" value="23">
 						<p></p>
 						<c:set var="now" value="<%=new java.util.Date() %>"/>
 						<center>

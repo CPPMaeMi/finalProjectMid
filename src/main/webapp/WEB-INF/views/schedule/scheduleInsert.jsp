@@ -2,6 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+.who{
+	overflow-y: scroll;
+    height: 766px;
+}
+.filminfo {
+
+}
+table{
+	width : 100%;
+	border-top:1px solid #444444;
+	broder-collapse: collapse;
+}
+ tr, td{
+ 	border-bottom : 1px solid #444444;
+ 	padding : 10px;
+
+ 
+ }
+ th{
+  	text-align:center;
+  	background-color: LightGray;
+ }
 
 </style>
 <center>
@@ -9,7 +31,7 @@
 <div class="who">
 <h1>상영 스케줄 편성</h1>
 <div class="filminfo">
-	<table border="1" style="width: 700px; text-align:center;">
+	<table style="width: 700px; text-align:center;">
 			<tr>
 				<th>포스터</th>
 				<th>제목</th>
@@ -27,10 +49,10 @@
 </div>
 <!-- theather 노출 -->
 <p></p>
-<div class="row1">
+<div class="rownow">
 	<!-- branchNum 지점번호 값 수정할것 -->
 	<form action="${cp }/schedule/scheduleInsert.do" method="post">
-		<table border="1" class="theatherList" style="width: 700px; text-align: center;">
+		<table style="width: 700px; text-align: center;">
 			<tr>
 				<th>No.<input type="hidden" name="branchNum" value="${vo.branchNum }"></th>
 				<th>상영관명</th>
