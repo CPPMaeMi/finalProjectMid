@@ -33,9 +33,11 @@
 								<c:set target="${myDate}" property="time" value="${vo.FILMDEADLINE }"/>
 								<fmt:formatDate var="filmDeadline" value="${myDate}" pattern="yyyy-MM-dd"/> 
 							<c:set var="now" value="<%=new java.util.Date()%>" />
+								<fmt:formatDate var="nowDate" value="${now}" pattern="yyyy-MM-dd"/> 
 							<c:choose>
-								<c:when test="${now<myDate }">
-								<td><a
+								<c:when test="${nowDate<=myDate }">
+								<td>
+								<a
 									href="${cp }/schedule/showScheduleList.do?purchasefilmNum=${vo.PURCHASEFILMNUM}"><button
 											type="button" class="btn btn-primary">스케쥴 관리</button></a></td>
 							</c:when>
