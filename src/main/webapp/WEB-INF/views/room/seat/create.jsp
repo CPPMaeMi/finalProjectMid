@@ -131,9 +131,9 @@
 		var radio = $("input[name='optradio']:checked").val();
 		$(this).prev().val(radio);
 		if (radio == '80') {
-			$(this).css("backgroundColor", "blue");
+			$(this).css("backgroundColor", "#FFB646");
 		} else if (radio == '90') {
-			$(this).css("backgroundColor", "red");
+			$(this).css("backgroundColor", "#6dff00");
 		} else if (radio == '100') {
 			$(this).css("backgroundColor", "transparent");
 		} else if (radio == '110') {
