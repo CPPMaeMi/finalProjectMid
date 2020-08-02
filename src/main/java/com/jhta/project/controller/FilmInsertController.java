@@ -47,6 +47,7 @@ public class FilmInsertController {
 		}
 	}
 	
+	
 	@GetMapping("/fm/filminserts.do")
 	public String allMovieList(Model model,HttpSession session) throws JsonMappingException, JsonProcessingException {
 		int branchNum=(int)session.getServletContext().getAttribute("branchNum");
