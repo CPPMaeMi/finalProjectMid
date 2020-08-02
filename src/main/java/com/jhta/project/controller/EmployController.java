@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,6 +17,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.jhta.page.util.PageUtil;
 import com.jhta.project.service.RestService;
+import com.jhta.project.vo.DivisionVo;
+import com.jhta.project.vo.StaffTypeVo;
 import com.jhta.project.vo.StaffVo;
 
 @Controller
@@ -32,16 +35,17 @@ public class EmployController {
 		String getDivisionNameUrl = "http://localhost:9090/projectdb/employee/getDivisionName.do";
 		Gson gson=new Gson();
 		String getSffPosition = service.get(getSffPositionUrl).trim();
-		List<String> sfList = Arrays.asList(gson.fromJson(getSffPosition,String[].class));
+		List<StaffTypeVo> sfList = Arrays.asList(gson.fromJson(getSffPosition,StaffTypeVo[].class));
 		String getDivisionName = service.get(getDivisionNameUrl).trim();
-		List<String> diList = Arrays.asList(gson.fromJson(getDivisionName,String[].class));
+		List<DivisionVo> diList = Arrays.asList(gson.fromJson(getDivisionName,DivisionVo[].class));
 		model.addAttribute("sfList",sfList);
 		model.addAttribute("diList",diList);
 		return ".employee.emInsert";
 	}
 	
 	@RequestMapping("/employee/emInsertOk.do")
-	public String EmployeeInsertOk(@ModelAttribute StaffVo vo,Model model) throws JsonProcessingException {
+	public String EmployeeInsertOk(@ModelAttribute StaffVo vo, Model model) throws JsonProcessingException {
+		System.out.println("11111111111111111111111111111111");
 		String insertUrl = "http://localhost:9090/projectdb/employee/staffInsert.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);

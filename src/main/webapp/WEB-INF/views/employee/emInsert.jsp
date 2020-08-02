@@ -38,7 +38,7 @@
 	      <label class="label" for="grade">직원등급</label>
 	      <select id="grade" name="sffNum">
 	      	<c:forEach items="${sfList}" var="i" varStatus="status">
-	      		<option value="${status.count}">${i}</option>
+	      		<option value="${i.sffNum}">${i.sffPosition}</option>
 	      	</c:forEach>
 	      </select>
       </div>
@@ -46,7 +46,7 @@
 	      <label class="label" for="grade1">부서정보</label>
 	      <select id="grade1" name="divisionNum">
 	      	<c:forEach items="${diList}" var="i" varStatus="status">
-	      		<option value="${status.count}">${i}</option>
+	      		<option value="${i.divisionNum}">${i.divisionName}</option>
 	      	</c:forEach>
 	      </select>
       </div>
