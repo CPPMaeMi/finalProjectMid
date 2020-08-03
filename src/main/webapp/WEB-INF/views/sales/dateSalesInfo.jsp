@@ -10,8 +10,8 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-	기간 <input type="date" value="xxx" min="yyy" max="zzz" name="date" id="input_date">
-	- <input type="date" value="xxx" min="yyy" max="zzz" name="date" id="input_date1">
+	기간 <input type="date" min="yyy" max="zzz" name="date" id="input_date">
+	- <input type="date" min="yyy" max="zzz" name="date" id="input_date1">
 	<input type="button" value="년도별">
 	<input type="button" value="월별">
 	<input type="button" value="일별">
