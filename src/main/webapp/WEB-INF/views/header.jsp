@@ -5,7 +5,7 @@
 <!--메뉴바 추가 부분-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#"> <img
+	<a class="navbar-brand" href="${cp }/"> <img
 		src="${cp}/resources/logo/logo.png" width="50" height="50">MegaCinema
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,7 +39,6 @@
              <a class="dropdown-item" href="${cp}/employee/emInsert.do">직원등록 </a> 
              <a class="dropdown-item" href="${cp}/employee/emSelect.do">직원현황</a>
              <a class="dropdown-item" href="${cp }/schedule/scheduler.do">근무관리</a>
-             <a class="dropdown-item" href="${cp}/salary/saManagement.do">급여관리</a>
            </div>
            </li>
            

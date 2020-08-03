@@ -4,7 +4,7 @@
   <div class="container h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
-        <h1 class="font-weight-light">main</h1>
+        <img src="${cp}/resources/images/bye.png" style="margin-top: 42px;height: 100%;width: 100%;">
       </div>
     </div>
   </div>

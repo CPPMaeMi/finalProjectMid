@@ -44,8 +44,12 @@ public class EmployController {
 	}
 	
 	@RequestMapping("/employee/emInsertOk.do")
-	public String EmployeeInsertOk(@ModelAttribute StaffVo vo, Model model) throws JsonProcessingException {
-		System.out.println("11111111111111111111111111111111");
+	public String EmployeeInsertOk(String branchNum,String sffStatus,
+			String sffName,String sffAge,String sffAddr,
+			String jumin,String gender,String accountNum,String sffNum,
+			String divisionNum,Model model) throws JsonProcessingException {
+		StaffVo vo = new StaffVo(0,Integer.parseInt(sffNum),Integer.parseInt(divisionNum),sffName,sffAge,sffAddr,
+				jumin,gender,Integer.parseInt(accountNum),sffStatus,Integer.parseInt(branchNum));
 		String insertUrl = "http://localhost:9090/projectdb/employee/staffInsert.do";
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonString= mapper.writeValueAsString(vo);
@@ -56,16 +60,16 @@ public class EmployController {
 	}
 	
 	@RequestMapping("/employee/emUpdateOk.do")
-	public String EmployeeUpdateOk(Model model,String staffNum,
+	public String EmployeeUpdateOk(Model model,String name,
 			String account,String status,
 			String divisionNum,String sffNum,String addr) throws JsonProcessingException {
 		String updateUrl = "http://localhost:9090/projectdb/employee/staffUpdate.do";
 		ObjectMapper mapper=new ObjectMapper();
-		StaffVo vo = new StaffVo(Integer.parseInt(staffNum),Integer.parseInt(sffNum),Integer.parseInt(divisionNum),null,null,addr,null,null,Integer.parseInt(account),status,0);
+		System.out.println("staffNum:"+name);
+		StaffVo vo = new StaffVo(0,Integer.parseInt(sffNum),Integer.parseInt(divisionNum),name,null,addr,null,null,Integer.parseInt(account),status,0);
 		String jsonString= mapper.writeValueAsString(vo);
 		String code=service.post(updateUrl,jsonString).trim();
 		model.addAttribute("code2",code);
-		model.addAttribute("sffName",vo.getSffName());
 		return ".employee.emInsertOk";
 	}
 	
@@ -99,9 +103,9 @@ public class EmployController {
 		String getBrName = service.get(getBrNameUrl).trim();
 		List<String> brList = Arrays.asList(gson.fromJson(getBrName,String[].class));
 		String getSffPosition = service.get(getSffPositionUrl).trim();
-		List<String> sfList = Arrays.asList(gson.fromJson(getSffPosition,String[].class));
+		List<StaffTypeVo> sfList = Arrays.asList(gson.fromJson(getSffPosition,StaffTypeVo[].class));
 		String getDivisionName = service.get(getDivisionNameUrl).trim();
-		List<String> diList = Arrays.asList(gson.fromJson(getDivisionName,String[].class));
+		List<DivisionVo> diList = Arrays.asList(gson.fromJson(getDivisionName,DivisionVo[].class));
 		model.addAttribute("brList",brList);
 		model.addAttribute("sfList",sfList);
 		model.addAttribute("diList",diList);

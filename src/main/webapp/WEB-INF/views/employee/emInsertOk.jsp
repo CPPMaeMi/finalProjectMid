@@ -32,9 +32,6 @@
 									alt="success">
 									<h1>정보수정 성공</h1>
 									<p>Your submission is received and we will contact you soon</p>
-									<h3 class="cupon-pop">
-										직원수정: <span>${sffName}님</span>
-									</h3>
 								</c:when>
 							</c:choose>
 						</div>

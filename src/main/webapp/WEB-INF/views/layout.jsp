@@ -64,19 +64,6 @@
 			$(this).css("opacity","0");
 		});
 		
-		//모달 데이터 이동
-		$("#squarespaceModal").on('shown.bs.modal',function(event){
-			var modalData = $(event.relatedTarget);
-			//지점번호 받아서 비교하기
-			if(1!=parseInt(modalData.data('brnum'))){
-				alert("접근 권한이 없습니다!!");
-				$("#squarespaceModal").modal('hide');
-			}else{
-				$("#employeeAddr").val(modalData.data('addr'));
-				$("#employeeAccount").val(parseFloat(modalData.data('account')));
-				$("#brName").val(modalData.data('brname'));
-			}
-		});
 	});
 </script>
 </html>

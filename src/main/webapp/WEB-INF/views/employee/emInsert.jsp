@@ -3,19 +3,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section class="get-in-touch">
    <h1 class="title">직원 등록</h1>
-   <form class="contact-form row" action="${cp}/employee/emInsertOk.do" method="post">
+   <form class="contact-form row" action="${cp}/employee/emInsertOk.do" method="get">
    
    	  <!--번호(임의로) 지점명,재직상태 히든으로보냄 -->
-   	  <input type="hidden" name="branchNum" value="${branchNum }">
+   	  <input type="hidden" name="branchNum" value="${branchNum}">
    	  <input type="hidden" name="sffStatus" value="재직중">
-   	  <input type="hidden" name="staffNum" value="1">
    	  
       <div class="form-field col-lg-6">
          <input name="sffName" id="name" class="input-text js-input" type="text" required>
          <label class="label" for="name">이름</label>
       </div>
       <div class="form-field col-lg-6 ">
-         <input name="sffAge" id="age" class="input-text js-input" type="text" required>
+         <input name="sffAge" id="age" class="input-text js-input" type="text"  required>
          <label class="label" for="age">나이</label>
       </div>
       <div class="form-field col-lg-6 ">
@@ -23,7 +22,7 @@
          <label class="label" for="addr">거주지</label>
       </div>
        <div class="form-field col-lg-6 ">
-         <input name="jumin" id="jumin" class="input-text js-input" type="text" required>
+         <input name="jumin" id="jumin" class="input-text js-input" type="text" placeholder="-빼고 입력하세요" required>
          <label class="label" for="jumin">주민등록번호</label>
       </div>
       <div class="form-field col-lg-6 ">
@@ -31,7 +30,7 @@
          <label class="label" for="gender">성별</label>
       </div>
       <div class="form-field col-lg-6 ">
-         <input name="accountNum" id="account" class="input-text js-input" type="text" required>
+         <input name="accountNum" id="account" class="input-text js-input" type="text" placeholder="-빼고 입력하세요." required>
          <label class="label" for="account">계좌번호</label>
       </div>
       <div class="form-field col-lg-6"><gr>
