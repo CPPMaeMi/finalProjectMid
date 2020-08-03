@@ -23,7 +23,7 @@
 				<legend>직원 타입</legend>
 					<c:forEach items="${sfList}" var="string">
 						<c:set var="i" value="0"/>
-						<label><input type="checkbox" name="sf" class="sf" value="${string}"
+						<label><input type="checkbox" name="sf" class="sf" value="${string.sffPosition}"
 						<c:forEach var="y" items="${sf}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
 						<span class="checkbox-span">${string.sffPosition}</span></label>
 						<c:set var="i" value="${i+1}"/>
@@ -36,7 +36,7 @@
 			  		<legend>부서</legend>
 					<c:forEach items="${diList}" var="string">
 						<c:set var="i" value="0"/>
-						<label><input type="checkbox" name="di" class="di" value="${string}" 
+						<label><input type="checkbox" name="di" class="di" value="${string.divisionName}" 
 						<c:forEach var="y" items="${di}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
 						<span class="checkbox-span">${string.divisionName}</span></label>
 						<c:set var="i" value="${i+1}"/>
@@ -90,7 +90,8 @@
 								<td data-toggle="modal" data-target="#squarespaceModal"
 								 class="btn btn-primary center-block" 
 								 data-addr="${map.addr}" data-brnum="${map.brNum}"
-								 data-account="${map.account}" data-brname="${map.brName}">go</td>
+								 data-account="${map.account}" data-brname="${map.brName}" 
+								 data-name="${map.name}">go</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -168,7 +169,7 @@
             <!-- content goes here -->
 			<form action="${cp}/employee/emUpdateOk.do">
 			  <!-- 나중에 지점번호로 value 값주기 -->
-			  <input type="hidden" name="staffNum" id="staffNum" value="1">
+			  <input type="hidden" name="name" id="name">
 			  <div class="form-group">
                 <label for="brName">이름</label>
                 <input type="text" class="form-control" id="brName" readonly="readonly">
@@ -232,3 +233,20 @@
 	</div>
   </div>
 </div>
+<script>
+//모달 데이터 이동
+	$("#squarespaceModal").on('shown.bs.modal',function(event){
+		var modalData = $(event.relatedTarget);
+		//지점번호 받아서 비교하기
+		if(${branchNum}!=parseInt(modalData.data('brnum'))){
+			alert("접근 권한이 없습니다!!");
+			$("#squarespaceModal").modal('hide');
+		}else{
+			$("#name").val(modalData.data('name'));
+			$("#employeeAddr").val(modalData.data('addr'));
+			$("#employeeAccount").val(parseFloat(modalData.data('account')));
+			$("#brName").val(modalData.data('brname'));
+		}
+	});
+
+</script>

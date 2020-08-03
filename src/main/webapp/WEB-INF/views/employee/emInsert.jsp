@@ -6,7 +6,7 @@
    <form class="contact-form row" action="${cp}/employee/emInsertOk.do" method="get">
    
    	  <!--번호(임의로) 지점명,재직상태 히든으로보냄 -->
-   	  <input type="hidden" name="branchNum" value="41">
+   	  <input type="hidden" name="branchNum" value="${branchNum}">
    	  <input type="hidden" name="sffStatus" value="재직중">
    	  
       <div class="form-field col-lg-6">
