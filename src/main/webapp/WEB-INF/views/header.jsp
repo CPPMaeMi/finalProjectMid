@@ -5,7 +5,7 @@
 <!--메뉴바 추가 부분-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#"> <img
+	<a class="navbar-brand" href="${cp }/"> <img
 		src="${cp}/resources/logo/logo.png" width="50" height="50">MegaCinema
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
