@@ -103,9 +103,9 @@ public class EmployController {
 		String getBrName = service.get(getBrNameUrl).trim();
 		List<String> brList = Arrays.asList(gson.fromJson(getBrName,String[].class));
 		String getSffPosition = service.get(getSffPositionUrl).trim();
-		List<String> sfList = Arrays.asList(gson.fromJson(getSffPosition,String[].class));
+		List<StaffTypeVo> sfList = Arrays.asList(gson.fromJson(getSffPosition,StaffTypeVo[].class));
 		String getDivisionName = service.get(getDivisionNameUrl).trim();
-		List<String> diList = Arrays.asList(gson.fromJson(getDivisionName,String[].class));
+		List<DivisionVo> diList = Arrays.asList(gson.fromJson(getDivisionName,DivisionVo[].class));
 		model.addAttribute("brList",brList);
 		model.addAttribute("sfList",sfList);
 		model.addAttribute("diList",diList);

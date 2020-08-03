@@ -14,7 +14,7 @@
          <label class="label" for="name">이름</label>
       </div>
       <div class="form-field col-lg-6 ">
-         <input name="sffAge" id="age" class="input-text js-input" type="text" required>
+         <input name="sffAge" id="age" class="input-text js-input" type="text"  required>
          <label class="label" for="age">나이</label>
       </div>
       <div class="form-field col-lg-6 ">
@@ -22,7 +22,7 @@
          <label class="label" for="addr">거주지</label>
       </div>
        <div class="form-field col-lg-6 ">
-         <input name="jumin" id="jumin" class="input-text js-input" type="text" required>
+         <input name="jumin" id="jumin" class="input-text js-input" type="text" placeholder="-빼고 입력하세요" required>
          <label class="label" for="jumin">주민등록번호</label>
       </div>
       <div class="form-field col-lg-6 ">
@@ -30,7 +30,7 @@
          <label class="label" for="gender">성별</label>
       </div>
       <div class="form-field col-lg-6 ">
-         <input name="accountNum" id="account" class="input-text js-input" type="text" required>
+         <input name="accountNum" id="account" class="input-text js-input" type="text" placeholder="-빼고 입력하세요." required>
          <label class="label" for="account">계좌번호</label>
       </div>
       <div class="form-field col-lg-6"><gr>

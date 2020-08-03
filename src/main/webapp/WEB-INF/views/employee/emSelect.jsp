@@ -25,7 +25,7 @@
 						<c:set var="i" value="0"/>
 						<label><input type="checkbox" name="sf" class="sf" value="${string}"
 						<c:forEach var="y" items="${sf}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
-						<span class="checkbox-span">${string}</span></label>
+						<span class="checkbox-span">${string.sffPosition}</span></label>
 						<c:set var="i" value="${i+1}"/>
 						<c:if test="${i eq 10}">
 							<br><c:set var="i" value="0"/>
@@ -38,7 +38,7 @@
 						<c:set var="i" value="0"/>
 						<label><input type="checkbox" name="di" class="di" value="${string}" 
 						<c:forEach var="y" items="${di}"><c:if test="${y==string}">checked="checked"</c:if></c:forEach>>
-						<span class="checkbox-span">${string}</span></label>
+						<span class="checkbox-span">${string.divisionName}</span></label>
 						<c:set var="i" value="${i+1}"/>
 						<c:if test="${i eq 10}">
 							<br><c:set var="i" value="0"/>
