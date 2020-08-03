@@ -203,7 +203,7 @@
               	 <label for="emDivision">부서</label>
               	 <select name="divisionNum" class="modalSelect" id="emDivision" style="left:82px">
 	              	<c:forEach var="i" items="${diList}" varStatus="status">
-	              		<option value="${status.count}">${i}</option>
+	              		<option value="${status.count}">${i.divisionName}</option>
 	              	</c:forEach>
              	 </select>
               </div>
@@ -211,7 +211,7 @@
               	 <label for="emType">직원타입</label>
               	 <select name="sffNum" class="modalSelect" id="emType" >
 	              	<c:forEach var="i" items="${sfList}" varStatus="status">
-	              		<option value="${status.count}">${i}</option>
+	              		<option value="${status.count}">${i.sffPosition}</option>
 	              	</c:forEach>
              	 </select>
               </div>
